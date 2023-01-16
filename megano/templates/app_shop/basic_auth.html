@@ -1,0 +1,33 @@
+{% extends 'app_shop/basic.html' %}
+{% block page_content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">
+						Регистрация/Вход
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href="{% url 'index' %}">
+								home
+							</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>
+								Регистрация/Вход
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section Section_column Section_columnRight Section_columnWide Order">
+			<div class="wrap">
+				<div class="Section-content">
+					{% block form %}{% endblock %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

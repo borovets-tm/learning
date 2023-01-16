@@ -1,0 +1,265 @@
+{% extends 'app_shop/basic.html' %}
+{% load static %}
+{% block page_content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">
+						Megano Product
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href="{% url 'index' %}">
+								home
+							</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>Product</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section">
+			<div class="wrap">
+				<div class="Product">
+					<div class="ProductCard">
+						<div class="ProductCard-look">
+							<div class="ProductCard-photo">
+								<img src="{{ object.main_photo.url }}" alt="{{ object.main_photo.name }}"/>
+							</div>
+							<div class="ProductCard-picts">
+								<a class="ProductCard-pict ProductCard-pict_ACTIVE" href="{{ object.main_photo.url }}">
+									<img src="{{ object.main_photo.url }}" alt="{{ object.main_photo.name }}"/>
+								</a>
+								{% for item in photo_gallery_list %}
+									<a class="ProductCard-pict" href="{{ item.photo.url }}">
+										<img src="{{ item.photo.url }}" alt="{{ item.photo.name }}"/>
+									</a>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="ProductCard-desc">
+							<div class="ProductCard-header">
+								<h2 class="ProductCard-title">
+									{{ object.title }}
+								</h2>
+								<div class="ProductCard-info">
+									<div class="ProductCard-cost">
+										<div class="ProductCard-price">
+											${{ object.price }}
+										</div>
+									</div>
+								</div>
+							</div>
+							{% if key_feature_list %}
+								<div class="ProductCard-text">
+									<ul>
+										{% for item in key_feature_list %}
+											<li>
+												{{ item.key_feature.list_item }}
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							{% endif %}
+							<form class="ProductCard-cart" method="post" action="{% url 'add_cart' %}">
+								{% csrf_token %}
+								<div class="ProductCard-cartElement ProductCard-cartElement_amount">
+									<div class="Amount Amount_product">
+										<button class="Amount-remove" type="button">
+										</button>
+										<input type="hidden" name="user_id" value="{{ request.user.id }}">
+										<input type="hidden" name="good_id" value="{{ good.pk }}">
+										<input type="hidden" name="next" value="{{ request.path }}">
+										<input class="Amount-input form-input" name="amount" type="text" value="1"/>
+										<button class="Amount-add" type="button">
+										</button>
+									</div>
+								</div>
+								<div class="ProductCard-cartElement">
+									<button class="btn btn_primary" type="submit">
+										<img class="btn-icon" src="{% static 'assets/img/icons/card/cart_white.svg' %}"
+										     alt="cart_white.svg"/>
+										<span class="btn-content">
+											Add To Cart
+										</span>
+									</button>
+								</div>
+							</form>
+							<div class="ProductCard-footer">
+								{% if tag_list %}
+									<div class="ProductCard-tags">
+										<strong class="ProductCard-tagsTitle">
+											Tags:
+										</strong>
+										{% for item in tag_list %}
+											<a href="{% url 'tag_detail' item.tag.pk %}">{{ item.tag.title }}</a>
+										{% endfor %}
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					<div class="Tabs Tabs_default">
+						<div class="Tabs-links">
+							<a class="Tabs-link_ACTIVE Tabs-link" href="#description">
+								<span>Описание</span>
+							</a>
+							<a class="Tabs-link" href="#addit">
+								<span>AdditionaL Info</span>
+							</a>
+							<a class="Tabs-link" href="#reviews">
+								<span>Reviews ({{ review_list.count }})</span>
+							</a>
+						</div>
+						<div class="Tabs-wrap">
+							<div class="Tabs-block" id="description">
+								<h2>
+									Megano Store Hystory
+								</h2>
+								<p>
+									{{ object.description }}
+								</p>
+								<img class="pict pict_right" src="{{ object.main_photo.url }}"
+								     alt="{{ object.main_photo.name }}"/>
+								<ul>
+									{% for key_feature in key_feature_list %}
+										<ul>
+											<li>
+												<pre>{{ key_feature.description }}</pre>
+											</li>
+
+										</ul>
+									{% endfor %}
+								</ul>
+								<div class="clearfix">
+								</div>
+								<div class="table">
+									<table>
+										<tr>
+											<th>Характеристика
+											</th>
+											<th>Значение
+											</th>
+										</tr>
+										{% for item in specification_list %}
+											<tr>
+												<td>
+													{{ item.specification.title }}
+												</td>
+												<td>
+													{{ item.value }} {% if item.specification.unit %}(
+													{{ item.specification.unit }}){% endif %}
+												</td>
+											</tr>
+										{% endfor %}
+									</table>
+								</div>
+							</div>
+							<div class="Tabs-block" id="sellers">
+								<div class="Categories Categories_product">
+								</div>
+							</div>
+							<div class="Tabs-block" id="addit">
+								<div class="Product-props">
+									{% for item in add_info_list %}
+										<div class="Product-prop">
+											<strong>
+												{{ item.add_info.list_item }}
+											</strong>
+											<span>{{ item.value }}</span>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="Tabs-block" id="reviews">
+								<header class="Section-header">
+									<h3 class="Section-title">
+										{% if review_list %}
+											{{ review_list.count }} Reviews
+										{% else %}
+											No reviews
+										{% endif %}
+									</h3>
+								</header>
+								<div class="Comments">
+									{% if review_list %}
+										{% for review in review_list %}
+											<div class="Comment">
+											<div class="Comment-column Comment-column_pict">
+												{% if review.user_photo %}
+													<div class="Comment-avatar2"
+													     style="background-image: url('{{ review.user_photo }}'); background-size: contain">
+												{% else %}
+													<div class="Comment-avatar">
+												{% endif %}
+												</div>
+												</div>
+												<div class="Comment-column">
+													<header class="Comment-header">
+														<div>
+															<strong class="Comment-title">{{ review.full_name }}
+															</strong>
+															<span class="Comment-date">{{ review.creation_date|date:'M d / Y / H:m' }}</span>
+														</div>
+													</header>
+													<div class="Comment-content">
+														{{ review.text }}
+													</div>
+												</div>
+											</div>
+										{% endfor %}
+									{% else %}
+										<div class="Comment">
+											Пока никто не оставил отзыв
+										</div>
+									{% endif %}
+									</div>
+									<header class="Section-header Section-header_product">
+										<h3 class="Section-title">
+											Add Review
+										</h3>
+									</header>
+									<div class="Tabs-addComment">
+										{% if request.user.is_authenticated %}
+											<form class="form" action="{% url 'add_review' object.pk %}" method="post">
+												{% csrf_token %}
+												<div class="form-group">
+													{{ form.text }}
+												</div>
+												<div class="form-group">
+													<div class="row">
+														<div class="row-block">
+															{{ form.full_name }}
+														</div>
+														<div class="row-block">
+															{{ form.email }}
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<button class="btn btn_muted" type="submit">
+														Submit Review
+													</button>
+												</div>
+											</form>
+										{% else %}
+											<span>Чтобы оставить комментарий необходимо авторизоваться</span>
+											<button type="button"
+											        class="btn btn_success btn_muted Order-btnReg Order-next"
+											        onclick="window.location.href='{% url 'signup' %}'">
+												Авторизоваться
+											</button>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

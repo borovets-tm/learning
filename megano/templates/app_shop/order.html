@@ -1,0 +1,166 @@
+{% extends 'app_shop/basic_order.html' %}
+{% block steps %}
+	<form class="form" action="{% url 'order_confirm' %}" method="post">
+		{% csrf_token %}
+		{% if not request.user.is_authenticated %}
+			<form class="Order-block Order-block_OPEN" id="step1" method="post"
+			      action="{% url 'signup' %}">
+				{% csrf_token %}
+				<header class="Section-header Section-header_sm">
+					<h2 class="Section-title">
+						Шаг 1. Параметры пользователя
+					</h2>
+				</header>
+				<div class="row">
+					<div class="row-block">
+						<div class="form-group">
+							<label class="form-label" for="name">
+								ФИО
+							</label>
+							{{ form_signup.full_name }}
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="phone">
+								Телефон
+							</label>
+							{{ form_signup.phone }}
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="mail">
+								E-mail
+							</label>
+							{{ form_signup.email }}
+						</div>
+					</div>
+					<div class="row-block">
+						<div class="form-group">
+							<label class="form-label" for="password">
+								Пароль
+							</label>
+							{{ form_signup.password1 }}
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="passwordReply">
+								Подтверждение пароля
+							</label>
+							{{ form_signup.password2 }}
+						</div>
+						<div class="form-group">
+							<a class="btn btn_muted Order-btnReg" href="{% url 'login' %}">
+								Я уже зарегистрирован
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="Order-footer">
+					<button class="btn btn_success Order-btnReg" type="submit">
+						Регистрация
+					</button>
+				</div>
+			</form>
+		{% else %}
+			<div class="Order-block Order-block_OPEN" id="step1">
+				<header class="Section-header Section-header_sm">
+					<h2 class="Section-title">
+						Шаг 1. Параметры пользователя
+					</h2>
+				</header>
+				<div style="color: #df3349">
+					{{ attach_message }}
+				</div>
+				<div class="row">
+					<div class="row-block">
+						<div class="form-group">
+							<label class="form-label" for="name">
+								ФИО
+							</label>
+							<input class="form-input" id="name" name="full_name" type="text"
+							       value="{{ user_profile.full_name }}"/>
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="phone">
+								Телефон
+							</label>
+							<input class="form-input" id="phone" name="phone" type="text"
+							       value="{{ user_profile.phone }}"/>
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="mail">
+								E-mail
+							</label>
+							<input class="form-input" id="mail" name="email" type="text"
+							       value="{{ request.user.email }}"
+							       data-validate="require"/>
+						</div>
+					</div>
+				</div>
+				<div class="Order-footer">
+					<a class="btn btn_success Order-next" href="#step2">
+						Дальше
+					</a>
+				</div>
+			</div>
+		{% endif %}
+		<div class="Order-block" id="step2">
+			<header class="Section-header Section-header_sm">
+				<h2 class="Section-title">
+					Шаг 2. Способ доставки
+				</h2>
+			</header>
+			<div class="form-group">
+				{% for item in delivery_type %}
+					<div>
+						<label class="toggle" for="delivery_type">
+							<input type="radio" name="delivery_type" value="{{ item.pk }}"
+							       {% if item.pk == 1 %}checked="checked"{% endif %}/>
+							<span class="toggle-box"></span>
+							<span class="toggle-text">{{ item.title }}</span>
+						</label>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="city">
+					Город
+				</label>
+				<input class="form-input" id="city" name="city" type="text" data-validate="require"/>
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="address">
+					Адрес
+				</label>
+				<textarea class="form-textarea" name="address" id="address" data-validate="require">
+								</textarea>
+			</div>
+			<div class="Order-footer">
+				<a class="btn btn_success Order-next" href="#step3">
+					Дальше
+				</a>
+			</div>
+		</div>
+		<div class="Order-block" id="step3">
+			<header class="Section-header Section-header_sm">
+				<h2 class="Section-title">
+					Шаг 3. Способ оплаты
+				</h2>
+			</header>
+			<div class="form-group">
+				{% for item in payment_method %}
+					<div>
+						<label class="toggle" for="payment_method">
+							<input type="radio" name="payment_method" value="{{ item.pk }}"
+							       {% if item.pk == 1 %}checked="checked"{% endif %}/>
+							<span class="toggle-box"></span>
+							<span class="toggle-text">{{ item.title }}</span>
+						</label>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="Order-footer">
+				<button class="btn btn_success" type="submit">
+					Дальше
+				</button>
+			</div>
+		</div>
+	</form>
+{% endblock %}

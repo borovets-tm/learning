@@ -1,0 +1,38 @@
+{% load static %}
+<div class="Card-hover">
+	<script>
+        function addCart(id) {
+            let good = document.getElementById(id);
+            const form = good.querySelector('#confirmation');
+            const popup = good.querySelector('.popup_add');
+            form.classList.add('open');
+            popup.classList.add('popup_add_open');
+        }
+	</script>
+	<button class="Card-btn" onclick="addCart({{ good.pk }})">
+		<img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
+	</button>
+	<div id="{{ good.pk }}">
+		<div class="popup_add">
+			<div class="popup_add__container">
+				<div class="popup_add__wrapper">
+					<div id="confirmation">
+						<form method="post" action="{% url 'add_cart' %}">
+							{% csrf_token %}
+							<input type="hidden" name="amount" value="1"/>
+							<input type="hidden" name="user_id" value="{{ request.user.id }}">
+							<input type="hidden" name="good_id" value="{{ good.pk }}">
+							{{ good.title }} успешно добавлен в корзину!<br>
+							<button class="btn btn-success" type="submit" name="next" value="{{ request.path }}">
+								Продолжить покупки
+							</button>
+							<button class="btn btn-success" type="submit" name="next" value="/cart/">
+								Перейти в корзину
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

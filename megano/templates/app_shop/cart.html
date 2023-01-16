@@ -1,0 +1,115 @@
+{% extends 'app_shop/basic.html' %}
+{% load static %}
+{% block page_content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">
+						Корзина
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href="{% url 'index' %}">
+								home
+							</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>
+								Корзина
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section">
+			<div class="wrap">
+				{% load static %}
+				<form class="form Cart" action="{% url 'change_quantity' %}" method="post">
+					{% csrf_token %}
+					{% if good_list %}
+						{% for good in good_list %}
+							<div class="Cart-product">
+								<div class="Cart-block Cart-block_row">
+									<div class="Cart-block Cart-block_pict">
+										<a class="Cart-pict" href="{% url 'product' good.good.pk %}">
+											<img class="Cart-img" src="{{ good.good.main_photo.url }}"
+											     alt="{{ good.good.main_photo.name }}"/>
+										</a>
+									</div>
+									<div class="Cart-block Cart-block_info">
+										<a class="Cart-title" href="{% url 'product' good.good.pk %}">
+											{{ good.good.title }}
+										</a>
+										<div class="Cart-desc">
+											<!-- добавляем описание длиной до 100 символов -->
+											{{ good.good.description|slice:":100" }}
+										</div>
+									</div>
+									<div class="Cart-block Cart-block_price">
+										<div class="Cart-price">
+											{{ good.good.price }}$
+										</div>
+									</div>
+								</div>
+								<div class="Cart-block Cart-block_row">
+									<div class="Cart-block Cart-block_seller">
+										<!-- - var options = setOptions(items, ['value', 'selected', 'disabled']);-->
+									</div>
+									<div class="Cart-block Cart-block_amount">
+										<div class="Cart-amount">
+											<div class="Amount">
+												<button class="Amount-remove" type="button"
+												        onclick="window.location.href='{% url 'reduce_quantity' good.pk cart.pk %}'">
+												</button>
+												<input type="hidden" name="cart" value="{{ cart.pk }}"/>
+												<input type="hidden" name="good" value="{{ good.pk }}"/>
+												<input class="Amount-input form-input" name="amount" type="text"
+												       value="{{ good.quantity }}"/>
+												<button class="Amount-add" type="button"
+												        onclick="window.location.href='{% url 'increase_quantity' good.pk cart.pk %}'">
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="Cart-block Cart-block_delete">
+										<a class="Cart-delete" href="{% url 'remove_from_cart' good.pk cart.pk %}">
+											<img src="{% static 'assets/img/icons/card/delete.svg' %}"
+											     alt="delete.svg"/>
+										</a>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						<div class="Cart-total">
+							<div class="Cart-block Cart-block_total">
+								<strong class="Cart-title">
+									Итого:
+								</strong>
+								<span class="Cart-price">
+								{{ cart.amount }}$
+							</span>
+							</div>
+							<div class="Cart-block">
+								<a class="btn btn_success btn_lg" href="{% url 'order' %}">
+									Оформить заказ
+								</a>
+							</div>
+						</div>
+					{% else %}
+						<div class="Cart-product">
+							<div class="Cart-block Cart-block_row">
+								<div class="Cart-block Cart-block_info">
+									<a class="Cart-title" href="{% url 'catalog' %}">
+										Корзина пуста. Продолжить покупки...
+									</a>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

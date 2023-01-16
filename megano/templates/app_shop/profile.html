@@ -1,0 +1,144 @@
+{% extends 'app_shop/basic.html' %}
+{% load static %}
+{% block page_content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">
+						Профиль
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href="{% url 'index' %}">
+								home
+							</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+						<span>
+							Профиль
+						</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section Section_column Section_columnLeft">
+			<div class="wrap">
+				<div class="Section-column">
+					<div class="Section-columnSection">
+						<header class="Section-header">
+							<strong class="Section-title">
+								Навигация
+							</strong>
+						</header>
+						<div class="Section-columnContent">
+							<div class="NavigateProfile">
+								<ul class="menu menu_vt">
+									<li class="menu-item">
+										<a class="menu-link" href="{% url 'account' %}">
+											Личный кабинет
+										</a>
+									</li>
+									<li class="menu-item_ACTIVE menu-item">
+										<a class="menu-link" href="{% url 'profile' %}">
+											Профиль
+										</a>
+									</li>
+									<li class="menu-item">
+										<a class="menu-link" href="{% url 'history_order' %}">
+											История заказов
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="Section-content">
+					<div class="Profile">
+						<form class="form Profile-form" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="row">
+								<div class="row-block">
+									<div class="form-group">
+										{% if user_profile.user_photo %}
+											<label class="form-label" for="avatar">
+												Аватар
+											</label>
+											<div class="Profile-avatar">
+												<div class="Profile-img">
+													<img src="{{ user_profile.user_photo.url }}"
+													     alt="{{ user_profile.user_photo.name }}"/>
+												</div>
+												<label class="Profile-fileLabel" for="avatar">
+													Выберите аватар
+												</label>
+												{{ form_edit_profile.user_photo }}
+											</div>
+											</div>
+										{% else %}
+											<label class="form-label" for="avatar">
+												Аватар
+											</label>
+											<div class="Profile-avatar Profile-avatar_noimg">
+												<div class="Profile-img">
+													<img src="{% static 'assets/img/#.png' %}" alt="#.png"/>
+												</div>
+												<label class="Profile-fileLabel" for="avatar">
+													Выберите аватар
+												</label>
+												{{ form_edit_profile.user_photo }}
+											</div>
+											</div>
+										{% endif %}
+								<div class="form-group">
+									<label class="form-label" for="name">
+										ФИО
+									</label>
+									{{ form_edit_profile.full_name }}
+								</div>
+							</div>
+							<div class="row-block">
+								<div class="form-group">
+									<label class="form-label" for="phone">
+										Телефон
+									</label>
+									{{ form_edit_profile.phone }}
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="mail">
+										E-mail
+									</label>
+									{{ form_edit_user.email }}
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="password">
+										Пароль
+									</label>
+									{{ form_change_pass.new_password1 }}
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="passwordReply">
+										Подтверждение пароля
+									</label>
+									{{ form_change_pass.new_password2 }}
+								</div>
+								<div class="form-group">
+									<div class="Profile-btn">
+										<button class="btn btn_success" type="submit">
+											Сохранить
+										</button>
+										<div class="Profile-success">
+											{{ ok_messages }}
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

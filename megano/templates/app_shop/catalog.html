@@ -1,0 +1,214 @@
+{% extends 'app_shop/basic.html' %}
+{% load static %}
+{% block page_content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">
+						Catalog Megano
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href="{% url 'index' %}">home</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>
+								Catalog
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section Section_column Section_columnLeft">
+			<div class="wrap">
+				<div class="Section-column">
+					<div class="Section-columnSection">
+						<header class="Section-header">
+							<strong class="Section-title">
+								Filter
+							</strong>
+						</header>
+						<div class="Section-columnContent">
+							<form class="form" method="get">
+								<div class="form-group">
+									<div class="range Section-columnRange">
+										<input class="range-line" id="price" name="price" type="text" data-type="double"
+										       data-min="{{ min_price_in_catalog }}"
+										       data-max="{{ max_price_in_catalog }}" data-from="{{ min_price }}"
+										       data-to="{{ max_price }}"/>
+										<div class="range-price">
+											Price:&#32;
+											<div class="rangePrice">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<input class="form-input form-input_full" id="title" name="title" type="text"
+									       placeholder="Название"/>
+								</div>
+								<div class="form-group">
+									<!-- - var options = setOptions(items, ['value', 'selected', 'disabled']);-->
+								</div>
+								<div class="form-group">
+									<label class="toggle">
+										<input name="is_availability" type="checkbox"/>
+										<span class="toggle-box">
+										</span>
+										<span class="toggle-text">
+											Только товары в наличии
+										</span>
+									</label>
+								</div>
+								<div class="form-group">
+									<label class="toggle">
+										<input name="is_free_delivery" type="checkbox"/>
+										<span class="toggle-box">
+										</span>
+										<span class="toggle-text">
+											С бесплатной доставкой
+										</span>
+									</label>
+								</div>
+								<div class="form-group">
+									<div class="buttons">
+										<button class="btn btn_square btn_dark btn_narrow" name="button" value="filter"
+										        type="submit">
+											Filter
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="Section-columnSection">
+						<header class="Section-header">
+							<strong class="Section-title">
+								Popular tags
+							</strong>
+						</header>
+						<div class="Section-columnContent">
+							<div class="buttons">
+								{% for tag in popular_tags_list %}
+									<a class="btn btn_default btn_sm" href="{% url 'tag_detail' tag.pk %}">
+										{{ tag.title }}
+									</a>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="Section-content">
+					<div class="Sort">
+						<div class="Sort-title">
+							Сортировать по:
+						</div>
+						<form class="Sort-variants" method="get">
+							<input type="hidden" name="active_filter" value="{{ active_filter }}">
+							<input type="hidden" name="number_of_clicks_popular" value="{{ number_of_clicks_popular }}">
+							<input type="hidden" name="number_of_clicks_price" value="{{ number_of_clicks_price }}">
+							<input type="hidden" name="number_of_clicks_review" value="{{ number_of_clicks_review }}">
+							<input type="hidden" name="number_of_clicks_novelty" value="{{ number_of_clicks_novelty }}">
+							<button class="Sort-sortBy
+
+									{% if button == 'popularity' %}{% if number_of_clicks_popular|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
+							        name="button" value="popularity" type="submit"
+							        style="background: none; color: inherit; border: none;">
+								Популярности
+							</button>
+							<button class="Sort-sortBy
+
+									{% if button == 'price' %}{% if number_of_clicks_price|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
+							        name="button" value="price" type="submit"
+							        style="background: none; color: inherit; border: none;">
+								Цене
+							</button>
+							<button class="Sort-sortBy
+
+									{% if button == 'review' %}{% if number_of_clicks_review|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
+							        name="button" value="review" type="submit"
+							        style="background: none; color: inherit; border: none;">
+								Отзывам
+							</button>
+							<button class="Sort-sortBy
+
+									{% if button == 'novelty' %}{% if number_of_clicks_novelty|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
+							        name="button" value="novelty" type="submit"
+							        style="background: none; color: inherit; border: none;">
+								Новизне
+							</button>
+						</form>
+					</div>
+					<div class="Cards">
+						{% if page_obj %}
+							{% for good in page_obj %}
+								<div class="Card">
+									<a class="Card-picture" href="{% url 'product' good.pk %}">
+										<img src="{{ good.main_photo.url }}" alt="{{ good.main_photo.name }}"/>
+									</a>
+									<div class="Card-content">
+										<strong class="Card-title">
+											<a href="{% url 'product' good.pk %}">
+												{{ good.title }}
+											</a>
+										</strong>
+										<div class="Card-description">
+											<div class="Card-cost">
+										<span class="Card-price">
+											${{ good.price }}
+										</span>
+											</div>
+											<div class="Card-category">
+												{{ good.category.category.title }}/{{ good.category.title }}
+											</div>
+											{% include 'app_shop/card_hover_include.html' %}
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						{% else %}
+							<strong class="Card-title">
+								<a href="{% url 'index' %}">
+									Ничего не найдено. Перейти на главную...
+								</a>
+							</strong>
+						{% endif %}
+					</div>
+					<div class="Pagination">
+						<form class="Pagination-ins" method="get">
+							<input type="hidden" name="active_filter" value="{{ active_filter }}">
+							{% if page_obj.has_previous %}
+								<button class="Pagination-element Pagination-element_prev"
+								        name="page" value="{{ page_obj.previous_page_number }}" style="border: none">
+									<img src="{% static 'assets/img/icons/prevPagination.svg' %}"
+									     alt="prevPagination.svg"/>
+								</button>
+							{% endif %}
+							{% for num in page_obj.paginator %}
+								{% if num.number == page_obj.number %}
+									<button class="Pagination-element Pagination-element_current" href="#"
+									        style="border: none">
+										<span class="Pagination-text">{{ num.number }}</span>
+									</button>
+								{% else %}
+									<button class="Pagination-element" name="page" value="{{ num.number }}"
+									        style="border: none"><span
+											class="Pagination-text">{{ num.number }}</span></button>
+								{% endif %}
+							{% endfor %}
+							{% if page_obj.has_next %}
+								<button class="Pagination-element Pagination-element_prev"
+								        name="page" value="{{ page_obj.next_page_number }}" style="border: none">
+									<img src="{% static 'assets/img/icons/nextPagination.svg' %}"
+									     alt="nextPagination.svg"/>
+								</button>
+							{% endif %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

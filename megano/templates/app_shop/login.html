@@ -1,0 +1,37 @@
+{% extends 'app_shop/basic_auth.html' %}
+{% block form %}
+	<form class="form" method="post">
+		{% csrf_token %}
+		<input name="next_url" type="hidden" value="{{ next_url }}">
+		<div class="Order-block Order-block_OPEN" id="login">
+			<header class="Section-header Section-header_sm">
+				<h2 class="Section-title">
+					Войти
+				</h2>
+			</header>
+			<div style="color: #df3349">
+				{{ form_login.non_field_errors }}
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="username">
+					E-mail
+				</label>
+				{{ form_login.username }}
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="password">
+					Пароль
+				</label>
+				{{ form_login.password }}
+			</div>
+			<div class="Order-footer">
+				<button class="btn btn_success Order-btnReg" type="submit">
+					Войти
+				</button>
+				<a class="btn btn_success btn_muted Order-btnReg" href="{% url 'restore_password' %}">
+					Восстановить пароль
+				</a>
+			</div>
+		</div>
+	</form>
+{% endblock %}
