@@ -1,0 +1,2659 @@
+[
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 1,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 1,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 1,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 1,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 2,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 2,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 2,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 2,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 3,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 3,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 3,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 3,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 4,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 4,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 4,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 4,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 5,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 5,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 5,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 5,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 6,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 6,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 6,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 6,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add дополнительная информация",
+      "content_type": 7,
+      "codename": "add_addinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change дополнительная информация",
+      "content_type": 7,
+      "codename": "change_addinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete дополнительная информация",
+      "content_type": 7,
+      "codename": "delete_addinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view дополнительная информация",
+      "content_type": 7,
+      "codename": "view_addinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add корзина",
+      "content_type": 8,
+      "codename": "add_cart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change корзина",
+      "content_type": 8,
+      "codename": "change_cart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete корзина",
+      "content_type": 8,
+      "codename": "delete_cart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view корзина",
+      "content_type": 8,
+      "codename": "view_cart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add категория",
+      "content_type": 9,
+      "codename": "add_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change категория",
+      "content_type": 9,
+      "codename": "change_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete категория",
+      "content_type": 9,
+      "codename": "delete_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view категория",
+      "content_type": 9,
+      "codename": "view_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add тип доставки",
+      "content_type": 10,
+      "codename": "add_deliverytype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change тип доставки",
+      "content_type": 10,
+      "codename": "change_deliverytype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete тип доставки",
+      "content_type": 10,
+      "codename": "delete_deliverytype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view тип доставки",
+      "content_type": 10,
+      "codename": "view_deliverytype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add товар",
+      "content_type": 11,
+      "codename": "add_good"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change товар",
+      "content_type": 11,
+      "codename": "change_good"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete товар",
+      "content_type": 11,
+      "codename": "delete_good"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view товар",
+      "content_type": 11,
+      "codename": "view_good"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add ключевая особенность",
+      "content_type": 12,
+      "codename": "add_keyfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change ключевая особенность",
+      "content_type": 12,
+      "codename": "change_keyfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete ключевая особенность",
+      "content_type": 12,
+      "codename": "delete_keyfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view ключевая особенность",
+      "content_type": 12,
+      "codename": "view_keyfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add статус заказа",
+      "content_type": 13,
+      "codename": "add_orderstatus"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change статус заказа",
+      "content_type": 13,
+      "codename": "change_orderstatus"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete статус заказа",
+      "content_type": 13,
+      "codename": "delete_orderstatus"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view статус заказа",
+      "content_type": 13,
+      "codename": "view_orderstatus"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add способ оплаты",
+      "content_type": 14,
+      "codename": "add_paymentmethod"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change способ оплаты",
+      "content_type": 14,
+      "codename": "change_paymentmethod"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete способ оплаты",
+      "content_type": 14,
+      "codename": "delete_paymentmethod"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view способ оплаты",
+      "content_type": 14,
+      "codename": "view_paymentmethod"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add акция",
+      "content_type": 15,
+      "codename": "add_promotion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change акция",
+      "content_type": 15,
+      "codename": "change_promotion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete акция",
+      "content_type": 15,
+      "codename": "delete_promotion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view акция",
+      "content_type": 15,
+      "codename": "view_promotion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+      "name": "Can add характеристика",
+      "content_type": 16,
+      "codename": "add_specification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+      "name": "Can change характеристика",
+      "content_type": 16,
+      "codename": "change_specification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+      "name": "Can delete характеристика",
+      "content_type": 16,
+      "codename": "delete_specification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+      "name": "Can view характеристика",
+      "content_type": 16,
+      "codename": "view_specification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+      "name": "Can add тег",
+      "content_type": 17,
+      "codename": "add_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+      "name": "Can change тег",
+      "content_type": 17,
+      "codename": "change_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+      "name": "Can delete тег",
+      "content_type": 17,
+      "codename": "delete_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+      "name": "Can view тег",
+      "content_type": 17,
+      "codename": "view_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+      "name": "Can add подкатегория",
+      "content_type": 18,
+      "codename": "add_subcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+      "name": "Can change подкатегория",
+      "content_type": 18,
+      "codename": "change_subcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+      "name": "Can delete подкатегория",
+      "content_type": 18,
+      "codename": "delete_subcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+      "name": "Can view подкатегория",
+      "content_type": 18,
+      "codename": "view_subcategory"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+      "name": "Can add review",
+      "content_type": 19,
+      "codename": "add_review"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+      "name": "Can change review",
+      "content_type": 19,
+      "codename": "change_review"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+      "name": "Can delete review",
+      "content_type": 19,
+      "codename": "delete_review"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+      "name": "Can view review",
+      "content_type": 19,
+      "codename": "view_review"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+      "name": "Can add профиль пользователя",
+      "content_type": 20,
+      "codename": "add_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+      "name": "Can change профиль пользователя",
+      "content_type": 20,
+      "codename": "change_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+      "name": "Can delete профиль пользователя",
+      "content_type": 20,
+      "codename": "delete_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+      "name": "Can view профиль пользователя",
+      "content_type": 20,
+      "codename": "view_profile"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+      "name": "Can add заказ",
+      "content_type": 21,
+      "codename": "add_order"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+      "name": "Can change заказ",
+      "content_type": 21,
+      "codename": "change_order"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+      "name": "Can delete заказ",
+      "content_type": 21,
+      "codename": "delete_order"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+      "name": "Can view заказ",
+      "content_type": 21,
+      "codename": "view_order"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+      "name": "Can add ключевая особенность товара",
+      "content_type": 22,
+      "codename": "add_keygoodfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+      "name": "Can change ключевая особенность товара",
+      "content_type": 22,
+      "codename": "change_keygoodfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+      "name": "Can delete ключевая особенность товара",
+      "content_type": 22,
+      "codename": "delete_keygoodfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+      "name": "Can view ключевая особенность товара",
+      "content_type": 22,
+      "codename": "view_keygoodfeature"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+      "name": "Can add тег товара",
+      "content_type": 23,
+      "codename": "add_goodtag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+      "name": "Can change тег товара",
+      "content_type": 23,
+      "codename": "change_goodtag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+      "name": "Can delete тег товара",
+      "content_type": 23,
+      "codename": "delete_goodtag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+      "name": "Can view тег товара",
+      "content_type": 23,
+      "codename": "view_goodtag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+      "name": "Can add характеристика товара",
+      "content_type": 24,
+      "codename": "add_goodspecification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+      "name": "Can change характеристика товара",
+      "content_type": 24,
+      "codename": "change_goodspecification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+      "name": "Can delete характеристика товара",
+      "content_type": 24,
+      "codename": "delete_goodspecification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+      "name": "Can view характеристика товара",
+      "content_type": 24,
+      "codename": "view_goodspecification"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 97,
+    "fields": {
+      "name": "Can add товар в заказе",
+      "content_type": 25,
+      "codename": "add_goodinorder"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 98,
+    "fields": {
+      "name": "Can change товар в заказе",
+      "content_type": 25,
+      "codename": "change_goodinorder"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 99,
+    "fields": {
+      "name": "Can delete товар в заказе",
+      "content_type": 25,
+      "codename": "delete_goodinorder"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 100,
+    "fields": {
+      "name": "Can view товар в заказе",
+      "content_type": 25,
+      "codename": "view_goodinorder"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 101,
+    "fields": {
+      "name": "Can add товар в корзине",
+      "content_type": 26,
+      "codename": "add_goodincart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 102,
+    "fields": {
+      "name": "Can change товар в корзине",
+      "content_type": 26,
+      "codename": "change_goodincart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 103,
+    "fields": {
+      "name": "Can delete товар в корзине",
+      "content_type": 26,
+      "codename": "delete_goodincart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 104,
+    "fields": {
+      "name": "Can view товар в корзине",
+      "content_type": 26,
+      "codename": "view_goodincart"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 105,
+    "fields": {
+      "name": "Can add фотография товара",
+      "content_type": 27,
+      "codename": "add_addgoodphoto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 106,
+    "fields": {
+      "name": "Can change фотография товара",
+      "content_type": 27,
+      "codename": "change_addgoodphoto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 107,
+    "fields": {
+      "name": "Can delete фотография товара",
+      "content_type": 27,
+      "codename": "delete_addgoodphoto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 108,
+    "fields": {
+      "name": "Can view фотография товара",
+      "content_type": 27,
+      "codename": "view_addgoodphoto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 109,
+    "fields": {
+      "name": "Can add дополнительная информация о товаре",
+      "content_type": 28,
+      "codename": "add_addgoodinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 110,
+    "fields": {
+      "name": "Can change дополнительная информация о товаре",
+      "content_type": 28,
+      "codename": "change_addgoodinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 111,
+    "fields": {
+      "name": "Can delete дополнительная информация о товаре",
+      "content_type": 28,
+      "codename": "delete_addgoodinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 112,
+    "fields": {
+      "name": "Can view дополнительная информация о товаре",
+      "content_type": 28,
+      "codename": "view_addgoodinfo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 113,
+    "fields": {
+      "name": "Can add settings",
+      "content_type": 29,
+      "codename": "add_settings"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 114,
+    "fields": {
+      "name": "Can change settings",
+      "content_type": 29,
+      "codename": "change_settings"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 115,
+    "fields": {
+      "name": "Can delete settings",
+      "content_type": 29,
+      "codename": "delete_settings"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 116,
+    "fields": {
+      "name": "Can view settings",
+      "content_type": 29,
+      "codename": "view_settings"
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Администратор",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "Покупатель",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$PREnEoRHBmupvE3feAk51A$0JaClFldfFEAxNAQGMWVKyeCt6EPIZgO88GoVeuMBsI=",
+      "last_login": "2023-01-17T13:32:37.949Z",
+      "is_superuser": false,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "test@test.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-05T13:48:26Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$7IAUh1JmLMUcK1oDikTHO2$CLx5m/hKSMC6hVbWWuT4vnWlE0ieF/Y5/Q3DWXOUgpM=",
+      "last_login": "2023-01-05T13:55:20Z",
+      "is_superuser": false,
+      "username": "bayer",
+      "first_name": "",
+      "last_name": "",
+      "email": "bayer@test.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-01-05T13:55:19Z",
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app_shop.settings",
+    "pk": 1,
+    "fields": {
+      "title": "Megano",
+      "SERVER_EMAIL": "t.m.borovets@lenta.ru",
+      "EMAIL_USE_TLS": true,
+      "EMAIL_HOST": "smtp.rambler.ru",
+      "EMAIL_PORT": 587,
+      "EMAIL_HOST_USER": "t.m.borovets@lenta.ru",
+      "EMAIL_HOST_PASSWORD": "Cstore1040",
+      "CURRENT_SITE_CURRENCY": "P",
+      "ALLOWED_HOSTS": "0.0.0.0"
+    }
+  },
+  {
+    "model": "app_shop.profile",
+    "pk": 1,
+    "fields": {
+      "user": 4,
+      "phone": "9803469061",
+      "full_name": "Боровец Тимофей Михайлович",
+      "user_photo": "profile/id1.jpg"
+    }
+  },
+  {
+    "model": "app_shop.profile",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "phone": "9001234567",
+      "full_name": "Администратор",
+      "user_photo": ""
+    }
+  },
+  {
+    "model": "app_shop.category",
+    "pk": 1,
+    "fields": {
+      "title": "Смартфоны",
+      "image": "categories/smartphone.png"
+    }
+  },
+  {
+    "model": "app_shop.category",
+    "pk": 2,
+    "fields": {
+      "title": "Смарт-часы и фитнес-браслеты",
+      "image": "categories/smartwatch.png"
+    }
+  },
+  {
+    "model": "app_shop.category",
+    "pk": 3,
+    "fields": {
+      "title": "Ноутбуки, планшеты, компьютеры",
+      "image": "categories/notebook.png"
+    }
+  },
+  {
+    "model": "app_shop.category",
+    "pk": 4,
+    "fields": {
+      "title": "Наушники, колонки, аудио",
+      "image": "categories/audio.png"
+    }
+  },
+  {
+    "model": "app_shop.category",
+    "pk": 5,
+    "fields": {
+      "title": "Гейминг",
+      "image": "categories/game.png"
+    }
+  },
+  {
+    "model": "app_shop.category",
+    "pk": 6,
+    "fields": {
+      "title": "Телевизоры",
+      "image": "categories/tv.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "title": "Телефоны",
+      "image": "categories/smartphone_elV8tlh.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "title": "Смартфоны",
+      "image": "categories/smartphone_h3wOqpj.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 3,
+    "fields": {
+      "category": 2,
+      "title": "Смарт-часы",
+      "image": "categories/smartwatch_8SKOtef.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 4,
+    "fields": {
+      "category": 2,
+      "title": "Детские смарт-часы",
+      "image": "categories/smartwatch_EygFCuj.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 5,
+    "fields": {
+      "category": 2,
+      "title": "Фитнес-браслеты",
+      "image": "categories/smartwatch_0YSShwR.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 6,
+    "fields": {
+      "category": 3,
+      "title": "Ноутбуки",
+      "image": "categories/notebook_ylYMirZ.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 7,
+    "fields": {
+      "category": 3,
+      "title": "Компьютеры и моноблоки",
+      "image": "categories/notebook_zNMSJk2.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 8,
+    "fields": {
+      "category": 3,
+      "title": "Периферийные устройства",
+      "image": "categories/notebook_Bf7gXti.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 9,
+    "fields": {
+      "category": 3,
+      "title": "Аксессуары для ПК",
+      "image": "categories/accessories_K4JZeVc.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 10,
+    "fields": {
+      "category": 3,
+      "title": "Планшеты",
+      "image": "categories/notebook_WtBkTGj.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 11,
+    "fields": {
+      "category": 4,
+      "title": "Портативные колонки",
+      "image": "categories/audio_7MJgRPt.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 12,
+    "fields": {
+      "category": 4,
+      "title": "Накладные и полноразмерные наушники",
+      "image": "categories/audio_CFvXxgS.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 13,
+    "fields": {
+      "category": 4,
+      "title": "Акустические системы",
+      "image": "categories/audio_d1zMTsd.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 14,
+    "fields": {
+      "category": 4,
+      "title": "Вставные наушники и вкладыши",
+      "image": "categories/audio_rXzKNxr.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 15,
+    "fields": {
+      "category": 4,
+      "title": "Аудиосистемы",
+      "image": "categories/audio_H8uVpu9.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 16,
+    "fields": {
+      "category": 1,
+      "title": "Аксессуары для смартфонов",
+      "image": "categories/accessories.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 17,
+    "fields": {
+      "category": 1,
+      "title": "Аксессуары для телефонов",
+      "image": "categories/accessories_ZtceWL9.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 18,
+    "fields": {
+      "category": 2,
+      "title": "Аксессуары для смарт-часов",
+      "image": "categories/accessories_OyRxxSi.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 19,
+    "fields": {
+      "category": 5,
+      "title": "PC гейминг",
+      "image": "categories/game_n4Jtgyo.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 20,
+    "fields": {
+      "category": 5,
+      "title": "Консольный гейминг",
+      "image": "categories/game_oS7UaqH.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 21,
+    "fields": {
+      "category": 5,
+      "title": "Игровые аксессуары",
+      "image": "categories/accessories_ja9Uzze.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 22,
+    "fields": {
+      "category": 5,
+      "title": "Софт, подписки, игры",
+      "image": "categories/game_RbqScMR.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 23,
+    "fields": {
+      "category": 6,
+      "title": "Телевизоры",
+      "image": "categories/tv_a92tGyq.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 24,
+    "fields": {
+      "category": 6,
+      "title": "Медиаплееры",
+      "image": "categories/tv_7xBETVv.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 25,
+    "fields": {
+      "category": 6,
+      "title": "Проекторы",
+      "image": "categories/tv_KYWveg1.png"
+    }
+  },
+  {
+    "model": "app_shop.subcategory",
+    "pk": 26,
+    "fields": {
+      "category": 6,
+      "title": "Аксессуары для ТВ",
+      "image": "categories/accessories_mFs3GXk.png"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 1,
+    "fields": {
+      "title": "Не оплачен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 2,
+    "fields": {
+      "title": "Оплачен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 3,
+    "fields": {
+      "title": "В обработке"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 4,
+    "fields": {
+      "title": "Согласован"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 5,
+    "fields": {
+      "title": "Собран"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 6,
+    "fields": {
+      "title": "Отправлен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 7,
+    "fields": {
+      "title": "В пути"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 8,
+    "fields": {
+      "title": "Доставлен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 9,
+    "fields": {
+      "title": "Вручен покупателю"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 10,
+    "fields": {
+      "title": "Отменен"
+    }
+  },
+  {
+    "model": "app_shop.deliverytype",
+    "pk": 1,
+    "fields": {
+      "title": "Обычная доставка",
+      "free_delivery": true,
+      "purchase_amount_for_free_delivery": 2000,
+      "delivery_cost": 200
+    }
+  },
+  {
+    "model": "app_shop.deliverytype",
+    "pk": 2,
+    "fields": {
+      "title": "Экспресс доставка",
+      "free_delivery": false,
+      "purchase_amount_for_free_delivery": null,
+      "delivery_cost": 500
+    }
+  },
+  {
+    "model": "app_shop.paymentmethod",
+    "pk": 1,
+    "fields": {
+      "title": "Онлайн картой"
+    }
+  },
+  {
+    "model": "app_shop.paymentmethod",
+    "pk": 2,
+    "fields": {
+      "title": "Онлайн со случайного чужого счета"
+    }
+  },
+  {
+    "model": "app_shop.promotion",
+    "pk": 1,
+    "fields": {
+      "title": "Первая распродажа",
+      "description": "Первая акция в интернет магазине Megano",
+      "is_active": true,
+      "discount_size": 10.0,
+      "promo_start_date": "2023-01-16",
+      "promo_end_date": "2023-01-31"
+    }
+  },
+  {
+    "model": "app_shop.promotion",
+    "pk": 2,
+    "fields": {
+      "title": "Последний товар",
+      "description": "Скидка на последний товар в ИМ",
+      "is_active": true,
+      "discount_size": 6.0,
+      "promo_start_date": "2023-01-16",
+      "promo_end_date": "2023-01-22"
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 1,
+    "fields": {
+      "title": "Диапазоны GSM",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 2,
+    "fields": {
+      "title": "Диапазоны UMTS",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 3,
+    "fields": {
+      "title": "Диапазоны LTE",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 4,
+    "fields": {
+      "title": "Интернет",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 5,
+    "fields": {
+      "title": "Кол-во ядер процессора",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 6,
+    "fields": {
+      "title": "Материал часов",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 7,
+    "fields": {
+      "title": "Класс водонепроницаемости",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 8,
+    "fields": {
+      "title": "Диагональ дисплея",
+      "unit": "дюйм"
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 9,
+    "fields": {
+      "title": "Процессор",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 10,
+    "fields": {
+      "title": "Частота",
+      "unit": "МГц"
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 11,
+    "fields": {
+      "title": "Оперативная память",
+      "unit": "Мб"
+    }
+  },
+  {
+    "model": "app_shop.specification",
+    "pk": 12,
+    "fields": {
+      "title": "Разрешение дисплея",
+      "unit": null
+    }
+  },
+  {
+    "model": "app_shop.tag",
+    "pk": 1,
+    "fields": {
+      "title": "Sony",
+      "number_of_requests": 11
+    }
+  },
+  {
+    "model": "app_shop.addinfo",
+    "pk": 1,
+    "fields": {
+      "list_item": "Производитель"
+    }
+  },
+  {
+    "model": "app_shop.addinfo",
+    "pk": 2,
+    "fields": {
+      "list_item": "Срок гарантии"
+    }
+  },
+  {
+    "model": "app_shop.addinfo",
+    "pk": 3,
+    "fields": {
+      "list_item": "Комплектация"
+    }
+  },
+  {
+    "model": "app_shop.addinfo",
+    "pk": 4,
+    "fields": {
+      "list_item": "Код производителя"
+    }
+  },
+  {
+    "model": "app_shop.addinfo",
+    "pk": 5,
+    "fields": {
+      "list_item": "Операционная система"
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "session": "1",
+      "amount": 35091.0,
+      "number_of_goods": 1
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "session": "3",
+      "amount": 217981.0,
+      "number_of_goods": 2
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "session": "4",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 9,
+    "fields": {
+      "user": 2,
+      "session": "2",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 25,
+    "fields": {
+      "user": null,
+      "session": "ROkNGSz0B7BODgCuy6qxoEw6gdZPPW0j",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 26,
+    "fields": {
+      "user": null,
+      "session": "S2N8E1HpOH1FXgv51Fp9Fs97R1ERjP9Y",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 35,
+    "fields": {
+      "user": null,
+      "session": "3NN1W1JkmXSwZXbzFxvigQZNmJaT8k7j",
+      "amount": 97981.0,
+      "number_of_goods": 2
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 41,
+    "fields": {
+      "user": null,
+      "session": "YDD4Yeo6BzLbZb1VzPudMpYZEMBzJmox",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 42,
+    "fields": {
+      "user": null,
+      "session": "ZztQs0lZzawcaEN3kaUAnqrtmdvA8uf1",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 43,
+    "fields": {
+      "user": null,
+      "session": "Kl3Ca6WzVcYJi0f7GkJUxpFLL8gEDkhD",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 44,
+    "fields": {
+      "user": null,
+      "session": "N671seYtM9xve0uXskhVcSb0a7R2Bnv1",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 45,
+    "fields": {
+      "user": null,
+      "session": "fQOIS9McVHan4DiXmHfYiRdJ32RVOCNr",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 46,
+    "fields": {
+      "user": null,
+      "session": "Jbq0o6ogOVvrOhKONw3gUNgmpaeMFi85",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 47,
+    "fields": {
+      "user": null,
+      "session": "GdOlavQbVZWKWGZGUybhCrW8OYwhkDUl",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 48,
+    "fields": {
+      "user": null,
+      "session": "2I8VUqtNUgz0uaY1IVZye612D3etk02W",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 49,
+    "fields": {
+      "user": null,
+      "session": "WAeuANUzOBUDTPgPVwLQkrTcdBrDIpCj",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.cart",
+    "pk": 50,
+    "fields": {
+      "user": null,
+      "session": "QZrW3VxDHH18Gr2cNGISibfeTlXSWXzu",
+      "amount": null,
+      "number_of_goods": null
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 1,
+    "fields": {
+      "category": 2,
+      "sku": "1209262",
+      "barcode": "456986535697545",
+      "title": "Xiaomi 12 Lite 8/128GB черный",
+      "description": "СТАНЬТЕ ИКОНОЙ СТИЛЯ\r\n\r\nБесспорный шедевр как для фанатов технологий, так и для поклонников моды. Xiaomi 12 Lite - стильный аксессуар и визитная карточка фэшн-адептов. Свободно выражайте себя, вдохновляйте и вдохновляйтесь.\r\n\r\nНОВАЯ КЛАССИКА, ЗАДАЮЩАЯ ТРЕНД\r\n\r\nНовая конструкция, плоские рамки, простые и изящные линии. Мягкие цвета и гладкое матовое покрытие дают ощущение премиальности и стиля, а также приятные тактильные ощущения.\r\n\r\nУНИКАЛЬНЫЕ И ИЗЯЩНЫЕ ОТТЕНКИ\r\n\r\nБлагодаря многослойному градиенту и матовому эффекту спинки смартфонов выглядят эстетично в любом цвете — светло-розовом, светло-зелёном или черном. Кольца вокруг трех камер дополнительно подчеркивают стиль.\r\n\r\nЛЕГКИЙ И ТОНКИЙ, ВСЕГДА НА ВИДУ\r\n\r\nБлагодаря передовому тонкому корпусу Xiaomi 12 Lite — это великолепный аксессуар, который легко можно взять с собой.\r\n\r\n108 МП, ТРИ КАМЕРЫ\r\n\r\nБлагодаря трем обновленным камерам с разрешением до 108 Мп вы узнаете, что существует несколько способов запечатлеть мир. Широкоугольная камера 108 Мп, сверхширокоугольная камера и макрокамера соответствуют вашим потребностям в любых условиях\r\n\r\n32 МП, ФРОНТАЛЬНАЯ КАМЕРА\r\n\r\nФронтальная камера высокого разрешения оснащена большим датчиком 1/2,8\" с автофокусировкой и подчеркивает ваши лучшие стороны благодаря более четкой фокусировке и созданию еще более впечатляющих снимков.\r\n\r\nРЕАЛИСТИЧНОЕ КИНЕМАТОГРАФИЧЕСКОЕ КАЧЕСТВО\r\n\r\nДисплей FHD+ AMOLED с диагональю 6,55\" обеспечивает более насыщенные цвета и более высокую контрастность без искажений реальных цветов. Технологии HDR10+ и Dolby Vision дают высокое качество изображения, наслаждайтесь эффектом карманного кинотеатра с помощью двух динамиков и технологии Dolby Atmos.\r\n\r\nПРОСМОТР КОНТЕНТА\r\n\r\nБлагодаря двухступенчатой функции AdaptiveSync с частотой 60 Гц и 120 Гц экран адаптируется к тому, что вы просматриваете в данный момент, обеспечивая более приятный опыт от просмотра при сохранении времени работы от аккумулятора. С другой стороны, частота дискретизации 240 Гц обеспечивает быструю реакцию на каждое движение.\r\n\r\nС ЗАБОТОЙ О ЗРЕНИИ\r\n\r\nНесколько режимов защиты зрения обеспечивают постоянную защиту глаз и эффективное снижение нагрузки на глаза.\r\n\r\nВЫСОКАЯ ПРОИЗВОДИТЕЛЬНОСТЬ\r\n\r\nБудьте в курсе новейших тенденций благодаря скоростному чипсету Snapdragon 778G 5G. Кроме того, Xiaomi 12 Lite использует высокопроизводительный графит и увеличивает способность рассеивания тепла на 7% по сравнению с предыдущим поколением, что снижает температуру и обеспечивает быстрый просмотр веб-страниц.\r\n\r\nXIAOMI ADAPTIVECHARGE\r\n\r\nXiaomi AdaptiveCharge учится на основе ежедневных процедур зарядки в ночное время благодаря усовершенствованным алгоритмам, которые помогают обеспечить длительное время работы от аккумулятора. Пока вы спите, зарядка приостановится на уровне 80%, но смартфон будет полностью заряжен к моменту вашего пробуждения.",
+      "price": 38990.0,
+      "current_price": 35091.0,
+      "quantity": 20,
+      "promotion": 1,
+      "main_photo": "good/xiaomi-12-lite.jfif",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 2,
+    "fields": {
+      "category": 3,
+      "sku": "1239677",
+      "barcode": "496652369656954",
+      "title": "Смарт-часы Samsung Galaxy Watch5 44mm графит (SM-R910NZAA)",
+      "description": "Посчитают овечек за тебя\r\nАнализируй эффективность своего отдыха при помощи усовершенствованной технологии мониторинга сна. Планируй время отхода ко сну, определяй наличие храпа, отслеживай и анализируй фазы (бодрствование, лёгкий, глубокий, быстрый сон), а 8 символов-животных сделают процесс ещё более увлекательным. После спокойной ночи всегда наступает доброе утро.\r\n\r\nЗнают вас лучше всех\r\nДатчик Samsung BioActive 3-в-1 контролирует сразу три сенсора, отвечающих за измерение показателей здоровья: биоэлектрический анализ импеданса, ЭКГ и оптический датчик сердечного ритма.\r\n\r\nВсегда готовы к новым вызовам\r\nВсего лишь 30 минут, чтобы зарядить устройство от 0% до 45%. Да, вы всё верно поняли. Благодаря увеличенной ёмкости аккумулятора и поддержке быстрой зарядки Galaxy Watch всегда готовы к работе.\r\n\r\nСверхпрочное сапфировое стекло\r\nПредставляем сверхпрочные Galaxy Watch - идеальное сочетание влагозащиты и экрана с премиальным сапфировым стеклом, которое в 1,6 раз более устойчиво к царапинам. Всё, что нужно для продуктивного дня.\r\n\r\nПерсонализируйте под себя\r\n\r\nНовый день – новый циферблат\r\n\r\nЦифровой или аналоговый, винтажный или современный – выбирайте любой из многочисленной коллекции под свой вкус и настроение.\r\n\r\nИдеальное сочетание\r\nВыберите один любимый ремешок, который подойдет подо все ваши образы, или сразу несколько – чтобы подбирать под любой стиль и настроение. Разнообразие - это про Galaxy Watch..\r\n\r\nКастомизируйте\r\nВстречайте потрясающие оттенки, которые идеально завершат ваш образ.",
+      "price": 19990.0,
+      "current_price": 17991.0,
+      "quantity": 28,
+      "promotion": 1,
+      "main_photo": "good/galaxy-watch5.jfif",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 3,
+    "fields": {
+      "category": 6,
+      "sku": "1227746",
+      "barcode": "436959894658956",
+      "title": "MSI Katana GF66 11UC-1223XRU черный (9S7-158212-1223)",
+      "description": "Игровой ноутбук отвечающий современным требованиям",
+      "price": 79990.0,
+      "current_price": 79990.0,
+      "quantity": 10,
+      "promotion": null,
+      "main_photo": "good/msi-katana-gf66.jfif",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 4,
+    "fields": {
+      "category": 23,
+      "sku": "3925",
+      "barcode": "454874423654006",
+      "title": "XR-65X90J телевизор Sony Bravia",
+      "description": "4K телевизор Sony Bravia XR65X90J с диагональю экрана 65 дюймов и Google TV. Наслаждайтесь глубоким, реалистичным и красивым изображением с любого ракурса с минимальными бликами. Наш революционный процессор мгновенно выполняет перекрестный анализ картинки аналогично зрительному восприятию человека и оптимизирует сотни тысяч элементов. В сочетании с панелью Full Array LED эта технология обеспечивает контрастное и реалистичное изображение.Узнайте больше об оттенках, которые естественны и приятны для человека. Cognitive Processor XR позволяет этому дисплею получить доступ к палитре цветов и воспроизводить оттенки с тонкими отличиями, наблюдаемыми в реальном мире. Благодаря расширенному представлению оттенков и более высокой насыщенности даже бледные цвета выглядят реалистично.Благодаря интерфейсу HDMI 2.1 частота кадров в совместимых играх может достичь 120 кадров/с. Так вы получаете преимущество в играх, требующих высокопроизводительной техники и мгновенной реакции.",
+      "price": 199990.0,
+      "current_price": 199990.0,
+      "quantity": 2,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 5,
+    "fields": {
+      "category": 23,
+      "sku": "003925-2",
+      "barcode": "454874426284681",
+      "title": "XR-55X90J телевизор Sony Bravia",
+      "description": "4K телевизор Sony Bravia XR55X90J с диагональю экрана 55 дюймов и Google TV.Наслаждайтесь глубоким, реалистичным и красивым изображением с любого ракурса с минимальными бликами. Наш революционный процессор мгновенно выполняет перекрестный анализ картинки аналогично зрительному восприятию человека и оптимизирует сотни тысяч элементов. В сочетании с панелью Full Array LED эта технология обеспечивает контрастное и реалистичное изображение.Узнайте больше об оттенках, которые естественны и приятны для человека. Cognitive Processor XR позволяет этому дисплею получить доступ к палитре цветов и воспроизводить оттенки с тонкими отличиями, наблюдаемыми в реальном мире. Благодаря расширенному представлению оттенков и более высокой насыщенности даже бледные цвета выглядят реалистично.Благодаря интерфейсу HDMI 2.1 частота кадров в совместимых играх может достичь 120 кадров/с. Так вы получаете преимущество в играх, требующих высокопроизводительной техники и мгновенной реакции.",
+      "price": 149990.0,
+      "current_price": 149990.0,
+      "quantity": 3,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 6,
+    "fields": {
+      "category": 23,
+      "sku": "003925-3",
+      "barcode": "454874426287695",
+      "title": "XR-75X90J телевизор Sony Bravia",
+      "description": "4K телевизор Sony Bravia XR75X90J с диагональю экрана 75 дюймов и Google TV.Наслаждайтесь глубоким, реалистичным и красивым изображением с любого ракурса с минимальными бликами. Наш революционный процессор мгновенно выполняет перекрестный анализ картинки аналогично зрительному восприятию человека и оптимизирует сотни тысяч элементов. В сочетании с панелью Full Array LED эта технология обеспечивает контрастное и реалистичное изображение.Узнайте больше об оттенках, которые естественны и приятны для человека. Cognitive Processor XR позволяет этому дисплею получить доступ к палитре цветов и воспроизводить оттенки с тонкими отличиями, наблюдаемыми в реальном мире. Благодаря расширенному представлению оттенков и более высокой насыщенности даже бледные цвета выглядят реалистично.Благодаря интерфейсу HDMI 2.1 частота кадров в совместимых играх может достичь 120 кадров/с. Так вы получаете преимущество в играх, требующих высокопроизводительной техники и мгновенной реакции.",
+      "price": 299990.0,
+      "current_price": 299990.0,
+      "quantity": 5,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 7,
+    "fields": {
+      "category": 23,
+      "sku": "3913",
+      "barcode": "454874319092472",
+      "title": "KD-65XH8096 телевизор Sony Bravia",
+      "description": "4K HDR телевизор Sony Bravia KD65XH8096 с диагональю экрана 65 дюймов, с 4K HDR-процессором X1™, технологией 4K X-Reality™ PRO и четким разнонаправленным звуком.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Технология Object-based HDR remaster анализирует цвета отдельных объектов и корректирует их контрастность. Этим наши телевизоры выгодно отличаются от обычных, которые регулируют контрастность только по одной кривой черно-белых тонов. Индивидуальная обработка элементов делает текстуры детальнее, усиливает глубину и реалистичность изображения.",
+      "price": 89990.0,
+      "current_price": 84591.0,
+      "quantity": 0,
+      "promotion": 2,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 8,
+    "fields": {
+      "category": 23,
+      "sku": "3911",
+      "barcode": "454874319092483",
+      "title": "KD-49XH8096 телевизор Sony Bravia",
+      "description": "4K HDR телевизор Sony Bravia KD49XH8096 с диагональю экрана 49 дюймов, с 4K HDR-процессором X1™, технологией 4K X-Reality™ PRO и четким разнонаправленным звуком.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Технология Object-based HDR remaster анализирует цвета отдельных объектов и корректирует их контрастность. Этим наши телевизоры выгодно отличаются от обычных, которые регулируют контрастность только по одной кривой черно-белых тонов. Индивидуальная обработка элементов делает текстуры детальнее, усиливает глубину и реалистичность изображения.",
+      "price": 59990.0,
+      "current_price": 53991.0,
+      "quantity": 0,
+      "promotion": 1,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 9,
+    "fields": {
+      "category": 23,
+      "sku": "3912",
+      "barcode": "454874319092484",
+      "title": "KD-55XH8096 телевизор Sony Bravia",
+      "description": "4K HDR телевизор Sony Bravia KD55XH8096 с диагональю экрана 55 дюймов, с 4K HDR-процессором X1™, технологией 4K X-Reality™ PRO и четким разнонаправленным звуком.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Технология Object-based HDR remaster анализирует цвета отдельных объектов и корректирует их контрастность. Этим наши телевизоры выгодно отличаются от обычных, которые регулируют контрастность только по одной кривой черно-белых тонов. Индивидуальная обработка элементов делает текстуры детальнее, усиливает глубину и реалистичность изображения.",
+      "price": 64990.0,
+      "current_price": 61091.0,
+      "quantity": 1,
+      "promotion": 2,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 10,
+    "fields": {
+      "category": 23,
+      "sku": "3914",
+      "barcode": "454874319092485",
+      "title": "KD-75XH8096 телевизор Sony Bravia",
+      "description": "4K HDR телевизор Sony Bravia KD75XH8096 с диагональю экрана 75 дюймов, с 4K HDR-процессором X1™, технологией 4K X-Reality™ PRO и четким разнонаправленным звуком.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Технология Object-based HDR remaster анализирует цвета отдельных объектов и корректирует их контрастность. Этим наши телевизоры выгодно отличаются от обычных, которые регулируют контрастность только по одной кривой черно-белых тонов. Индивидуальная обработка элементов делает текстуры детальнее, усиливает глубину и реалистичность изображения.",
+      "price": 129990.0,
+      "current_price": 129990.0,
+      "quantity": 1,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 11,
+    "fields": {
+      "category": 23,
+      "sku": "3906",
+      "barcode": "454874319092477",
+      "title": "KD-65XH9096 телевизор Sony Bravia, цвет черный",
+      "description": "4K HDR телевизор Sony Bravia KD65XH9096 с диагональю экрана 65 дюймов, с 4K HDR процессором X1™ и технологиями X-tended Dynamic Range™ PRO и Acoustic Multi-Audio™.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Высокая контрастность делает картинку невероятно реалистичной. Это возможно благодаря технологии Full Array LED, которая обеспечивает затемнение или осветление отдельных групп светодиодов. Для улучшения контрастности также используется X-tended Dynamic Range™, которая регулирует яркость, чтобы избежать появления отблесков на экране при ярком освещении и передать насыщенные тона в темном помещении.",
+      "price": 149990.0,
+      "current_price": 149990.0,
+      "quantity": 1,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 12,
+    "fields": {
+      "category": 23,
+      "sku": "3907",
+      "barcode": "454874319092478",
+      "title": "KD-75XH9096 телевизор Sony Bravia",
+      "description": "4K HDR телевизор Sony Bravia KD75XH9096 с диагональю экрана 75 дюймов, с 4K HDR процессором X1™ и технологиями X-tended Dynamic Range™ PRO и Acoustic Multi-Audio™.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Высокая контрастность делает картинку невероятно реалистичной. Это возможно благодаря технологии Full Array LED, которая обеспечивает затемнение или осветление отдельных групп светодиодов. Для улучшения контрастности также используется X-tended Dynamic Range™, которая регулирует яркость, чтобы избежать появления отблесков на экране при ярком освещении и передать насыщенные тона в темном помещении.",
+      "price": 169990.0,
+      "current_price": 169990.0,
+      "quantity": 1,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 13,
+    "fields": {
+      "category": 23,
+      "sku": "3909",
+      "barcode": "454874319092479",
+      "title": "KD-65XH9077 телевизор Sony Bravia, цвет серебристый",
+      "description": "4K HDR телевизор Sony Bravia KD65XH9077 серебристого цвета с диагональю экрана 65 дюймов, с 4K HDR процессором X1™ и технологиями X-tended Dynamic Range™ PRO и Acoustic Multi-Audio™.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Высокая контрастность делает картинку невероятно реалистичной. Это возможно благодаря технологии Full Array LED, которая обеспечивает затемнение или осветление отдельных групп светодиодов. Для улучшения контрастности также используется X-tended Dynamic Range™, которая регулирует яркость, чтобы избежать появления отблесков на экране при ярком освещении и передать насыщенные тона в темном помещении.",
+      "price": 129990.0,
+      "current_price": 129990.0,
+      "quantity": 1,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 14,
+    "fields": {
+      "category": 23,
+      "sku": "3908",
+      "barcode": "454874319092480",
+      "title": "KD-55XH9077 телевизор Sony Bravia, цвет серебристый",
+      "description": "4K HDR телевизор Sony Bravia KD55XH9077 серебристого цвета с диагональю экрана 55 дюймов, с 4K HDR процессором X1™ и технологиями X-tended Dynamic Range™ PRO и Acoustic Multi-Audio™.Технология TRILUMINOS Display в комбинации с нашими фирменными процессорами X1 расширяет воспроизводимый цветовой спектр, благодаря чему наши телевизоры передают больше оттенков, чем обычные. Эта технология анализирует данные каждого изображения и оптимизирует его, чтобы цвета выглядели еще натуральнее и реалистичнее.Высокая контрастность делает картинку невероятно реалистичной. Это возможно благодаря технологии Full Array LED, которая обеспечивает затемнение или осветление отдельных групп светодиодов. Для улучшения контрастности также используется X-tended Dynamic Range™, которая регулирует яркость, чтобы избежать появления отблесков на экране при ярком освещении и передать насыщенные тона в темном помещении.",
+      "price": 84990.0,
+      "current_price": 79891.0,
+      "quantity": 1,
+      "promotion": 2,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 15,
+    "fields": {
+      "category": 23,
+      "sku": "3919",
+      "barcode": "454874319117221",
+      "title": "KD-55A8 OLED телевизор Sony Bravia",
+      "description": "4K HDR OLED телевизор Sony Bravia KD55A8 с диагональю экрана 55 дюймов, с процессором обработки изображений X1™ Ultimate и технологией Acoustic Surface Audio.Благодаря процессору обработки изображений X1™ Ultimate этот OLED-телевизор передает глубокие черные тона и естественные цвета, а технология Pixel Contrast Booster™ улучшает контрастность, придавая изображению впечатляющую яркость. Картинка на экране выглядит максимально реалистичной благодаря невероятной детализации и живым цветам.Теперь телевизор можно смотреть, сидя с любой стороны, а не только по центру, ведь изображение будет оставаться одинаково качественным под любым углом. Наша самоподсвечивающаяся OLED-панель передает цвета стабильно и точно независимо от угла обзора.В OLED-телевизорах изображение состоит из миллионов отдельно контролируемых пикселей, поэтому картинка всегда будет четкой. А наша технология X-Motion Clarity™ обеспечивает плавность и четкость даже динамичных сцен благодаря точному контролю для минимизации размытости видео.",
+      "price": 159990.0,
+      "current_price": 159990.0,
+      "quantity": 1,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 16,
+    "fields": {
+      "category": 23,
+      "sku": "3920",
+      "barcode": "454874319117225",
+      "title": "KD-65A8 OLED телевизор Sony Bravia",
+      "description": "4K HDR OLED телевизор Sony Bravia KD65A8 с диагональю экрана 65 дюймов, с процессором обработки изображений X1™ Ultimate и технологией Acoustic Surface Audio.Благодаря процессору обработки изображений X1™ Ultimate этот OLED-телевизор передает глубокие черные тона и естественные цвета, а технология Pixel Contrast Booster™ улучшает контрастность, придавая изображению впечатляющую яркость. Картинка на экране выглядит максимально реалистичной благодаря невероятной детализации и живым цветам.Теперь телевизор можно смотреть, сидя с любой стороны, а не только по центру, ведь изображение будет оставаться одинаково качественным под любым углом. Наша самоподсвечивающаяся OLED-панель передает цвета стабильно и точно независимо от угла обзора.В OLED-телевизорах изображение состоит из миллионов отдельно контролируемых пикселей, поэтому картинка всегда будет четкой. А наша технология X-Motion Clarity™ обеспечивает плавность и четкость даже динамичных сцен благодаря точному контролю для минимизации размытости видео.",
+      "price": 239992.0,
+      "current_price": 239992.0,
+      "quantity": 1,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": true
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 17,
+    "fields": {
+      "category": 23,
+      "sku": "3927",
+      "barcode": "454874425485022",
+      "title": "XR-65A90J OLED телевизор Sony Bravia",
+      "description": "Телевизор Sony Bravia XR65A90J с 4K HDR OLED-экраном, Cognitive Processor XR и динамиком в экране. Диагональ экрана 65 дюймов.Наслаждайтесь невероятной контрастностью реалистичных изображений наших OLED-телевизоров. Революционный процессор использует данные о человеческом восприятии для перекрестного анализа и мгновенной оптимизации элементов. В сочетании с нашей уникальной OLED-панелью эта технология обеспечивает насыщенные темные и невероятно светлые цвета.Благодаря улучшенной технологии экранного динамика и Cognitive Processor XR любой звук превращается в объемный. Наслаждайтесь более четким и точным звуком, что бы вы не смотрели, ведь изображение идеально сочетается со звуком.Cognitive Processor XR анализирует данные, улучшая изображение согласно тому, как человеческий глаз воспринимает цвет и глубину. XR OLED Contrast Pro регулирует яркость для получения более ярких оттенков на светлом изображении и более глубокого черного в темных сценах — ни одна деталь больше не потеряется.",
+      "price": 349990.0,
+      "current_price": 349990.0,
+      "quantity": 10,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.good",
+    "pk": 18,
+    "fields": {
+      "category": 23,
+      "sku": "003927-2",
+      "barcode": "454874426287694",
+      "title": "XR-55A90J OLED телевизор Sony Bravia",
+      "description": "Телевизор Sony Bravia XR55A90J с 4K HDR OLED-экраном, Cognitive Processor XR и динамиком в экране. Диагональ экрана 55 дюймов.Наслаждайтесь невероятной контрастностью реалистичных изображений наших OLED-телевизоров. Революционный процессор использует данные о человеческом восприятии для перекрестного анализа и мгновенной оптимизации элементов. В сочетании с нашей уникальной OLED-панелью эта технология обеспечивает насыщенные темные и невероятно светлые цвета.Благодаря улучшенной технологии экранного динамика и Cognitive Processor XR любой звук превращается в объемный. Наслаждайтесь более четким и точным звуком, что бы вы не смотрели, ведь изображение идеально сочетается со звуком.Cognitive Processor XR анализирует данные, улучшая изображение согласно тому, как человеческий глаз воспринимает цвет и глубину. XR OLED Contrast Pro регулирует яркость для получения более ярких оттенков на светлом изображении и более глубокого черного в темных сценах — ни одна деталь больше не потеряется.",
+      "price": 299990.0,
+      "current_price": 299990.0,
+      "quantity": 4,
+      "promotion": null,
+      "main_photo": "good/tv-sony.jpg",
+      "is_limited": false
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 1,
+    "fields": {
+      "good": 1,
+      "photo": "good_gallery/xiaomi-12-lite-1.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 2,
+    "fields": {
+      "good": 1,
+      "photo": "good_gallery/xiaomi-12-lite-2.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 3,
+    "fields": {
+      "good": 1,
+      "photo": "good_gallery/xiaomi-12-lite-3.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 4,
+    "fields": {
+      "good": 1,
+      "photo": "good_gallery/xiaomi-12-lite-4.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 5,
+    "fields": {
+      "good": 1,
+      "photo": "good_gallery/xiaomi-12-lite-5.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 6,
+    "fields": {
+      "good": 2,
+      "photo": "good_gallery/galaxy-watch5-1.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 7,
+    "fields": {
+      "good": 2,
+      "photo": "good_gallery/galaxy-watch5-2.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 8,
+    "fields": {
+      "good": 2,
+      "photo": "good_gallery/galaxy-watch5-3.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 9,
+    "fields": {
+      "good": 2,
+      "photo": "good_gallery/galaxy-watch5-4.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 10,
+    "fields": {
+      "good": 2,
+      "photo": "good_gallery/galaxy-watch5-5.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 11,
+    "fields": {
+      "good": 3,
+      "photo": "good_gallery/msi-katana-gf66-1.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 12,
+    "fields": {
+      "good": 3,
+      "photo": "good_gallery/msi-katana-gf66-2.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 13,
+    "fields": {
+      "good": 3,
+      "photo": "good_gallery/msi-katana-gf66-3.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 14,
+    "fields": {
+      "good": 3,
+      "photo": "good_gallery/msi-katana-gf66-4.jfif"
+    }
+  },
+  {
+    "model": "app_shop.addgoodphoto",
+    "pk": 15,
+    "fields": {
+      "good": 3,
+      "photo": "good_gallery/msi-katana-gf66-5.jfif"
+    }
+  },
+  {
+    "model": "app_shop.review",
+    "pk": 1,
+    "fields": {
+      "good": 2,
+      "full_name": "Боровец Тимофей Михайлович",
+      "email": "t.m.borovets@icloud.com",
+      "user_photo": "/media/profile/id1.jpg",
+      "text": "Нормальные часы",
+      "creation_date": "2023-01-13T07:23:03.964Z"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 1,
+    "fields": {
+      "good": 1,
+      "specification": 1,
+      "value": "850, 900, 1800, 1900"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 2,
+    "fields": {
+      "good": 1,
+      "specification": 2,
+      "value": "850, 1900, 2100, 900"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 3,
+    "fields": {
+      "good": 1,
+      "specification": 3,
+      "value": "1, 2, 3, 4, 5, 7, 8, 20, 28, 38, 40, 41, 32"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 4,
+    "fields": {
+      "good": 1,
+      "specification": 4,
+      "value": "GPRS, EDGE, 3G, 5G, 4G LTE"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 5,
+    "fields": {
+      "good": 2,
+      "specification": 5,
+      "value": "2"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 6,
+    "fields": {
+      "good": 2,
+      "specification": 6,
+      "value": "алюминий"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 7,
+    "fields": {
+      "good": 2,
+      "specification": 7,
+      "value": "WR50"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 8,
+    "fields": {
+      "good": 3,
+      "specification": 8,
+      "value": "15.6"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 9,
+    "fields": {
+      "good": 3,
+      "specification": 9,
+      "value": "Intel® Core™ i5 11400H"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 10,
+    "fields": {
+      "good": 3,
+      "specification": 10,
+      "value": "2700"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 11,
+    "fields": {
+      "good": 3,
+      "specification": 5,
+      "value": "6"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 12,
+    "fields": {
+      "good": 3,
+      "specification": 11,
+      "value": "8192"
+    }
+  },
+  {
+    "model": "app_shop.goodspecification",
+    "pk": 13,
+    "fields": {
+      "good": 3,
+      "specification": 12,
+      "value": "1920х1080"
+    }
+  },
+  {
+    "model": "app_shop.goodtag",
+    "pk": 1,
+    "fields": {
+      "good": 8,
+      "tag": 1
+    }
+  },
+  {
+    "model": "app_shop.goodtag",
+    "pk": 2,
+    "fields": {
+      "good": 17,
+      "tag": 1
+    }
+  },
+  {
+    "model": "app_shop.addgoodinfo",
+    "pk": 1,
+    "fields": {
+      "good": 1,
+      "add_info": 1,
+      "value": "Xiaomi"
+    }
+  },
+  {
+    "model": "app_shop.addgoodinfo",
+    "pk": 2,
+    "fields": {
+      "good": 1,
+      "add_info": 2,
+      "value": "1 год"
+    }
+  },
+  {
+    "model": "app_shop.addgoodinfo",
+    "pk": 3,
+    "fields": {
+      "good": 1,
+      "add_info": 3,
+      "value": "Адаптер питания USB-C мощностью 67 Вт Телефон Кабель USB Документация"
+    }
+  },
+  {
+    "model": "app_shop.addgoodinfo",
+    "pk": 4,
+    "fields": {
+      "good": 2,
+      "add_info": 1,
+      "value": "Samsung"
+    }
+  },
+  {
+    "model": "app_shop.addgoodinfo",
+    "pk": 5,
+    "fields": {
+      "good": 2,
+      "add_info": 4,
+      "value": "SM-R910NZAA"
+    }
+  },
+  {
+    "model": "app_shop.addgoodinfo",
+    "pk": 6,
+    "fields": {
+      "good": 3,
+      "add_info": 1,
+      "value": "MSI"
+    }
+  },
+  {
+    "model": "app_shop.addgoodinfo",
+    "pk": 7,
+    "fields": {
+      "good": 3,
+      "add_info": 5,
+      "value": "noOS"
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "date_create": "2023-01-14T09:16:54.466Z",
+      "delivery_type": 1,
+      "city": "Воронеж",
+      "address": "Владимира Невского 47, 188",
+      "payment_method": 1,
+      "status": 1,
+      "payment_error": "Ошибка оплаты",
+      "payment_error_message": "Оплата не прошла",
+      "order_amount": 19990.0
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 6,
+    "fields": {
+      "user": 1,
+      "date_create": "2023-01-16T16:36:10.785Z",
+      "delivery_type": 2,
+      "city": "Воронеж",
+      "address": "г. Воронеж, ул. Владимира Невского, 47",
+      "payment_method": 1,
+      "status": 10,
+      "payment_error": null,
+      "payment_error_message": null,
+      "order_amount": 142970.0
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 7,
+    "fields": {
+      "user": 2,
+      "date_create": "2023-01-17T07:58:04.109Z",
+      "delivery_type": 1,
+      "city": "Воронеж ",
+      "address": "Владимира Невского 47",
+      "payment_method": 1,
+      "status": 1,
+      "payment_error": "Ошибка оплаты",
+      "payment_error_message": "Товара больше нет в наличии",
+      "order_amount": 84591.0
+    }
+  },
+  {
+    "model": "app_shop.order",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "date_create": "2023-01-17T07:58:04.412Z",
+      "delivery_type": 1,
+      "city": "Воронеж",
+      "address": "ул. Владимира Невского, 47",
+      "payment_method": 1,
+      "status": 3,
+      "payment_error": null,
+      "payment_error_message": null,
+      "order_amount": 84591.0
+    }
+  },
+  {
+    "model": "app_shop.goodincart",
+    "pk": 7,
+    "fields": {
+      "cart": 3,
+      "good": 2,
+      "quantity": 1,
+      "amount": 17991.0
+    }
+  },
+  {
+    "model": "app_shop.goodincart",
+    "pk": 8,
+    "fields": {
+      "cart": 3,
+      "good": 4,
+      "quantity": 1,
+      "amount": 199990.0
+    }
+  },
+  {
+    "model": "app_shop.goodincart",
+    "pk": 25,
+    "fields": {
+      "cart": 35,
+      "good": 2,
+      "quantity": 1,
+      "amount": 17991.0
+    }
+  },
+  {
+    "model": "app_shop.goodincart",
+    "pk": 26,
+    "fields": {
+      "cart": 35,
+      "good": 3,
+      "quantity": 1,
+      "amount": 79990.0
+    }
+  },
+  {
+    "model": "app_shop.goodincart",
+    "pk": 36,
+    "fields": {
+      "cart": 1,
+      "good": 1,
+      "quantity": 1,
+      "amount": 35091.0
+    }
+  },
+  {
+    "model": "app_shop.goodinorder",
+    "pk": 5,
+    "fields": {
+      "order": 4,
+      "good": 2,
+      "price": 19990.0,
+      "quantity": 1,
+      "amount": 17991.0
+    }
+  },
+  {
+    "model": "app_shop.goodinorder",
+    "pk": 6,
+    "fields": {
+      "order": 6,
+      "good": 9,
+      "price": 64990.0,
+      "quantity": 1,
+      "amount": 61091.0
+    }
+  },
+  {
+    "model": "app_shop.goodinorder",
+    "pk": 7,
+    "fields": {
+      "order": 6,
+      "good": 1,
+      "price": 38990.0,
+      "quantity": 2,
+      "amount": 70182.0
+    }
+  },
+  {
+    "model": "app_shop.goodinorder",
+    "pk": 8,
+    "fields": {
+      "order": 7,
+      "good": 7,
+      "price": 84591.0,
+      "quantity": 1,
+      "amount": 84591.0
+    }
+  },
+  {
+    "model": "app_shop.goodinorder",
+    "pk": 9,
+    "fields": {
+      "order": 8,
+      "good": 7,
+      "price": 84591.0,
+      "quantity": 1,
+      "amount": 84591.0
+    }
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "model": "app_shop.deliverytype",
+    "pk": 1,
+    "fields": {
+      "title": "Обычная доставка",
+      "free_delivery": true,
+      "purchase_amount_for_free_delivery": 2000,
+      "delivery_cost": 200
+    }
+  },
+  {
+    "model": "app_shop.deliverytype",
+    "pk": 2,
+    "fields": {
+      "title": "Экспресс доставка",
+      "free_delivery": false,
+      "purchase_amount_for_free_delivery": null,
+      "delivery_cost": 500
+    }
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 1,
+    "fields": {
+      "title": "Не оплачен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 2,
+    "fields": {
+      "title": "Оплачен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 3,
+    "fields": {
+      "title": "В обработке"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 4,
+    "fields": {
+      "title": "Согласован"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 5,
+    "fields": {
+      "title": "Собран"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 6,
+    "fields": {
+      "title": "Отправлен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 7,
+    "fields": {
+      "title": "В пути"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 8,
+    "fields": {
+      "title": "Доставлен"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 9,
+    "fields": {
+      "title": "Вручен покупателю"
+    }
+  },
+  {
+    "model": "app_shop.orderstatus",
+    "pk": 10,
+    "fields": {
+      "title": "Отменен"
+    }
+  }
+]

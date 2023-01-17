@@ -99,7 +99,7 @@
 								</div>
 								<div class="Cart-block Cart-block_price">
 									<div class="Cart-price">
-										{{ item.good.current_price }}$
+										{{ item.good.current_price }}{{ CURRENCY }}
 									</div>
 								</div>
 							</div>
@@ -115,7 +115,7 @@
 							<strong class="Cart-title">
 								Итого:
 							</strong>
-							<span class="Cart-price">{{ order_amount }}$</span>
+							<span class="Cart-price">{{ order_amount }}{{ CURRENCY }}</span>
 						</div>
 						<div class="Cart-block">
 							<button class="btn btn_primary btn_lg" type="submit">

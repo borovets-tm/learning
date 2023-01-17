@@ -140,7 +140,7 @@
 												</div>
 											</div>
 											<div class="Cart-block Cart-block_price">
-												<div class="Cart-price">{{ item.good.current_price }}$
+												<div class="Cart-price">{{ item.good.current_price }}{{ CURRENCY }}
 												</div>
 											</div>
 										</div>
@@ -154,7 +154,8 @@
 								<div class="Cart-total">
 									<div class="Cart-block Cart-block_total">
 										<strong class="Cart-title">
-											Итого:<span class="Cart-price">{{ object.order_amount }}$</span>
+											Итого:<span
+												class="Cart-price">{{ object.order_amount }}{{ CURRENCY }}</span>
 										</strong>
 									</div>
 									{% if object.payment_error or object.status.id == 1 %}

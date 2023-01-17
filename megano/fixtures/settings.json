@@ -1,0 +1,17 @@
+[
+  {
+    "model": "app_shop.settings",
+    "pk": 1,
+    "fields": {
+      "title": "Megano",
+      "SERVER_EMAIL": "t.m.borovets@lenta.ru",
+      "EMAIL_USE_TLS": true,
+      "EMAIL_HOST": "smtp.rambler.ru",
+      "EMAIL_PORT": 587,
+      "EMAIL_HOST_USER": "t.m.borovets@lenta.ru",
+      "EMAIL_HOST_PASSWORD": "Cstore1040",
+      "CURRENT_SITE_CURRENCY": "",
+      "ALLOWED_HOSTS": "0.0.0.0"
+    }
+  }
+]

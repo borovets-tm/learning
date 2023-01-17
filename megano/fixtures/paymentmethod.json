@@ -1,0 +1,16 @@
+[
+  {
+    "model": "app_shop.paymentmethod",
+    "pk": 1,
+    "fields": {
+      "title": "Онлайн картой"
+    }
+  },
+  {
+    "model": "app_shop.paymentmethod",
+    "pk": 2,
+    "fields": {
+      "title": "Онлайн со случайного чужого счета"
+    }
+  }
+]
