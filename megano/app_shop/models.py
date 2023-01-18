@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.db.models import Sum
 from django.urls import reverse
@@ -390,10 +391,14 @@ class Cart(models.Model):
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		if self.id:
+		try:
+			if not self.goods_in_carts.all():
+				raise ObjectDoesNotExist
 			self.number_of_goods = self.goods_in_carts.all().aggregate(Sum('quantity'))['quantity__sum']
 			self.amount = self.goods_in_carts.all().aggregate(Sum('amount'))['amount__sum']
 			self.save(update_fields=['number_of_goods', 'amount'])
+		except ObjectDoesNotExist:
+			pass
 
 	def __str__(self):
 		return '%s [user:%s]' % (self.session, self.user)
@@ -612,6 +617,7 @@ class KeyGoodFeature(models.Model):
 	key_feature = models.ForeignKey(
 		KeyFeature,
 		on_delete=models.CASCADE,
+		related_name='good_with_key_features',
 		verbose_name='ключевая особенность'
 	)
 

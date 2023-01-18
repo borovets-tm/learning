@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -25,13 +26,12 @@ from app_shop.models import (
 	GoodInOrder
 )
 
+admin.site.unregister(User)
+
 
 class ProfileTabularInLine(admin.TabularInline):
 	model = Profile
 	fields = ['full_name', 'phone']
-
-
-admin.site.unregister(User)
 
 
 @admin.register(User)
@@ -65,20 +65,44 @@ class CategoryAdmin(admin.ModelAdmin):
 class SpecificationAdmin(admin.ModelAdmin):
 	list_display = ['title', 'unit']
 
+	def get_model_perms(self, request):
+		"""
+		Возврат пустого словаря разрешений, таким образом скрываем модель от индекса администратора.
+		"""
+		return {}
+
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
 	list_display = ['title']
+
+	def get_model_perms(self, request):
+		"""
+		Возврат пустого словаря разрешений, таким образом скрываем модель от индекса администратора.
+		"""
+		return {}
 
 
 @admin.register(KeyFeature)
 class KeyFeatureAdmin(admin.ModelAdmin):
 	list_display = ['list_item']
 
+	def get_model_perms(self, request):
+		"""
+		Возврат пустого словаря разрешений, таким образом скрываем модель от индекса администратора.
+		"""
+		return {}
+
 
 @admin.register(AddInfo)
 class AddInfoAdmin(admin.ModelAdmin):
 	list_display = ['list_item']
+
+	def get_model_perms(self, request):
+		"""
+		Возврат пустого словаря разрешений, таким образом скрываем модель от индекса администратора.
+		"""
+		return {}
 
 
 class AddGoodPhotoTabularInline(admin.TabularInline):
