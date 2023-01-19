@@ -32,6 +32,14 @@ MANIFEST
 megano/media/*
 megano/app_shop/migrations/*.py
 !megano/app_shop/migrations/__init__.py
+megano/app_cart/migrations/*.py
+!megano/app_cart/migrations/__init__.py
+megano/app_order/migrations/*.py
+!megano/app_order/migrations/__init__.py
+megano/app_user/migrations/*.py
+!megano/app_user/migrations/__init__.py
+megano/app_setting/migrations/*.py
+!megano/app_setting/migrations/__init__.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

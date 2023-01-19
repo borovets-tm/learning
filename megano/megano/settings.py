@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n3bhk=p94jx%8ik#t0+dy+tsg4x0swy=8kk1q$pak820xg!wu%'
 
 
-settings_file = os.path.join(BASE_DIR, 'settings.json')
+settings_file = os.path.join(BASE_DIR, 'start_settings.json')
 
 with open(settings_file, 'r') as file:
     data = json.load(file)
@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_shop.apps.AppShopConfig',
+    'app_order.apps.AppOrderConfig',
+    'app_user.apps.AppUserConfig',
+    'app_setting.apps.AppSettingConfig',
+    'app_cart.apps.AppCartConfig'
 ]
 
 
@@ -73,7 +77,7 @@ TEMPLATES = [
                 # category_list не использовать в функциях, это имя доступно на каждой странице
                 'app_shop.context_processors.get_category_list_for_menu',
                 # чтобы получать информацию о корзине в basic.html
-                'app_shop.context_processors.get_info_about_users_basket',
+                'app_cart.context_processors.get_info_about_users_basket',
                 # чтобы получать популярные теги
                 'app_shop.context_processors.get_popular_tags',
                 # получаем минимальную и максимальную цену в каталоге
@@ -81,7 +85,7 @@ TEMPLATES = [
                 # для ссылки на GALLERY (Hot)
                 'app_shop.context_processors.get_the_most_popular_item',
                 # отображение корректной валюты на сайте
-                'app_shop.context_processors.get_currency',
+                'app_setting.context_processors.get_currency',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

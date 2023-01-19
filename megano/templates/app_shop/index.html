@@ -1,4 +1,4 @@
-{% extends 'app_shop/basic.html' %}
+{% extends 'basic.html' %}
 {% load static %}
 {% block page_content %}
 	<div class="Middle">
@@ -60,7 +60,7 @@
 										<div class="Card-category">
 											{{ good.category.category.title }}/{{ good.category.title }}
 										</div>
-										{% include 'app_shop/card_hover_include.html' %}
+										{% include 'app_cart/cart_hover_include.html' %}
 									</div>
 								</div>
 							</div>
@@ -170,7 +170,7 @@
 														<div class="Card-category">
 															{{ good.category.category.title }}/{{ good.category.title }}
 														</div>
-														{% include 'app_shop/card_hover_include.html' %}
+														{% include 'app_cart/cart_hover_include.html' %}
 													</div>
 												</div>
 											</div>

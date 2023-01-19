@@ -1,4 +1,4 @@
-{% extends 'app_shop/basic_order.html' %}
+{% extends 'app_order/basic_order.html' %}
 {% block steps %}
 	<form class="form" action="{% url 'order_creation' %}" method="post">
 		{% csrf_token %}

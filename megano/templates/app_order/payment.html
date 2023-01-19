@@ -1,4 +1,4 @@
-{% extends 'app_shop/basic.html' %}
+{% extends 'basic.html' %}
 {% block page_content %}
 	<div class="Middle Middle_top">
 		<div class="Middle-top">
@@ -8,9 +8,10 @@
 						Оплата
 					</h1>
 					<ul class="breadcrumbs Middle-breadcrumbs">
-						<li class="breadcrumbs-item"><a href="{% url 'index' %}">
-							home
-						</a>
+						<li class="breadcrumbs-item">
+							<a href="{% url 'index' %}">
+								home
+							</a>
 						</li>
 						<li class="breadcrumbs-item breadcrumbs-item_current">
 							<span>Оплата</span>
@@ -26,20 +27,15 @@
 					<div class="Payment-card">
 						<div class="form-group">
 							<label class="form-label">
-								Номер счета
+								Номер карты
 							</label>
 							<input type="hidden" name="order_pk" value="{{ order_pk }}">
 							<input class="form-input Payment-bill" id="numero1" name="card_number" type="text"
 							       placeholder="9999 9999" data-mask="9999 9999" data-validate="require pay"/>
 						</div>
-						<div class="form-group">
-							<a class="btn btn_success Payment-generate" href="#">
-								Сгенирировать случайный счет
-							</a>
-						</div>
 					</div>
 					<div class="Payment-pay">
-						<button class="btn btn_primary" type="submit" style="border: none">
+						<button class="btn btn_primary" style="border: none" type="submit">
 							Оплатить
 						</button>
 					</div>
