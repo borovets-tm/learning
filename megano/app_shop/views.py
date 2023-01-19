@@ -1,4 +1,5 @@
 from random import sample
+from typing import Any
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -8,7 +9,7 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.db import transaction
 from django.db.models import Count, Sum, Q, Min, Max
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.generic import View, DetailView, ListView
 
@@ -37,23 +38,47 @@ from app_shop.models import (
 )
 
 
-def about(request):
+def about(request: Any) -> HttpResponse:
+	"""
+	Функция возвращает обработанный шаблон "О магазине".
+
+	:param request: Это объект запроса, который Django использует для передачи информации из браузера на сервер
+	:type request: Any
+	:return: Объект HttpResponse.
+	"""
 	return render(
 		request,
 		'app_shop/about.html'
 	)
 
 
-def add_cart(request):
+def add_cart(request: Any) -> HttpResponse:
+	"""
+	Добавляет товар в корзину.
+
+	:param request: Любой - объект запроса.
+	:type request: Any
+	:return: HttpResponseRedirect (следующий_url)
+	"""
+	# Получение количества товара из формы и преобразование ее в целое число.
 	quantity = int(request.POST.get('amount'))
+	# Получение значения id товара из запроса POST.
 	good_id = request.POST.get('good_id')
+	# Получение id пользователя из запроса POST.
 	user_id = request.POST.get('user_id')
+	# Получение корзины пользователя.
+	# Проверка, авторизован пользователь или нет. Если пользователь не вошел в систему, он получит идентификатор сеанса и
+	# использует его для получения корзины.
 	if user_id == 'None':
 		session_id = request.META.get('CSRF_COOKIE')
 		user_cart = Cart.objects.get(session=session_id)
 	else:
 		user_cart = request.user.user_cart
 	good = Good.objects.get(id=good_id)
+	# 1. Он пытается получить объект товара в корзине из корзины пользователя.
+	# 2. Если товара нет в корзине, вызовется исключение ObjectDoesNotExist.
+	# 3. Если товар находится в корзине, добавим количество к существующему количеству и обновим сумму.
+	# 4. Если товара нет в корзине, создадим новый объект товара в корзине с товаром, количеством и суммой.
 	try:
 		good_in_cart = user_cart.goods_in_carts.get(good_id=good_id)
 		if not good_in_cart:
@@ -63,11 +88,22 @@ def add_cart(request):
 		good_in_cart.save(update_fields=['quantity', 'amount'])
 	except ObjectDoesNotExist:
 		user_cart.goods_in_carts.create(good=good, quantity=quantity, amount=quantity * good.current_price)
+	# Получение следующего URL-адреса из метода request.POST.get().
 	next_url = request.POST.get('next', '/')
 	return HttpResponseRedirect(next_url)
 
 
-def add_review(request, pk):
+def add_review(request: Any, pk: str) -> HttpResponse:
+	"""
+	Функция принимает запрос и идентификатор продукта, добавляет отзыв о товаре и перенаправляет на страницу продукта.
+
+	:param request: Объект запроса является первым параметром любой функции представления. Он содержит информацию о
+	запросе, который был сделан на сервер.
+	:type request: Any
+	:param pk: Первичный ключ продукта, к которому добавляется отзыв.
+	:type pk: str
+	:return: HttpResponseRedirect (страница товара) или с формой отзыва.
+	"""
 	form = ReviewForm(request.POST)
 	if form.is_valid():
 		form.save()
@@ -76,7 +112,16 @@ def add_review(request, pk):
 	return HttpResponseRedirect('/product/%s/' % pk, {'form': form})
 
 
-def payment(request, pk):
+def payment(request: Any, pk: str) -> HttpResponse:
+	"""
+	Функция отображает шаблон оплаты заказа со своего счета, передавая контекстную переменную идентификатор заказа.
+
+	:param request: Any - объект запроса
+	:type request: Any
+	:param pk: Первичный ключ заказа
+	:type pk: str
+	:return: Объект HttpResponse.
+	"""
 	return render(
 		request,
 		'app_shop/payment.html',
@@ -86,7 +131,16 @@ def payment(request, pk):
 	)
 
 
-def payment_someone(request, pk):
+def payment_someone(request: Any, pk: str) -> HttpResponse:
+	"""
+	Функция отображает шаблон оплаты заказа со случайного счета, передавая контекстную переменную идентификатор заказа.
+
+	:param request: Any - объект запроса
+	:type request: Any
+	:param pk: Первичный ключ заказа
+	:type pk: str
+	:return: Объект HttpResponse.
+	"""
 	return render(
 		request,
 		'app_shop/paymentsomeone.html',
@@ -97,9 +151,23 @@ def payment_someone(request, pk):
 
 
 @transaction.atomic
-def progress_payment(request):
+def progress_payment(request: Any) -> HttpResponse:
+	"""
+	Принимает запрос, проверяет, четный ли номер карты и не равна ли последняя цифра 0, и если да, то устанавливает
+	статус заказа "Оплачен" и устанавливает в поля ошибки платежа значение None. В противном случае он устанавливает
+	поля ошибки платежа в соответствующие значения.
+
+	:param request: Объект запроса.
+	:type request: Any
+	:return: HttpResponse
+	"""
 	card_number = int(request.POST.get('card_number').replace(' ', ''))
 	order = Order.objects.get(id=int(request.POST.get('order_pk')))
+	# Проверяем, является ли номер карты четным и не равно ли последнее число 0. Если да, то вычитает количество
+	# заказанных товара из количества товара в магазине. Если количество товара после вычета будет меньше 0,
+	# устанавливается ошибка платежа и сообщение об ошибке платежа. В противном случае устанавливается статус "Оплачен",
+	# убирается ошибки платежа и сообщения об ошибке платежа и сохраняется заказ. Если номер карты не четный или
+	#  последнее число равно 0, то устанавливается ошибка платежа и сообщения об ошибке платежа.
 	if card_number % 2 == 0 and card_number % 10 != 0:
 		for item in order.goods_in_order.all():
 			item.good.quantity -= item.quantity
@@ -126,11 +194,29 @@ def progress_payment(request):
 	)
 
 
-def sort_of_good(self, context, object_list):
+# Функция используется всеми представлениями, которые используют шаблон catalog.html.
+def sort_of_good(self: Any, context: dict, object_list: Any) -> dict:
+	"""
+	Сортирует товары по выбранному параметру, обрабатывает фильтры и возвращает контекст с отсортированными и/или
+	отфильтрованными товарами.
+
+	:param self: Любой
+	:type self: Any
+	:param context: словарь переменных контекста, которые будут переданы в шаблон.
+	:type context: dict
+	:param object_list: список объектов, которые вы хотите разбить на страницы.
+	:type object_list: Any
+	:return: Словарь.
+	"""
+	# Установите для переменных number_of_clicks и sort значение по умолчанию.
 	number_of_clicks = 0
 	sort = None
+	# Получение значения нажатой кнопки.
 	button = self.request.GET.get('button')
+	# Передаем значение нажатой кнопки контексту для дальнейшего использования в случае перехода по пагинатору.
 	context['button'] = button
+	# Проверяется, есть ли в запросе GET значение для ключей ниже, и если да, то преобразуется его в целое число и
+	# присваивается переменным. Если это не так, присваивается 0 переменным.
 	context['number_of_clicks_popular'] = 0 if not self.request.GET.get('number_of_clicks_popular') else int(
 		self.request.GET.get('number_of_clicks_popular')
 	)
@@ -143,11 +229,15 @@ def sort_of_good(self, context, object_list):
 	context['number_of_clicks_review'] = 0 if not self.request.GET.get('number_of_clicks_review') else int(
 		self.request.GET.get('number_of_clicks_review')
 	)
+	# Получение значения списка активных фильтров из словаря request.GET.
 	active_filter = self.request.GET.get('active_filter')
+	# Получение номера страницы из запроса.
 	page_number = self.request.GET.get('page')
+	# Получение требования на сохранение сортировки списка товаров.
 	is_non_sorted = self.request.GET.get('non_sorted')
 	if active_filter:
 		active_filter = active_filter.split(',')
+	# Фильтрация товаров по параметрам фильтра.
 	if button == 'filter' or active_filter:
 		if active_filter:
 			title, min_price, max_price, is_availability, is_free_delivery = active_filter
@@ -168,6 +258,7 @@ def sort_of_good(self, context, object_list):
 		if is_free_delivery == 'on':
 			min_order = DeliveryType.objects.filter(free_delivery=True).first().purchase_amount_for_free_delivery
 			object_list.filter(current_price__gt=min_order)
+	# Сортировка товаров по нажатой кнопке.
 	if button == 'popularity':
 		sort = 'ordered_goods__quantity'
 		number_of_clicks = context['number_of_clicks_popular'] + (0 if is_non_sorted else 1)
@@ -195,6 +286,7 @@ def sort_of_good(self, context, object_list):
 				object_list = object_list.order_by('%s' % sort)
 			else:
 				object_list = object_list.order_by('-%s' % sort)
+	# Передача обновленных данных контексту.
 	context['object_list'] = object_list
 	context['min_price'] = str(object_list.aggregate(Min('current_price'))['current_price__min']).replace(' ', '')
 	context['max_price'] = str(object_list.aggregate(Max('current_price'))['current_price__max']).replace(' ', '')
@@ -205,25 +297,38 @@ def sort_of_good(self, context, object_list):
 	return context
 
 
+# Это представление, которое отображает Главную страницу.
 class IndexView(View):
 
 	@classmethod
-	def get(cls, request):
+	def get(cls, request: Any) -> HttpResponse:
+		"""
+		Отображает главную страницу магазина.
+
+		:param cls: Класс представления.
+		:param request: Любой - объект запроса
+		:type request: Any
+		:return: ответ на запрос.
+		"""
+		# Получение токена CSRF из запроса для связки устройства с корзиной.
 		session_id = request.META.get('CSRF_COOKIE')
+		# Проверка, авторизован пользователь или нет. Если пользователь не вошел в систему, проверяется существование
+		# корзины с текущим токеном, если такой корзины не существует, будет создана новая корзина с текущим токеном.
 		if not request.user.id:
 			if not Cart.objects.filter(session=session_id):
 				Cart.objects.create(session=session_id)
-		categories = (Subcategory
-					  .objects.annotate(Count('category_goods'))
-					  .filter(category_goods__count__gt=0)
-					  )
+		# Получение случайной выборки из 3 категорий из набора запросов категорий.
+		categories = Subcategory.objects.annotate(Count('category_goods')).filter(category_goods__count__gt=0)
 		random_number = sample([item.id for item in categories], 3)
 		featured_categories = categories.filter(id__in=random_number)
+		# Фильтрация товаров по количеству больше 0, затем аннотируется сумма сколько раз заказали товар,
+		# а затем упорядочиваются объекты по сумме количества заказанных товаров в порядке убывания.
 		popular_good_list = (
 			Good.objects.filter(quantity__gt=0)
 			.annotate(Sum('ordered_goods__quantity'))
 			.order_by('-ordered_goods__quantity__sum')[:8]
 		)
+		# Фильтрация товаров по количеству больше 0 и статусу лимитированности версии.
 		limited_good_list = Good.objects.filter(quantity__gt=0, is_limited=True)[:16]
 		return render(
 			request,

@@ -1,0 +1,9 @@
+{
+    "ALLOWED_HOSTS": "192.168.0.101",
+    "SERVER_EMAIL": "t.m.borovets@lenta.ru",
+    "EMAIL_USE_TLS": true,
+    "EMAIL_HOST": "smtp.rambler.ru",
+    "EMAIL_PORT": 587,
+    "EMAIL_HOST_USER": "t.m.borovets@lenta.ru",
+    "EMAIL_HOST_PASSWORD": "Cstore1040"
+}

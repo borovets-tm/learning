@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Any
 
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -9,13 +10,23 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 
-def get_full_name_user(self):
+# Возвращает полное имя пользователя.
+def get_full_name_user(self: Any) -> str:
+	"""
+	Функция возвращает полное имя пользователя
+
+	:param self: Любой.
+	:type self: Any
+	:return: Полное имя пользователя.
+	"""
 	return self.user_profile.full_name
 
 
+# Добавление метода отображения пользователя в класс User.
 User.add_to_class("__str__", get_full_name_user)
 
 
+# Класс Settings — это модель для конфигурации приложения.
 class Settings(models.Model):
 	title = models.CharField(
 		max_length=50,
@@ -73,7 +84,7 @@ class Settings(models.Model):
 		return self.title
 
 
-# Профиль — это модель, которая хранит в себе расширенную информацию о пользователе
+# Класс Profile — это модель, которая хранит в себе расширенную информацию о пользователе
 class Profile(models.Model):
 	user = models.OneToOneField(
 		User,
@@ -99,7 +110,15 @@ class Profile(models.Model):
 		verbose_name='фото пользователя'
 	)
 
-	def image_tag(self):
+	# Функция, которая возвращает тег изображения для поля user_photo.
+	def image_tag(self: Any) -> str:
+		"""
+		Метод возвращает строку, содержащую HTML-тег изображения.
+
+		:param self: Любой — это объект, который передается функции.
+		:type self: Any
+		:return: Тег с URL-адресом изображения.
+		"""
 		return mark_safe('<img src="%s" style="height:30px;" />' % self.user_photo.url)
 
 	image_tag.short_description = 'Image'
@@ -113,6 +132,7 @@ class Profile(models.Model):
 		return self.user.email
 
 
+# Класс Category — это модель, которая хранит в себе информацию о категориях товаров.
 class Category(models.Model):
 	title = models.CharField(
 		max_length=50,
@@ -124,9 +144,27 @@ class Category(models.Model):
 	)
 
 	def image_tag(self):
+		"""
+		Метод возвращает строку, содержащую HTML-тег изображения.
+
+		:param self: Любой — это объект, который передается функции.
+		:type self: Any
+		:return: Тег с URL-адресом изображения.
+		"""
 		return mark_safe('<img src="%s" style="height:30px;" />' % self.image.url)
 
 	image_tag.short_description = 'Image'
+
+	# Возврат URL-адреса объекта.
+	def get_absolute_url(self: Any) -> str:
+		"""
+		Функция возвращает URL-адрес для доступа к конкретному экземпляру модели.
+
+		:param self: Любой
+		:type self: Any
+		:return: URL-адрес подробного представления категории товаров.
+		"""
+		return reverse('category_detail', args=[str(self.id)])
 
 	class Meta:
 		db_table = 'category'
@@ -137,7 +175,9 @@ class Category(models.Model):
 		return self.title
 
 
+# Класс Subcategory — это модель, которая хранит в себе информацию о подкатегориях товаров.
 class Subcategory(models.Model):
+	# Создание отношения внешнего ключа между моделью подкатегории и моделью категории.
 	category = models.ForeignKey(
 		Category,
 		on_delete=models.CASCADE,
@@ -154,9 +194,27 @@ class Subcategory(models.Model):
 	)
 
 	def image_tag(self):
+		"""
+		Метод возвращает строку, содержащую HTML-тег изображения.
+
+		:param self: Любой — это объект, который передается функции.
+		:type self: Any
+		:return: Тег с URL-адресом изображения.
+		"""
 		return mark_safe('<img src="%s" style="height:30px;" />' % self.image.url)
 
 	image_tag.short_description = 'Image'
+
+	# Возврат URL-адреса объекта.
+	def get_absolute_url(self: Any) -> str:
+		"""
+		Функция возвращает URL-адрес для доступа к конкретному экземпляру модели.
+
+		:param self: Любой
+		:type self: Any
+		:return: URL-адрес подробного представления подкатегории товаров.
+		"""
+		return reverse('subcategory_detail', args=[str(self.category.id), str(self.id)])
 
 	class Meta:
 		db_table = 'subcategory'
@@ -167,6 +225,7 @@ class Subcategory(models.Model):
 		return '%s (%s)' % (self.title, self.category)
 
 
+# Класс OrderStatus — это модель, которая хранит в себе список статусов заказа.
 class OrderStatus(models.Model):
 	title = models.CharField(
 		max_length=30,
@@ -182,6 +241,7 @@ class OrderStatus(models.Model):
 		return self.title
 
 
+# Класс DeliveryType — это модель, которая хранит в себе доступные варианты доставки.
 class DeliveryType(models.Model):
 	title = models.CharField(
 		max_length=30,
@@ -211,7 +271,7 @@ class DeliveryType(models.Model):
 	def __str__(self):
 		return self.title
 
-
+# Класс PaymentMethod — это модель, которая хранит в себе доступные варианты оплаты.
 class PaymentMethod(models.Model):
 	title = models.CharField(
 		max_length=30,
@@ -226,7 +286,7 @@ class PaymentMethod(models.Model):
 	def __str__(self):
 		return self.title
 
-
+# Класс Promotion — это модель, которая хранит в себе информацию об акциях в магазине.
 class Promotion(models.Model):
 	title = models.CharField(
 		max_length=100,
@@ -263,6 +323,10 @@ class Promotion(models.Model):
 		verbose_name_plural = 'акции'
 
 	def __init__(self, *args, **kwargs):
+		"""
+		Если promo_end_date меньше сегодняшней даты или promo_start_date больше сегодняшней даты, то акция не активна. В
+		противном случае она активен
+		"""
 		super().__init__(*args, **kwargs)
 		if self.id:
 			if self.promo_end_date < datetime.today().date() or self.promo_start_date > datetime.today().date():
@@ -271,13 +335,23 @@ class Promotion(models.Model):
 				self.is_active = True
 			self.save(update_fields=['is_active'])
 
-	def get_absolute_url(self):
+	# Возврат URL-адреса объекта.
+	def get_absolute_url(self: Any) -> str:
+		"""
+		Функция возвращает URL-адрес для доступа к конкретному экземпляру модели.
+
+		:param self: Любой
+		:type self: Any
+		:return: URL-адрес подробного представления рекламной акции.
+		"""
 		return reverse('promotion_detail', args=[str(self.id)])
 
 	def __str__(self):
 		return self.title
 
 
+# Класс DeliveryType — это модель, которая хранит в себе информацию и типе характеристики товара и единице измерения
+# характеристики.
 class Specification(models.Model):
 	title = models.CharField(
 		max_length=100,
@@ -299,6 +373,7 @@ class Specification(models.Model):
 		return '%s (%s)' % (self.title, self.unit if self.unit else '-')
 
 
+# Класс Tag — это модель, которая хранит в себе название тега и количество запросов по данному тегу.
 class Tag(models.Model):
 	title = models.CharField(
 		max_length=20,
@@ -312,6 +387,17 @@ class Tag(models.Model):
 		verbose_name='количество запросов по тегу'
 	)
 
+	# Возврат URL-адреса объекта.
+	def get_absolute_url(self: Any) -> str:
+		"""
+		Функция возвращает URL-адрес для доступа к конкретному экземпляру модели.
+
+		:param self: Любой
+		:type self: Any
+		:return: URL-адрес подробного представления тега.
+		"""
+		return reverse('tag_detail', args=[str(self.id)])
+
 	class Meta:
 		db_table = 'tag'
 		verbose_name = 'тег'
@@ -321,6 +407,7 @@ class Tag(models.Model):
 		return self.title
 
 
+# Класс KeyFeature - это модель, которая хранит в себе ключевые особенности товаров.
 class KeyFeature(models.Model):
 	list_item = models.CharField(
 		max_length=100,
@@ -343,6 +430,7 @@ class KeyFeature(models.Model):
 		return self.list_item[:20]
 
 
+# Класс AddInfo - это модель, которая хранит в себе список значений дополнительной информации о товаре.
 class AddInfo(models.Model):
 	list_item = models.CharField(
 		max_length=50,
@@ -360,6 +448,7 @@ class AddInfo(models.Model):
 		return self.list_item[:20]
 
 
+# Класс Cart - это модель, которая хранит в себе информацию о корзине пользователя.
 class Cart(models.Model):
 	user = models.OneToOneField(
 		User,
@@ -389,21 +478,34 @@ class Cart(models.Model):
 		verbose_name = 'корзина'
 		verbose_name_plural = 'корзины'
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self: Any, *args, **kwargs) -> None:
+		"""
+		Обновляет количество товаров и сумму в корзине при добавлении нового товара в корзину.
+
+		:param self: Любой — это экземпляр сохраняемой модели.
+		:type self: Any
+		"""
 		super().__init__(*args, **kwargs)
 		try:
-			if not self.goods_in_carts.all():
+			# Проверяем, пуста ли корзина.
+			if not self.goods_in_carts:
 				raise ObjectDoesNotExist
+			# Использование агрегатной функции для суммирования количества всех товаров в корзине.
 			self.number_of_goods = self.goods_in_carts.all().aggregate(Sum('quantity'))['quantity__sum']
+			# Использование агрегатной функции для суммирования стоимости товаров в корзине.
 			self.amount = self.goods_in_carts.all().aggregate(Sum('amount'))['amount__sum']
+			# Обновление полей количество товаров и суммы в базе.
 			self.save(update_fields=['number_of_goods', 'amount'])
 		except ObjectDoesNotExist:
-			pass
+			self.number_of_goods = 0
+			self.amount = 0
+			self.save(update_fields=['number_of_goods', 'amount'])
 
 	def __str__(self):
 		return '%s [user:%s]' % (self.session, self.user)
 
 
+# Класс Good - это модель, которая хранит в себе информацию о товарах в магазине.
 class Good(models.Model):
 	category = models.ForeignKey(
 		Subcategory,
@@ -472,11 +574,25 @@ class Good(models.Model):
 		verbose_name_plural = 'товары'
 
 	def image_tag(self):
+		"""
+		Метод возвращает строку, содержащую HTML-тег изображения.
+
+		:param self: Любой — это объект, который передается функции.
+		:type self: Any
+		:return: Тег с URL-адресом изображения.
+		"""
 		return mark_safe('<img src="%s" style="height:30px;" />' % self.main_photo.url)
 
 	image_tag.short_description = 'Image'
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self: Any, *args, **kwargs) -> None:
+		"""
+		Если у товара есть идентификатор и акция, и акция активна, то текущая цена равна цене минус цена, умноженная на
+		размер скидки по акции.
+
+		:param self: Любой — это экземпляр сохраняемой модели.
+		:type self: Any
+		"""
 		super().__init__(*args, **kwargs)
 		if self.id:
 			if self.promotion:
@@ -489,13 +605,22 @@ class Good(models.Model):
 				self.current_price = self.price
 			self.save(update_fields=['current_price'])
 
-	def get_absolute_url(self):
-		return reverse('good', args=[str(self.id)])
+	# Возврат URL-адреса объекта.
+	def get_absolute_url(self: Any) -> str:
+		"""
+		Функция возвращает URL-адрес для доступа к конкретному экземпляру модели.
+
+		:param self: Любой
+		:type self: Any
+		:return: URL-адрес подробного представления товара.
+		"""
+		return reverse('product', args=[str(self.id)])
 
 	def __str__(self):
 		return '%s %s %s' % (self.category, self.title, self.current_price)
 
 
+# Класс AddGoodPhoto - это модель, которая хранит в себе дополнительные фотографии товара.
 class AddGoodPhoto(models.Model):
 	good = models.ForeignKey(
 		Good,
@@ -514,12 +639,20 @@ class AddGoodPhoto(models.Model):
 		verbose_name_plural = 'фотографии товара'
 
 	def image_tag(self):
+		"""
+		Метод возвращает строку, содержащую HTML-тег изображения.
+
+		:param self: Любой — это объект, который передается функции.
+		:type self: Any
+		:return: Тег с URL-адресом изображения.
+		"""
 		return mark_safe('<img src="%s" style="height:30px;" />' % self.photo.url)
 
 	image_tag.short_description = 'Image'
 	image_tag.allow_tags = True
 
 
+# Класс Review - это модель, которая хранит в себе информацию об отзывах о товаре.
 class Review(models.Model):
 	good = models.ForeignKey(
 		Good,
@@ -558,6 +691,7 @@ class Review(models.Model):
 		return self.good.title
 
 
+# Класс GoodSpecification - это модель, которая хранит в себе информацию о характеристиках товара.
 class GoodSpecification(models.Model):
 	good = models.ForeignKey(
 		Good,
@@ -565,6 +699,7 @@ class GoodSpecification(models.Model):
 		verbose_name='товар',
 		related_name='good_specifications'
 	)
+	# Создание внешнего ключа к модели спецификации.
 	specification = models.ForeignKey(
 		Specification,
 		on_delete=models.CASCADE,
@@ -584,6 +719,7 @@ class GoodSpecification(models.Model):
 		return '%s: %s - %s' % (self.good.title, self.specification, self.value)
 
 
+# Класс GoodTag - это модель, которая хранит в себе информацию о тегах товара.
 class GoodTag(models.Model):
 	good = models.ForeignKey(
 		Good,
@@ -607,6 +743,7 @@ class GoodTag(models.Model):
 		return self.tag.title
 
 
+# Класс KeyGoodFeature - это модель, которая хранит в себе информацию о ключевых особенностях товара.
 class KeyGoodFeature(models.Model):
 	good = models.ForeignKey(
 		Good,
@@ -630,6 +767,7 @@ class KeyGoodFeature(models.Model):
 		return '%s (%s)' % (self.key_feature, self.good.title)
 
 
+# Класс AddGoodInfo - это модель, которая хранит в себе информацию о дополнительной информации о товаре.
 class AddGoodInfo(models.Model):
 	good = models.ForeignKey(
 		Good,
@@ -656,6 +794,7 @@ class AddGoodInfo(models.Model):
 		return '%s: %s - %s' % (self.good.title, self.add_info, self.value)
 
 
+# Класс Order - это модель, которая хранит в себе информацию о заказах покупателей.
 class Order(models.Model):
 	user = models.ForeignKey(
 		User,
@@ -725,6 +864,7 @@ class Order(models.Model):
 		}
 
 
+# Класс GoodInCart - это модель, которая хранит в себе информацию о товарах в корзине.
 class GoodInCart(models.Model):
 	cart = models.ForeignKey(
 		Cart,
@@ -753,7 +893,13 @@ class GoodInCart(models.Model):
 		verbose_name = 'товар в корзине'
 		verbose_name_plural = 'товары в корзине'
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self: Any, *args, **kwargs) -> None:
+		"""
+		Если id объекта существует, то рассчитываем сумму товара в корзине.
+
+		:param self: Любой — это экземпляр сохраняемой модели.
+		:type self: Any
+		"""
 		super().__init__(*args, **kwargs)
 		if self.id:
 			self.amount = self.quantity * self.good.current_price
@@ -763,6 +909,7 @@ class GoodInCart(models.Model):
 		return self.good.title
 
 
+# Класс GoodInOrder - это модель, которая хранит в себе информацию о товарах в заказе.
 class GoodInOrder(models.Model):
 	order = models.ForeignKey(
 		Order,
@@ -794,10 +941,16 @@ class GoodInOrder(models.Model):
 		verbose_name = 'товар в заказе'
 		verbose_name_plural = 'товары в заказе'
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self: Any, *args, **kwargs) -> None:
+		"""
+		Если id объекта не None, то вычисляем сумму товара в заказе
+
+		:param self: Любой — это экземпляр сохраняемой модели
+		:type self: Any
+		"""
 		super().__init__(*args, **kwargs)
 		if self.id:
-			self.amount = self.quantity * self.good.current_price
+			self.amount = self.quantity * self.price
 			self.save(update_fields=['amount'])
 
 	def __str__(self):

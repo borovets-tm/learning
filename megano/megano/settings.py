@@ -9,16 +9,28 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import json
 import os
 from pathlib import Path
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-n3bhk=p94jx%8ik#t0+dy+tsg4x0swy=8kk1q$pak820xg!wu%'
+
+
+settings_file = os.path.join(BASE_DIR, 'settings.json')
+
+with open(settings_file, 'r') as file:
+    data = json.load(file)
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost', data['ALLOWED_HOSTS']]
 
 
 # Quick-start development settings - unsuitable for production
@@ -148,3 +160,13 @@ FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# настройки для работы службы восстановления пароля
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+SERVER_EMAIL = data['SERVER_EMAIL']
+EMAIL_USE_TLS = data['EMAIL_USE_TLS']
+EMAIL_HOST = data['EMAIL_HOST']
+EMAIL_PORT = data['EMAIL_PORT']
+EMAIL_HOST_USER = data['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = data['EMAIL_HOST_PASSWORD']
+DEFAULT_FROM_EMAIL = SERVER_EMAIL

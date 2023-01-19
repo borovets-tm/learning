@@ -6,12 +6,12 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    if os.path.isfile(os.path.join(os.path.dirname(__file__), 'local_settings.py')):
-        # Если рядом с manage.py лежит local_settings.py — используем его
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "local_settings")
+    if os.path.isfile(os.path.join(os.path.dirname(__file__), 'megano', 'local_settings.py')):
+        # Если есть local_settings.py — используем его
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "megano.local_settings")
     else:
-        # Если нет — используем стандартные настройки без секретов
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "megano.settings.production")
+        # Если нет — используем стандартные настройки
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "megano.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

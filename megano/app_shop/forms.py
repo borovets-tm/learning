@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from app_shop.models import Profile, Review
 
 
+# Это форма, для создания нового пользователя и его профиля(номер телефона и поле полного имени).
 class SignUpForm(UserCreationForm):
 	phone = forms.CharField(
 		label='Телефон',
@@ -32,6 +33,7 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].widget.attrs.update({'class': 'form-input', 'placeholder': 'Введите пароль повторно'})
 
 
+# Форма изменения данных профиля пользователя.
 class UserProfileUpdate(forms.ModelForm):
 	class Meta:
 		model = Profile
@@ -60,6 +62,7 @@ class UserProfileUpdate(forms.ModelForm):
 		}
 
 
+# Форма изменения электронной почты профиля пользователя.
 class UserDataUpdate(UserChangeForm):
 	class Meta:
 		model = User
@@ -69,6 +72,7 @@ class UserDataUpdate(UserChangeForm):
 		}
 
 
+# Форма изменения пароля пользователя
 class ChangePasswordForm(PasswordChangeForm):
 	new_password1 = forms.CharField(
 		required=False,
@@ -80,6 +84,7 @@ class ChangePasswordForm(PasswordChangeForm):
 	)
 
 
+# Форма восстановления пароля пользователя через электронную почту
 class RestorePasswordForm(forms.Form):
 	email = forms.EmailField(
 		required=True,
@@ -88,7 +93,7 @@ class RestorePasswordForm(forms.Form):
 		error_messages={'required': 'Неверный адрес'}
 	)
 
-
+# Форма аутентификации пользователя
 class LoginForm(forms.Form):
 	username = forms.CharField(
 		label='Логин',
@@ -99,7 +104,7 @@ class LoginForm(forms.Form):
 		widget=forms.PasswordInput(attrs={'class': 'form-input', 'placeholder': 'Введите пароль'})
 	)
 
-
+# Форма добавления отзыва о товаре
 class ReviewForm(forms.ModelForm):
 	class Meta:
 		model = Review
