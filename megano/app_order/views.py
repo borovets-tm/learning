@@ -93,9 +93,22 @@ def progress_payment(request: Any) -> HttpResponse:
 
 
 class OrderView(View):
+	"""
+	Представление для создания заказа.
+	"""
 
 	@classmethod
-	def get(cls, request):
+	def get(cls, request: Any) -> HttpResponse:
+		"""
+		Функция получает форму для регистрации, тип доставки и способ оплаты. Если пользователь залогинился, то получает
+		профиль пользователя, список товаров в корзине и отрисовывает страницу заказа с контекстом в противнос случае
+		передает форму для регистрации.
+
+		:param cls: Класс представления
+		:param request: Объект запроса.
+		:type request: Any
+		:return: ответ пользователю.
+		"""
 		form_signup = SignUpForm()
 		delivery_type = DeliveryType.objects.all()
 		payment_method = PaymentMethod.objects.all()
@@ -123,7 +136,15 @@ class OrderView(View):
 		)
 
 	@classmethod
-	def order_confirm(cls, request):
+	def order_confirm(cls, request: Any) -> HttpResponse:
+		"""
+		Метод отображает шаблон подтверждения заказа
+
+		:param cls: сам класс
+		:param request: Любой - объект запроса
+		:type request: Any
+		:return: Объект HttpResponse.
+		"""
 		if not request.user.id:
 			return HttpResponseRedirect(request.META.get('HTTP_REFERER').split(request.META.get('HTTP_HOST'))[1])
 		context = {
@@ -145,7 +166,15 @@ class OrderView(View):
 		)
 
 	@classmethod
-	def order_creation(cls, request):
+	def order_creation(cls, request: Any) -> HttpResponse:
+		"""
+		Создает заказ, добавляет товары из корзины в заказ и перенаправляет на страницу оплаты
+
+		:param cls: Класс представления
+		:param request: Любой - объект запроса
+		:type request: Any
+		:return: HttpResponseRedirect
+		"""
 		order = Order.objects.create(
 			user=request.user,
 			delivery_type=DeliveryType.objects.get(id=int(request.POST.get('delivery_type'))),
@@ -176,10 +205,15 @@ class OrderView(View):
 
 
 class OneOrderDetailView(DetailView):
+	"""
+	Отображает детальную информацию по заказу. Если пользователь не является владельцем заказа, перенаправит на главную
+	страницу.
+	:return: Контекст.
+	"""
 	template_name = 'app_order/oneorder.html'
 	model = Order
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> Any:
 		context = super().get_context_data(**kwargs)
 		user_order = context['object']
 		if user_order.user != self.request.user:

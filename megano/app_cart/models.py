@@ -47,20 +47,21 @@ class Cart(models.Model):
 		:type self: Any
 		"""
 		super().__init__(*args, **kwargs)
-		try:
-			# Проверяем, пуста ли корзина.
-			if not self.goods_in_carts:
-				raise ObjectDoesNotExist
-			# Использование агрегатной функции для суммирования количества всех товаров в корзине.
-			self.number_of_goods = self.goods_in_carts.all().aggregate(Sum('quantity'))['quantity__sum']
-			# Использование агрегатной функции для суммирования стоимости товаров в корзине.
-			self.amount = self.goods_in_carts.all().aggregate(Sum('amount'))['amount__sum']
-			# Обновление полей количество товаров и суммы в базе.
-			self.save(update_fields=['number_of_goods', 'amount'])
-		except ObjectDoesNotExist:
-			self.number_of_goods = 0
-			self.amount = 0
-			self.save(update_fields=['number_of_goods', 'amount'])
+		if self.id:
+			try:
+				# Проверяем, пуста ли корзина.
+				if not self.goods_in_carts.all():
+					raise ObjectDoesNotExist
+				# Использование агрегатной функции для суммирования количества всех товаров в корзине.
+				self.number_of_goods = self.goods_in_carts.all().aggregate(Sum('quantity'))['quantity__sum']
+				# Использование агрегатной функции для суммирования стоимости товаров в корзине.
+				self.amount = self.goods_in_carts.all().aggregate(Sum('amount'))['amount__sum']
+				# Обновление полей количество товаров и суммы в базе.
+				self.save(update_fields=['number_of_goods', 'amount'])
+			except (ObjectDoesNotExist, ValueError):
+				self.number_of_goods = 0
+				self.amount = 0
+				self.save(update_fields=['number_of_goods', 'amount'])
 
 	def __str__(self):
 		return '%s [user:%s]' % (self.session, self.user)

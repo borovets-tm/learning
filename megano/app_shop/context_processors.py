@@ -6,7 +6,7 @@ from django.db.models import Min, Max, Sum
 from app_shop.models import Category, Tag, Good
 
 
-regex = r"(\/[admin][\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
+regex = r"(\/admin[\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
 
 
 # Чтобы меню с категориями товаров работало на каждой странице.

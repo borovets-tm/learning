@@ -194,10 +194,14 @@ class IndexView(View):
 
 
 class SearchGoodListView(ListView):
+	"""
+	Представление отображает список объектов результата поиска.
+	:return: Контекст.
+	"""
 	template_name = 'app_shop/catalog.html'
 	model = Good
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		query = self.request.GET.get('query')
 		object_list = context['object_list'].filter(
@@ -219,10 +223,14 @@ class SearchGoodListView(ListView):
 
 
 class CategoryDetailView(DetailView):
+	"""
+	Отображает список товаров в указанной категории.
+	:return: Контекст.
+	"""
 	template_name = 'app_shop/catalog.html'
 	model = Category
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		good_in_category = (
 			context['object']
@@ -236,10 +244,14 @@ class CategoryDetailView(DetailView):
 
 
 class SubcategoryDetailView(DetailView):
+	"""
+	Отображает список товаров в указанной подкатегории.
+	:return: Контекст.
+	"""
 	template_name = 'app_shop/catalog.html'
 	model = Subcategory
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		good_in_subcategory = (
 			context['object']
@@ -252,10 +264,14 @@ class SubcategoryDetailView(DetailView):
 
 
 class CatalogListView(ListView):
+	"""
+	Отображает список всех товаров в магазине.
+	:return: Контекст.
+	"""
 	template_name = 'app_shop/catalog.html'
 	model = Good
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		object_list = context['object_list']
 		context = sort_of_good(self, context, object_list)
@@ -263,10 +279,14 @@ class CatalogListView(ListView):
 
 
 class TagDetailView(DetailView):
+	"""
+	Отображает список товаров по тегу.
+	:return: Контекст.
+	"""
 	template_name = 'app_shop/catalog.html'
 	model = Tag
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		goods_by_tag = context['object'].goods_by_tags.filter(good__quantity__gt=0)
 		object_list = Good.objects.filter(good_tags__in=goods_by_tag, quantity__gt=0)
@@ -275,10 +295,14 @@ class TagDetailView(DetailView):
 
 
 class ProductDetailView(DetailView):
+	"""
+	Детальная информация о товаре с отзывами о нем.
+	:return: Контекст.
+	"""
 	template_name = 'app_shop/product.html'
 	model = Good
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		good = context['object']
 		context['specification_list'] = good.good_specifications.all()
@@ -302,10 +326,14 @@ class ProductDetailView(DetailView):
 
 
 class PromotionListView(ListView):
+	"""
+	Отображает список товаров, участвующие в промо акциях.
+	:return: Контекст.
+	"""
 	template_name = 'app_shop/sale.html'
 	queryset = Good.objects.filter(~Q(promotion=None)).order_by('promotion__promo_end_date')
 
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		object_list = context['object_list']
 		page_number = self.request.GET.get('page')

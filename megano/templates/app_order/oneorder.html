@@ -136,7 +136,7 @@
 												<a class="Cart-title" href="{% url 'product' item.good.pk %}">
 													{{ item.good.title }}
 												</a>
-												<div class="Cart-desc">Это супер ноутбук, 3 гб. 4 ядра
+												<div class="Cart-desc">{{ item.good.description|slice:"100"}}
 												</div>
 											</div>
 											<div class="Cart-block Cart-block_price">

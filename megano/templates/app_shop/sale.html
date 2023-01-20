@@ -60,10 +60,14 @@
 								</a>
 								<div class="Card-date">
 									<strong class="Card-date-number">
-										{{ good.promotion.promo_end_date|date:"d" }}
+										{{ good.promotion.promo_start_date|date:"d" }}
 									</strong>
-									<span class="Card-date-month">{{ good.promotion.promo_end_date|date:"M" }}</span>
+									<span class="Card-date-month">{{ good.promotion.promo_start_date|date:"M" }}</span>
 								</div>
+								<div class="Card-date Card-date_to">
+                                    <strong class="Card-date-number">{{ good.promotion.promo_end_date|date:"d" }}</strong>
+									<span class="Card-date-month">{{ good.promotion.promo_end_date|date:"M" }}</span>
+                                </div>
 								<div class="Card-content">
 									<strong class="Card-title">
 										<a href="{% url 'product' good.pk %}">{{ good.title }}</a>

@@ -51,9 +51,21 @@ def add_cart(request: Any) -> HttpResponse:
 
 
 class CartView(View):
+	"""
+	Представления для отображения информации о корзине, составе товаров и методы для изменения состава и количества
+	товаров в корзине.
+	"""
 
 	@classmethod
-	def get(cls, request):
+	def get(cls, request: Any) -> HttpResponse:
+		"""
+		Метод получает корзину пользователя.
+
+		:param cls: Класс представления.
+		:param request: Любой объект запроса.
+		:type request: Any
+		:return: ответ на запрос.
+		"""
 		if not request.user.id:
 			session_id = request.META.get('CSRF_COOKIE')
 			user_cart = Cart.objects.get(session=session_id)
@@ -70,7 +82,15 @@ class CartView(View):
 		)
 
 	@classmethod
-	def reduce_quantity(cls, request, **kwargs):
+	def reduce_quantity(cls, request: Any, **kwargs) -> HttpResponse:
+		"""
+		Уменьшает количество товара в корзине на единицу.
+
+		:param cls: Класс представления.
+		:param request: Объект запроса
+		:type request: Any
+		:return: ответ на запрос.
+		"""
 		user_cart = Cart.objects.get(id=kwargs.get('cart'))
 		good = GoodInCart.objects.get(id=kwargs.get('good'))
 		good.quantity -= 1
@@ -82,7 +102,15 @@ class CartView(View):
 		return HttpResponseRedirect('/cart/', {'good_list': good_list, 'cart': user_cart})
 
 	@classmethod
-	def increase_quantity(cls, request, **kwargs):
+	def increase_quantity(cls, request: Any, **kwargs) -> HttpResponse:
+		"""
+		Увеличивает количество товара в корзине.
+
+		:param cls: Класс представления.
+		:param request: Любой объект запроса.
+		:type request: Any
+		:return: ответ на запрос.
+		"""
 		user_cart = Cart.objects.get(id=kwargs.get('cart'))
 		good = GoodInCart.objects.get(id=kwargs.get('good'))
 		good.quantity += 1
@@ -95,7 +123,15 @@ class CartView(View):
 		})
 
 	@classmethod
-	def remove_from_cart(cls, request, **kwargs):
+	def remove_from_cart(cls, request: Any, **kwargs) -> HttpResponse:
+		"""
+		Удаляет товар из корзины.
+
+		:param cls: Класс представления.
+		:param request: Любой объект запроса
+		:type request: Any
+		:return: ответ на запрос.
+		"""
 		user_cart = Cart.objects.get(id=kwargs.get('cart'))
 		good = GoodInCart.objects.get(id=kwargs.get('good'))
 		good.delete()
@@ -103,7 +139,15 @@ class CartView(View):
 		return HttpResponseRedirect('/cart/', {'good_list': good_list, 'cart': user_cart})
 
 	@classmethod
-	def change_quantity(cls, request):
+	def change_quantity(cls, request: Any) -> HttpResponse:
+		"""
+		Изменяет количество товара в корзине.
+
+		:param cls: Класс представления.
+		:param request: Любой объект запроса.
+		:type request: Any
+		:return: ответ на запрос.
+		"""
 		user_cart = Cart.objects.get(id=request.POST.get('cart'))
 		good = GoodInCart.objects.get(id=request.POST.get('good'))
 		good.quantity = int(request.POST.get('amount'))

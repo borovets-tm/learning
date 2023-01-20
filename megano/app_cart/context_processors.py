@@ -3,7 +3,7 @@ from typing import Any
 
 from app_cart.models import Cart
 
-regex = r"(\/[admin][\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
+regex = r"(\/admin[\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
 
 
 # Получаем инфу о корзине пользователя на каждой странице
