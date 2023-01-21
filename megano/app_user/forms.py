@@ -11,7 +11,12 @@ from app_user.models import Profile
 class SignUpForm(UserCreationForm):
 	phone = forms.CharField(
 		label='Телефон',
-		widget=forms.TextInput(attrs={'class': 'form-input', 'placeholder': '9998887766', 'data-validate': 'require'})
+		widget=forms.TextInput(attrs={
+			'class': 'form-input',
+			'placeholder': '9998887766',
+			'data-validate': 'require',
+			'data-mask': '+7(999)999-99-99'
+		})
 	)
 	full_name = forms.CharField(
 		label='ФИО',
