@@ -1437,9 +1437,7 @@
     "pk": 1,
     "fields": {
       "user": 1,
-      "session": "1",
-      "amount": null,
-      "number_of_goods": null
+      "session": "1"
     }
   },
   {
@@ -1447,9 +1445,7 @@
     "pk": 9,
     "fields": {
       "user": 2,
-      "session": "2",
-      "amount": null,
-      "number_of_goods": null
+      "session": "2"
     }
   },
   {
