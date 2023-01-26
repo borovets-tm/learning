@@ -91,32 +91,38 @@ class AddProductPhotoTabularInline(admin.TabularInline):
 	model = AddProductPhoto
 	fields = ['image_tag', 'photo']
 	readonly_fields = ['image_tag']
+	classes = ['collapse']
 
 
 class ProductSpecificationTabularInline(admin.TabularInline):
 	model = ProductSpecification
 	fields = ['specification', 'value']
+	classes = ['collapse']
 
 
 class KeyProductFeatureTabularInline(admin.TabularInline):
 	model = KeyProductFeature
 	fields = ['key_feature']
+	classes = ['collapse']
 
 
 class AddProductInfoTabularInline(admin.TabularInline):
 	model = AddProductInfo
 	fields = ['add_info', 'value']
+	classes = ['collapse']
 
 
 class ProductTagTabularInline(admin.TabularInline):
 	model = ProductTag
 	fields = ['tag']
+	classes = ['collapse']
 
 
 class ReviewTabularInline(admin.TabularInline):
 	model = Review
 	fields = ['full_name', 'email', 'text', 'creation_date']
 	readonly_fields = ['full_name', 'email', 'text', 'creation_date']
+	classes = ['collapse']
 
 
 @admin.register(Product)

@@ -12,6 +12,46 @@ from app_setting.models import Settings
 # SettingsAdmin определяет интерфейс администратора для модели Settings.
 class SettingsAdmin(admin.ModelAdmin):
 	list_display = ['title']
+	fieldsets = (
+		(
+			None,
+			{
+				'fields': (
+					'title',
+				)
+			}
+		),
+		(
+			'Настройки сервиса восстановления паролей',
+			{
+				'fields': (
+					'SERVER_EMAIL',
+					'EMAIL_USE_TLS',
+					'EMAIL_HOST',
+					'EMAIL_PORT',
+					'EMAIL_HOST_USER',
+					'EMAIL_HOST_PASSWORD'
+				),
+				'description': 'Данные настройки необходимы для корректной работы сервиса сброса пароля через электронную почту'
+			}
+		),
+		(
+			'Сервер сайта',
+			{
+				'fields': (
+					'ALLOWED_HOSTS',
+				)
+			}
+		),
+		(
+			'Валюта сайта',
+			{
+				'fields': (
+					'CURRENT_SITE_CURRENCY',
+				)
+			}
+		)
+	)
 
 	def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
 		settings_file = os.path.join(settings.BASE_DIR, 'site_settings.json')

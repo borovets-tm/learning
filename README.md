@@ -40,9 +40,11 @@ https://example.com/admin, где "example.com" - это адрес Вашего
 
 ### Установка
 
+Описанный процесс установки подразумевает, что файлы проекта уже находятся на ПК/Сервере!
+
 1. Перейдите в директорию, где находится каталог с проектом и откройте командную строку
-2. Введите следующие команды по порядку  
-    * ```python -m megano_venv```
+2. Введите следующие команды по порядку
+    * ```python -m venv megano_venv```
     *  Для системы Windows: ```megano_venv/Scripts/activate.ps1```  
        Для остальных: ```megano_venv/bin/activate```
     * ```pip install -r requirements.txt```
@@ -51,7 +53,7 @@ https://example.com/admin, где "example.com" - это адрес Вашего
     * ```python manage.py migrate```
     * ```python manage.py loaddata settings.json```
     * ```python manage.py runserver```  
-3. Перейдите по адресу https://localhost:8000/admin/
+3. Перейдите по адресу [localhost:8000/admin/](http://localhost:8000/admin/)
 4. Введите логин и пароль:
    * логин: admin
    * пароль: Admin123456
@@ -59,3 +61,6 @@ https://example.com/admin, где "example.com" - это адрес Вашего
 6. Вернитесь в терминал и остановите сервер сочетанием клавиш Ctrl + C (Windows), ⌘ + T (Mac Os) 
 или Ctrl + Shift + T (Linux).
 7. Установка завершена. Для дальнейшей работы проведите необходимы процедуры по развертыванию системы на сервере.
+8. Добавьте категории и подкатегории товаров, а также сами товары.  
+
+### Сайт будет выдавать ошибку "Server Error (500)" пока на нем не будет товаров как минимум в 3 различных категориях!

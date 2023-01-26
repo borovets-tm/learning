@@ -15,6 +15,7 @@ class DeliveryTypeAdmin(admin.ModelAdmin):
 class ProductInOrderTabularInLine(admin.TabularInline):
 	model = ProductInOrder
 	readonly_fields = ['product', 'price', 'quantity', 'amount']
+	classes = ['collapse']
 
 
 @admin.register(Order)
