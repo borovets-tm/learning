@@ -28,28 +28,28 @@
 				{% load static %}
 				<form class="form Cart" action="{% url 'change_quantity' %}" method="post">
 					{% csrf_token %}
-					{% if good_list %}
-						{% for good in good_list %}
+					{% if product_list %}
+						{% for product in product_list %}
 							<div class="Cart-product">
 								<div class="Cart-block Cart-block_row">
 									<div class="Cart-block Cart-block_pict">
-										<a class="Cart-pict" href="{% url 'product' good.good.pk %}">
-											<img class="Cart-img" src="{{ good.good.main_photo.url }}"
-											     alt="{{ good.good.main_photo.name }}"/>
+										<a class="Cart-pict" href="{% url 'product' product.product.pk %}">
+											<img class="Cart-img" src="{{ product.product.main_photo.url }}"
+											     alt="{{ product.product.main_photo.name }}"/>
 										</a>
 									</div>
 									<div class="Cart-block Cart-block_info">
-										<a class="Cart-title" href="{% url 'product' good.good.pk %}">
-											{{ good.good.title }}
+										<a class="Cart-title" href="{% url 'product' product.product.pk %}">
+											{{ product.product.title }}
 										</a>
 										<div class="Cart-desc">
 											<!-- добавляем описание длиной до 100 символов -->
-											{{ good.good.description|slice:"100" }}
+											{{ product.product.description|slice:"100" }}
 										</div>
 									</div>
 									<div class="Cart-block Cart-block_price">
 										<div class="Cart-price">
-											{{ good.good.price }}{{ CURRENCY }}
+											{{ product.product.price }}{{ CURRENCY }}
 										</div>
 									</div>
 								</div>
@@ -61,20 +61,20 @@
 										<div class="Cart-amount">
 											<div class="Amount">
 												<button class="Amount-remove" type="button"
-												        onclick="window.location.href='{% url 'reduce_quantity' good.pk cart.pk %}'">
+												        onclick="window.location.href='{% url 'reduce_quantity' product.pk cart.pk %}'">
 												</button>
 												<input type="hidden" name="cart" value="{{ cart.pk }}"/>
-												<input type="hidden" name="good" value="{{ good.pk }}"/>
+												<input type="hidden" name="product" value="{{ product.pk }}"/>
 												<input class="Amount-input form-input" name="amount" type="text"
-												       value="{{ good.quantity }}"/>
+												       value="{{ product.quantity }}"/>
 												<button class="Amount-add" type="button"
-												        onclick="window.location.href='{% url 'increase_quantity' good.pk cart.pk %}'">
+												        onclick="window.location.href='{% url 'increase_quantity' product.pk cart.pk %}'">
 												</button>
 											</div>
 										</div>
 									</div>
 									<div class="Cart-block Cart-block_delete">
-										<a class="Cart-delete" href="{% url 'remove_from_cart' good.pk cart.pk %}">
+										<a class="Cart-delete" href="{% url 'remove_from_cart' product.pk cart.pk %}">
 											<img src="{% static 'assets/img/icons/card/delete.svg' %}"
 											     alt="delete.svg"/>
 										</a>

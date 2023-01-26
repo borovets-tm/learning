@@ -136,23 +136,23 @@
 					</div>
 					<div class="Cards">
 						{% if page_obj %}
-							{% for good in page_obj %}
+							{% for product in page_obj %}
 								<div class="Card">
-									<a class="Card-picture" href="{% url 'product' good.pk %}">
-										<img src="{{ good.main_photo.url }}" alt="{{ good.main_photo.name }}"/>
+									<a class="Card-picture" href="{% url 'product' product.pk %}">
+										<img src="{{ product.main_photo.url }}" alt="{{ product.main_photo.name }}"/>
 									</a>
 									<div class="Card-content">
 										<strong class="Card-title">
-											<a href="{% url 'product' good.pk %}">
-												{{ good.title }}
+											<a href="{% url 'product' product.pk %}">
+												{{ product.title }}
 											</a>
 										</strong>
 										<div class="Card-description">
 											<div class="Card-cost">
-												<span class="Card-price">{{ CURRENCY }}{{ good.price }}</span>
+												<span class="Card-price">{{ CURRENCY }}{{ product.price }}</span>
 											</div>
 											<div class="Card-category">
-												{{ good.category.category.title }}/{{ good.category.title }}
+												{{ product.category.category.title }}/{{ product.category.title }}
 											</div>
 											{% include 'app_cart/cart_hover_include.html' %}
 										</div>

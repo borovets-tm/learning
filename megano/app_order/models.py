@@ -1,9 +1,7 @@
-from typing import Any
-
 from django.contrib.auth.models import User
 from django.db import models
 
-from app_shop.models import Good
+from app_shop.models import Product
 
 
 # Класс OrderStatus — это модель, которая хранит в себе список статусов заказа.
@@ -139,20 +137,20 @@ class Order(models.Model):
 		}
 
 
-# Класс GoodInOrder - это модель, которая хранит в себе информацию о товарах в заказе.
-class GoodInOrder(models.Model):
+# Класс ProductInOrder - это модель, которая хранит в себе информацию о товарах в заказе.
+class ProductInOrder(models.Model):
 	order = models.ForeignKey(
 		Order,
 		null=True,
 		on_delete=models.SET_NULL,
 		verbose_name='заказ',
-		related_name='goods_in_order'
+		related_name='products_in_order'
 	)
-	good = models.ForeignKey(
-		Good,
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
 		verbose_name='товар',
-		related_name='ordered_goods'
+		related_name='ordered_products'
 	)
 	price = models.FloatField(
 		verbose_name='цена товара'
@@ -162,7 +160,7 @@ class GoodInOrder(models.Model):
 	)
 
 	class Meta:
-		db_table = 'good_in_order'
+		db_table = 'product_in_order'
 		verbose_name = 'товар в заказе'
 		verbose_name_plural = 'товары в заказе'
 
@@ -177,4 +175,4 @@ class GoodInOrder(models.Model):
 		return 0
 
 	def __str__(self):
-		return self.good.title
+		return self.product.title

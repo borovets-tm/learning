@@ -3,7 +3,7 @@ from typing import Any
 
 from django.db.models import Min, Max, Sum
 
-from app_shop.models import Category, Tag, Good
+from app_shop.models import Category, Tag, Product
 
 
 regex = r"(\/admin[\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
@@ -58,8 +58,8 @@ def get_min_and_max_price(request: Any) -> dict:
     """
     if re.search(regex, request.META['PATH_INFO']):
         return {}
-    min_price_in_catalog = str(Good.objects.aggregate(Min('current_price'))['current_price__min']).replace(' ', '')
-    max_price_in_catalog = str(Good.objects.aggregate(Max('current_price'))['current_price__max']).replace(' ', '')
+    min_price_in_catalog = str(Product.objects.aggregate(Min('current_price'))['current_price__min']).replace(' ', '')
+    max_price_in_catalog = str(Product.objects.aggregate(Max('current_price'))['current_price__max']).replace(' ', '')
     context = {
         'min_price_in_catalog': min_price_in_catalog,
         'max_price_in_catalog': max_price_in_catalog
@@ -79,11 +79,12 @@ def get_the_most_popular_item(request: Any) -> dict:
     """
     if re.search(regex, request.META['PATH_INFO']):
         return {}
-    popular_good_pk = (Good.objects.filter(quantity__gt=0)
-                       .annotate(Sum('ordered_goods__quantity'))
-                       .order_by('-ordered_goods__quantity__sum').first().pk
-                       )
+    popular_product_pk = (Product.objects.filter(quantity__gt=0).annotate(
+        Sum('ordered_products__quantity')
+    ).order_by(
+        '-ordered_products__quantity__sum'
+    ).first().pk)
     context = {
-        'popular_good_pk': popular_good_pk
+        'popular_product_pk': popular_product_pk
     }
     return context

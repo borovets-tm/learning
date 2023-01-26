@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models import Sum
 
-from app_shop.models import Good
+from app_shop.models import Product
 
 
 # Класс Cart - это модель, которая хранит в себе информацию о корзине пользователя.
@@ -27,15 +27,15 @@ class Cart(models.Model):
 		verbose_name_plural = 'корзины'
 
 	@property
-	def number_of_goods(self) -> int:
+	def number_of_products(self) -> int:
 		"""
 		Если у корзины есть id, то вернуть сумму количества всех товаров в корзине если в корзине есть товары, иначе
 		вернуть 0. Если у корзины нет id, вернуть 0.
 		:return: Количество товаров в корзине.
 		"""
 		if self.id:
-			if self.goods_in_carts.all():
-				return self.goods_in_carts.all().aggregate(Sum('quantity'))['quantity__sum']
+			if self.products_in_carts.all():
+				return self.products_in_carts.all().aggregate(Sum('quantity'))['quantity__sum']
 			else:
 				return 0
 		return 0
@@ -48,28 +48,28 @@ class Cart(models.Model):
 		"""
 		if self.id:
 			amount = 0
-			good_in_cart = self.goods_in_carts.all()
-			for good in good_in_cart:
-				amount += good.amount
+			product_in_cart = self.products_in_carts.all()
+			for product in product_in_cart:
+				amount += product.amount
 			return amount
 
 	def __str__(self):
 		return '%s [user:%s]' % (self.session, self.user)
 
 
-# Класс GoodInCart - это модель, которая хранит в себе информацию о товарах в корзине.
-class GoodInCart(models.Model):
+# Класс ProductInCart - это модель, которая хранит в себе информацию о товарах в корзине.
+class ProductInCart(models.Model):
 	cart = models.ForeignKey(
 		Cart,
 		on_delete=models.CASCADE,
 		verbose_name='корзина',
-		related_name='goods_in_carts'
+		related_name='products_in_carts'
 	)
-	good = models.ForeignKey(
-		Good,
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
 		verbose_name='товар',
-		related_name='added_goods'
+		related_name='added_products'
 	)
 	quantity = models.IntegerField(
 		verbose_name='количество',
@@ -77,7 +77,7 @@ class GoodInCart(models.Model):
 	)
 
 	class Meta:
-		db_table = 'good_in_cart'
+		db_table = 'product_in_cart'
 		verbose_name = 'товар в корзине'
 		verbose_name_plural = 'товары в корзине'
 
@@ -89,8 +89,8 @@ class GoodInCart(models.Model):
 		:return: Сумма позиции товаров, исходя из количества и стоимости.
 		"""
 		if self.id:
-			return self.quantity * self.good.current_price
+			return self.quantity * self.product.current_price
 		return 0
 
 	def __str__(self):
-		return self.good.title
+		return self.product.title

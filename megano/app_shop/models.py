@@ -263,13 +263,13 @@ class AddInfo(models.Model):
 		return self.list_item[:20]
 
 
-# Класс Good - это модель, которая хранит в себе информацию о товарах в магазине.
-class Good(models.Model):
+# Класс Product - это модель, которая хранит в себе информацию о товарах в магазине.
+class Product(models.Model):
 	category = models.ForeignKey(
 		Subcategory,
 		on_delete=models.CASCADE,
 		verbose_name='категория товара',
-		related_name='category_goods'
+		related_name='category_products'
 	)
 	sku = models.CharField(
 		max_length=12,
@@ -311,11 +311,11 @@ class Good(models.Model):
 		on_delete=models.SET_NULL,
 		null=True,
 		blank=True,
-		related_name='goods_on_sale',
+		related_name='products_on_sale',
 		verbose_name='участвует в акции'
 	)
 	main_photo = models.ImageField(
-		upload_to='good',
+		upload_to='product',
 		verbose_name='главное фото товара'
 	)
 	is_limited = models.BooleanField(
@@ -326,7 +326,7 @@ class Good(models.Model):
 	)
 
 	class Meta:
-		db_table = 'good'
+		db_table = 'product'
 		ordering = ['current_price']
 		verbose_name = 'товар'
 		verbose_name_plural = 'товары'
@@ -378,21 +378,21 @@ class Good(models.Model):
 		return '%s %s %s' % (self.category, self.title, self.current_price)
 
 
-# Класс AddGoodPhoto - это модель, которая хранит в себе дополнительные фотографии товара.
-class AddGoodPhoto(models.Model):
-	good = models.ForeignKey(
-		Good,
+# Класс AddProductPhoto - это модель, которая хранит в себе дополнительные фотографии товара.
+class AddProductPhoto(models.Model):
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
 		related_name='photo_gallery',
 		verbose_name='товар'
 	)
 	photo = models.ImageField(
-		upload_to='good_gallery',
+		upload_to='product_gallery',
 		verbose_name='фото товара'
 	)
 
 	class Meta:
-		db_table = 'add_good_photo'
+		db_table = 'add_product_photo'
 		verbose_name = 'фотография товара'
 		verbose_name_plural = 'фотографии товара'
 
@@ -412,11 +412,11 @@ class AddGoodPhoto(models.Model):
 
 # Класс Review - это модель, которая хранит в себе информацию об отзывах о товаре.
 class Review(models.Model):
-	good = models.ForeignKey(
-		Good,
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
 		verbose_name='товар',
-		related_name='good_reviews'
+		related_name='product_reviews'
 	)
 	full_name = models.CharField(
 		max_length=100,
@@ -441,21 +441,21 @@ class Review(models.Model):
 
 	class Meta:
 		db_table = 'review'
-		ordering = ['good']
+		ordering = ['product']
 		verbose_name = 'отзыв на товар'
 		verbose_name_plural = 'отзывы на товар'
 
 	def __str__(self):
-		return self.good.title
+		return self.product.title
 
 
-# Класс GoodSpecification - это модель, которая хранит в себе информацию о характеристиках товара.
-class GoodSpecification(models.Model):
-	good = models.ForeignKey(
-		Good,
+# Класс ProductSpecification - это модель, которая хранит в себе информацию о характеристиках товара.
+class ProductSpecification(models.Model):
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
 		verbose_name='товар',
-		related_name='good_specifications'
+		related_name='product_specifications'
 	)
 	# Создание внешнего ключа к модели спецификации.
 	specification = models.ForeignKey(
@@ -469,31 +469,31 @@ class GoodSpecification(models.Model):
 	)
 
 	class Meta:
-		db_table = 'good_specification'
+		db_table = 'product_specification'
 		verbose_name = 'характеристика товара'
 		verbose_name_plural = 'характеристики товаров'
 
 	def __str__(self):
-		return '%s: %s - %s' % (self.good.title, self.specification, self.value)
+		return '%s: %s - %s' % (self.product.title, self.specification, self.value)
 
 
-# Класс GoodTag - это модель, которая хранит в себе информацию о тегах товара.
-class GoodTag(models.Model):
-	good = models.ForeignKey(
-		Good,
+# Класс ProductTag - это модель, которая хранит в себе информацию о тегах товара.
+class ProductTag(models.Model):
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
 		verbose_name='товар',
-		related_name='good_tags'
+		related_name='product_tags'
 	)
 	tag = models.ForeignKey(
 		Tag,
 		on_delete=models.CASCADE,
 		verbose_name='тег',
-		related_name='goods_by_tags'
+		related_name='products_by_tags'
 	)
 
 	class Meta:
-		db_table = 'good_tag'
+		db_table = 'product_tag'
 		verbose_name = 'тег товара'
 		verbose_name_plural = 'теги товаров'
 
@@ -501,37 +501,37 @@ class GoodTag(models.Model):
 		return self.tag.title
 
 
-# Класс KeyGoodFeature - это модель, которая хранит в себе информацию о ключевых особенностях товара.
-class KeyGoodFeature(models.Model):
-	good = models.ForeignKey(
-		Good,
+# Класс KeyProductFeature - это модель, которая хранит в себе информацию о ключевых особенностях товара.
+class KeyProductFeature(models.Model):
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
-		related_name='key_good_features',
+		related_name='key_product_features',
 		verbose_name='товар'
 	)
 	key_feature = models.ForeignKey(
 		KeyFeature,
 		on_delete=models.CASCADE,
-		related_name='good_with_key_features',
+		related_name='product_with_key_features',
 		verbose_name='ключевая особенность'
 	)
 
 	class Meta:
-		db_table = 'key_good_feature'
+		db_table = 'key_product_feature'
 		verbose_name = 'ключевая особенность товара'
 		verbose_name_plural = 'ключевые особенности товара'
 
 	def __str__(self):
-		return '%s (%s)' % (self.key_feature, self.good.title)
+		return '%s (%s)' % (self.key_feature, self.product.title)
 
 
-# Класс AddGoodInfo - это модель, которая хранит в себе информацию о дополнительной информации о товаре.
-class AddGoodInfo(models.Model):
-	good = models.ForeignKey(
-		Good,
+# Класс AddProductInfo - это модель, которая хранит в себе информацию о дополнительной информации о товаре.
+class AddProductInfo(models.Model):
+	product = models.ForeignKey(
+		Product,
 		on_delete=models.CASCADE,
 		verbose_name='товар',
-		related_name='add_info_about_good'
+		related_name='add_info_about_product'
 	)
 	add_info = models.ForeignKey(
 		AddInfo,
@@ -544,9 +544,9 @@ class AddGoodInfo(models.Model):
 	)
 
 	class Meta:
-		db_table = 'add_good_info'
+		db_table = 'add_product_info'
 		verbose_name = 'дополнительная информация о товаре'
 		verbose_name_plural = 'дополнительные информации о товаре'
 
 	def __str__(self):
-		return '%s: %s - %s' % (self.good.title, self.add_info, self.value)
+		return '%s: %s - %s' % (self.product.title, self.add_info, self.value)

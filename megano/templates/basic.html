@@ -150,7 +150,7 @@ a(href="http://browsehappy.com/") Выберите новую версию
 							<span class="menu-label menu-label_success">
 								Hot
 							</span>
-							<a class="menu-link" href="{% url 'product' popular_good_pk %}">
+							<a class="menu-link" href="{% url 'product' popular_product_pk %}">
 								Gallery
 							</a>
 						</li>
@@ -167,7 +167,7 @@ a(href="http://browsehappy.com/") Выберите новую версию
 					<a class="CartBlock-block" href="{% url 'cart' %}">
 						<img class="CartBlock-img" src="{% static 'assets/img/icons/cart.svg' %}" alt="cart.svg"/>
 						<span class="CartBlock-amount">
-							{{ number_of_goods }}
+							{{ number_of_products }}
 						</span>
 					</a>
 					<div class="CartBlock-block">

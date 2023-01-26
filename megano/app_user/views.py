@@ -170,20 +170,20 @@ class LoginView(View):
 			if user:
 				login(request, user)
 				user_cart = user.user_cart
-				if user_cart.goods_in_carts.all() and request.POST.get('next_url') == '/order/':
+				if user_cart.products_in_carts.all() and request.POST.get('next_url') == '/order/':
 					next_url = '/cart/'
 				else:
 					next_url = request.POST.get('next_url')
-				if session_cart.goods_in_carts.all():
-					for good in session_cart.goods_in_carts.all():
-						if user_cart.goods_in_carts.filter(good=good.good):
-							good_in_cart = user_cart.goods_in_carts.get(good=good.good)
-							good_in_cart.quantity += good.quantity
-							good_in_cart.save(update_fields=['quantity'])
-							good.delete()
+				if session_cart.products_in_carts.all():
+					for product in session_cart.products_in_carts.all():
+						if user_cart.products_in_carts.filter(product=product.product):
+							product_in_cart = user_cart.products_in_carts.get(product=product.product)
+							product_in_cart.quantity += product.quantity
+							product_in_cart.save(update_fields=['quantity'])
+							product.delete()
 						else:
-							good.cart = user_cart
-							good.save(update_fields=['cart'])
+							product.cart = user_cart
+							product.save(update_fields=['cart'])
 				session_cart.delete()
 				if next_url:
 					return HttpResponseRedirect(next_url)

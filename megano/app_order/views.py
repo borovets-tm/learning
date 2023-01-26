@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import DetailView
 
-from app_order.models import Order, DeliveryType, PaymentMethod, OrderStatus, GoodInOrder
+from app_order.models import Order, DeliveryType, PaymentMethod, OrderStatus, ProductInOrder
 from app_user.forms import SignUpForm
 
 
@@ -67,14 +67,14 @@ def progress_payment(request: Any) -> HttpResponse:
 	# убирается ошибки платежа и сообщения об ошибке платежа и сохраняется заказ. Если номер карты не четный или
 	#  последнее число равно 0, то устанавливается ошибка платежа и сообщения об ошибке платежа.
 	if card_number % 2 == 0 and card_number % 10 != 0:
-		for item in order.goods_in_order.all():
-			item.good.quantity -= item.quantity
-			if item.good.quantity < 0:
+		for item in order.products_in_order.all():
+			item.product.quantity -= item.quantity
+			if item.product.quantity < 0:
 				order.payment_error = 'Ошибка оплаты'
 				order.payment_error_message = 'Товара больше нет в наличии'
 				order.save(update_fields=['payment_error', 'payment_error_message'])
 			else:
-				item.good.save(update_fields=['quantity'])
+				item.product.save(update_fields=['quantity'])
 				order.status_id = 2
 				order.payment_error = None
 				order.payment_error_message = None
@@ -114,7 +114,7 @@ class OrderView(View):
 		payment_method = PaymentMethod.objects.all()
 		if request.user.id:
 			user_profile = request.user.user_profile
-			good_list = request.user.user_cart.goods_in_carts.all()
+			product_list = request.user.user_cart.products_in_carts.all()
 			return render(
 				request,
 				'app_order/order.html',
@@ -122,7 +122,7 @@ class OrderView(View):
 					'user_profile': user_profile,
 					'delivery_type': delivery_type,
 					'payment_method': payment_method,
-					'good_list': good_list
+					'product_list': product_list
 				}
 			)
 		return render(
@@ -156,7 +156,7 @@ class OrderView(View):
 			'city': request.POST.get('city'),
 			'address': request.POST.get('address'),
 			'payment_method': PaymentMethod.objects.get(id=int(request.POST.get('payment_method'))),
-			'good_list': request.user.user_cart.goods_in_carts.all(),
+			'product_list': request.user.user_cart.products_in_carts.all(),
 			'order_amount': request.user.user_cart.amount
 		}
 		return render(
@@ -188,13 +188,13 @@ class OrderView(View):
 			order.order_amount += order.delivery_type.delivery_cost
 		elif order.order_amount < order.delivery_type.purchase_amount_for_free_delivery:
 			order.order_amount += order.delivery_type.delivery_cost
-		good_list = request.user.user_cart.goods_in_carts.all()
-		for item in good_list:
-			GoodInOrder.objects.create(
+		product_list = request.user.user_cart.products_in_carts.all()
+		for item in product_list:
+			ProductInOrder.objects.create(
 				order=order,
-				good=item.good,
+				product=item.product,
 				quantity=item.quantity,
-				price=item.good.current_price,
+				price=item.product.current_price,
 				amount=item.amount
 			)
 			item.delete()
@@ -219,5 +219,5 @@ class OneOrderDetailView(DetailView):
 		if user_order.user != self.request.user:
 			return HttpResponseRedirect('/')
 		context['user_profile'] = self.request.user.user_profile
-		context['good_list'] = user_order.goods_in_order.all()
+		context['product_list'] = user_order.products_in_order.all()
 		return context

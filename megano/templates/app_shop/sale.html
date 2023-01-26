@@ -24,56 +24,56 @@
 		<div class="Section">
 			<div class="wrap">
 				<div class="Cards Cards_blog">
-					{% for good in object_list %}
-						{% if good == object_list.first %}
+					{% for product in object_list %}
+						{% if product == object_list.first %}
 							<div class="Card">
 								<a class="Card-picture" href="#">
-									<img src="{{ good.main_photo.url }}"
-									     alt="{{ good.main_photo.name }}"/>
+									<img src="{{ product.main_photo.url }}"
+									     alt="{{ product.main_photo.name }}"/>
 								</a>
 								<div class="Card-date">
 									<strong class="Card-date-number">
-										{{ good.promotion.promo_start_date|date:"d" }}
+										{{ product.promotion.promo_start_date|date:"d" }}
 									</strong>
-									<span class="Card-date-month">{{ good.promotion.promo_start_date|date:"M" }}</span>
+									<span class="Card-date-month">{{ product.promotion.promo_start_date|date:"M" }}</span>
 								</div>
 								<div class="Card-date Card-date_to">
-                                    <strong class="Card-date-number">{{ good.promotion.promo_end_date|date:"d" }}</strong>
-									<span class="Card-date-month">{{ good.promotion.promo_end_date|date:"M" }}</span>
+                                    <strong class="Card-date-number">{{ product.promotion.promo_end_date|date:"d" }}</strong>
+									<span class="Card-date-month">{{ product.promotion.promo_end_date|date:"M" }}</span>
                                 </div>
 								<div class="Card-pin">
 								</div>
 								<div class="Card-content">
 									<strong class="Card-title">
-										<a href="{% url 'product' good.pk %}">{{ good.title }}</a>
+										<a href="{% url 'product' product.pk %}">{{ product.title }}</a>
 									</strong>
 									<div class="Card-description">
-										{{ good.description|slice:"300" }}
+										{{ product.description|slice:"300" }}
 									</div>
 								</div>
 							</div>
 						{% else %}
 							<div class="Card">
 								<a class="Card-picture" href="#">
-									<img src="{{ good.main_photo.url }}"
-									     alt="{{ good.main_photo.name }}"/>
+									<img src="{{ product.main_photo.url }}"
+									     alt="{{ product.main_photo.name }}"/>
 								</a>
 								<div class="Card-date">
 									<strong class="Card-date-number">
-										{{ good.promotion.promo_start_date|date:"d" }}
+										{{ product.promotion.promo_start_date|date:"d" }}
 									</strong>
-									<span class="Card-date-month">{{ good.promotion.promo_start_date|date:"M" }}</span>
+									<span class="Card-date-month">{{ product.promotion.promo_start_date|date:"M" }}</span>
 								</div>
 								<div class="Card-date Card-date_to">
-                                    <strong class="Card-date-number">{{ good.promotion.promo_end_date|date:"d" }}</strong>
-									<span class="Card-date-month">{{ good.promotion.promo_end_date|date:"M" }}</span>
+                                    <strong class="Card-date-number">{{ product.promotion.promo_end_date|date:"d" }}</strong>
+									<span class="Card-date-month">{{ product.promotion.promo_end_date|date:"M" }}</span>
                                 </div>
 								<div class="Card-content">
 									<strong class="Card-title">
-										<a href="{% url 'product' good.pk %}">{{ good.title }}</a>
+										<a href="{% url 'product' product.pk %}">{{ product.title }}</a>
 									</strong>
 									<div class="Card-description">
-										{{ good.description|slice:"300" }}
+										{{ product.description|slice:"300" }}
 									</div>
 								</div>
 							</div>

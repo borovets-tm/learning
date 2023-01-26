@@ -7,13 +7,13 @@ from app_shop.models import (
 	Tag,
 	KeyFeature,
 	AddInfo,
-	Good,
-	AddGoodPhoto,
+	Product,
+	AddProductPhoto,
 	Review,
-	GoodSpecification,
-	GoodTag,
-	KeyGoodFeature,
-	AddGoodInfo,
+	ProductSpecification,
+	ProductTag,
+	KeyProductFeature,
+	AddProductInfo,
 	Promotion,
 )
 
@@ -87,29 +87,29 @@ class AddInfoAdmin(admin.ModelAdmin):
 		return {}
 
 
-class AddGoodPhotoTabularInline(admin.TabularInline):
-	model = AddGoodPhoto
+class AddProductPhotoTabularInline(admin.TabularInline):
+	model = AddProductPhoto
 	fields = ['image_tag', 'photo']
 	readonly_fields = ['image_tag']
 
 
-class GoodSpecificationTabularInline(admin.TabularInline):
-	model = GoodSpecification
+class ProductSpecificationTabularInline(admin.TabularInline):
+	model = ProductSpecification
 	fields = ['specification', 'value']
 
 
-class KeyGoodFeatureTabularInline(admin.TabularInline):
-	model = KeyGoodFeature
+class KeyProductFeatureTabularInline(admin.TabularInline):
+	model = KeyProductFeature
 	fields = ['key_feature']
 
 
-class AddGoodInfoTabularInline(admin.TabularInline):
-	model = AddGoodInfo
+class AddProductInfoTabularInline(admin.TabularInline):
+	model = AddProductInfo
 	fields = ['add_info', 'value']
 
 
-class GoodTagTabularInline(admin.TabularInline):
-	model = GoodTag
+class ProductTagTabularInline(admin.TabularInline):
+	model = ProductTag
 	fields = ['tag']
 
 
@@ -119,17 +119,17 @@ class ReviewTabularInline(admin.TabularInline):
 	readonly_fields = ['full_name', 'email', 'text', 'creation_date']
 
 
-@admin.register(Good)
-# GoodAdmin определяет интерфейс администратора для модели Good.
-class GoodAdmin(admin.ModelAdmin):
+@admin.register(Product)
+# ProductAdmin определяет интерфейс администратора для модели Product.
+class ProductAdmin(admin.ModelAdmin):
 	list_display = ['sku', 'title', 'current_price', 'quantity', 'is_limited', 'image_tag']
 	autocomplete_fields = ['category']
 	inlines = [
-		AddGoodPhotoTabularInline,
-		GoodSpecificationTabularInline,
-		KeyGoodFeatureTabularInline,
-		AddGoodInfoTabularInline,
-		GoodTagTabularInline,
+		AddProductPhotoTabularInline,
+		ProductSpecificationTabularInline,
+		KeyProductFeatureTabularInline,
+		AddProductInfoTabularInline,
+		ProductTagTabularInline,
 		ReviewTabularInline
 	]
 
