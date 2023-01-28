@@ -2710,8 +2710,7 @@
       "order": 4,
       "good": 2,
       "price": 19990.0,
-      "quantity": 1,
-      "amount": 19990.0
+      "quantity": 1
     }
   },
   {
@@ -2721,8 +2720,7 @@
       "order": 6,
       "good": 9,
       "price": 64990.0,
-      "quantity": 1,
-      "amount": 64990.0
+      "quantity": 1
     }
   },
   {
@@ -2732,8 +2730,7 @@
       "order": 6,
       "good": 1,
       "price": 38990.0,
-      "quantity": 2,
-      "amount": 77980.0
+      "quantity": 2
     }
   },
   {
@@ -2743,8 +2740,7 @@
       "order": 7,
       "good": 7,
       "price": 84591.0,
-      "quantity": 1,
-      "amount": 84591.0
+      "quantity": 1
     }
   },
   {
@@ -2754,8 +2750,7 @@
       "order": 8,
       "good": 7,
       "price": 84591.0,
-      "quantity": 1,
-      "amount": 84591.0
+      "quantity": 1
     }
   },
   {

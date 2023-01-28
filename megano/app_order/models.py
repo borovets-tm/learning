@@ -160,28 +160,21 @@ class GoodInOrder(models.Model):
 	quantity = models.IntegerField(
 		verbose_name='количество'
 	)
-	amount = models.FloatField(
-		verbose_name='сумма',
-		null=True,
-		blank=True
-	)
 
 	class Meta:
 		db_table = 'good_in_order'
 		verbose_name = 'товар в заказе'
 		verbose_name_plural = 'товары в заказе'
 
-	def __init__(self: Any, *args, **kwargs) -> None:
+	@property
+	def amount(self) -> float:
 		"""
-		Если id объекта не None, то вычисляем сумму товара в заказе
-
-		:param self: Любой — это экземпляр сохраняемой модели
-		:type self: Any
+		Если идентификатор объекта не равен None, вернуть количество, умноженное на цену, иначе вернуть 0
+		:return: Сумма позиции товара, исходя из его количества.
 		"""
-		super().__init__(*args, **kwargs)
 		if self.id:
-			self.amount = self.quantity * self.price
-			self.save(update_fields=['amount'])
+			return self.quantity * self.price
+		return 0
 
 	def __str__(self):
 		return self.good.title
