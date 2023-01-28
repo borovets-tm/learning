@@ -2818,9 +2818,7 @@
     "pk": 1,
     "fields": {
       "user": 1,
-      "session": "1",
-      "amount": 35091.0,
-      "number_of_goods": 1
+      "session": "1"
     }
   },
   {
@@ -2828,9 +2826,7 @@
     "pk": 3,
     "fields": {
       "user": 3,
-      "session": "3",
-      "amount": 217981.0,
-      "number_of_goods": 2
+      "session": "3"
     }
   },
   {
@@ -2838,9 +2834,7 @@
     "pk": 4,
     "fields": {
       "user": 4,
-      "session": "4",
-      "amount": null,
-      "number_of_goods": null
+      "session": "4"
     }
   },
   {
@@ -2848,139 +2842,7 @@
     "pk": 9,
     "fields": {
       "user": 2,
-      "session": "2",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 25,
-    "fields": {
-      "user": null,
-      "session": "ROkNGSz0B7BODgCuy6qxoEw6gdZPPW0j",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 26,
-    "fields": {
-      "user": null,
-      "session": "S2N8E1HpOH1FXgv51Fp9Fs97R1ERjP9Y",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 35,
-    "fields": {
-      "user": null,
-      "session": "3NN1W1JkmXSwZXbzFxvigQZNmJaT8k7j",
-      "amount": 97981.0,
-      "number_of_goods": 2
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 41,
-    "fields": {
-      "user": null,
-      "session": "YDD4Yeo6BzLbZb1VzPudMpYZEMBzJmox",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 42,
-    "fields": {
-      "user": null,
-      "session": "ZztQs0lZzawcaEN3kaUAnqrtmdvA8uf1",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 43,
-    "fields": {
-      "user": null,
-      "session": "Kl3Ca6WzVcYJi0f7GkJUxpFLL8gEDkhD",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 44,
-    "fields": {
-      "user": null,
-      "session": "N671seYtM9xve0uXskhVcSb0a7R2Bnv1",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 45,
-    "fields": {
-      "user": null,
-      "session": "fQOIS9McVHan4DiXmHfYiRdJ32RVOCNr",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 46,
-    "fields": {
-      "user": null,
-      "session": "Jbq0o6ogOVvrOhKONw3gUNgmpaeMFi85",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 47,
-    "fields": {
-      "user": null,
-      "session": "GdOlavQbVZWKWGZGUybhCrW8OYwhkDUl",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 48,
-    "fields": {
-      "user": null,
-      "session": "2I8VUqtNUgz0uaY1IVZye612D3etk02W",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 49,
-    "fields": {
-      "user": null,
-      "session": "WAeuANUzOBUDTPgPVwLQkrTcdBrDIpCj",
-      "amount": null,
-      "number_of_goods": null
-    }
-  },
-  {
-    "model": "app_cart.cart",
-    "pk": 50,
-    "fields": {
-      "user": null,
-      "session": "QZrW3VxDHH18Gr2cNGISibfeTlXSWXzu",
-      "amount": null,
-      "number_of_goods": null
+      "session": "2"
     }
   },
   {
@@ -2989,8 +2851,7 @@
     "fields": {
       "cart": 3,
       "good": 2,
-      "quantity": 1,
-      "amount": 17991.0
+      "quantity": 1
     }
   },
   {
@@ -3001,36 +2862,6 @@
       "good": 4,
       "quantity": 1,
       "amount": 199990.0
-    }
-  },
-  {
-    "model": "app_cart.goodincart",
-    "pk": 25,
-    "fields": {
-      "cart": 35,
-      "good": 2,
-      "quantity": 1,
-      "amount": 17991.0
-    }
-  },
-  {
-    "model": "app_cart.goodincart",
-    "pk": 26,
-    "fields": {
-      "cart": 35,
-      "good": 3,
-      "quantity": 1,
-      "amount": 79990.0
-    }
-  },
-  {
-    "model": "app_cart.goodincart",
-    "pk": 36,
-    "fields": {
-      "cart": 1,
-      "good": 1,
-      "quantity": 1,
-      "amount": 35091.0
     }
   }
 ]

@@ -41,10 +41,9 @@ def add_cart(request: Any) -> HttpResponse:
 		if not good_in_cart:
 			raise ObjectDoesNotExist
 		good_in_cart.quantity += quantity
-		good_in_cart.amount = good_in_cart.quantity * good.current_price
-		good_in_cart.save(update_fields=['quantity', 'amount'])
+		good_in_cart.save(update_fields=['quantity'])
 	except ObjectDoesNotExist:
-		user_cart.goods_in_carts.create(good=good, quantity=quantity, amount=quantity * good.current_price)
+		user_cart.goods_in_carts.create(good=good, quantity=quantity)
 	# Получение следующего URL-адреса из метода request.POST.get().
 	next_url = request.POST.get('next', '/')
 	return HttpResponseRedirect(next_url)
