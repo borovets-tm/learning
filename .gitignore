@@ -40,6 +40,7 @@ megano/app_user/migrations/*.py
 !megano/app_user/migrations/__init__.py
 megano/app_setting/migrations/*.py
 !megano/app_setting/migrations/__init__.py
+my_venv
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
