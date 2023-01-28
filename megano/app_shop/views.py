@@ -10,7 +10,7 @@ from django.views.generic import View, DetailView, ListView
 from app_cart.models import Cart
 from app_order.models import DeliveryType
 from app_shop.forms import ReviewForm
-from app_shop.models import Good, Subcategory, Category, Tag
+from app_shop.models import Product, Subcategory, Category, Tag
 
 
 def about(request: Any) -> HttpResponse:
@@ -47,7 +47,7 @@ def add_review(request: Any, pk: str) -> HttpResponse:
 
 
 # Функция используется всеми представлениями, которые используют шаблон catalog.html.
-def sort_of_good(self: Any, context: dict, object_list: Any) -> dict:
+def sort_of_product(self: Any, context: dict, object_list: Any) -> dict:
 	"""
 	Сортирует товары по выбранному параметру, обрабатывает фильтры и возвращает контекст с отсортированными и/или
 	отфильтрованными товарами.
@@ -112,7 +112,7 @@ def sort_of_good(self: Any, context: dict, object_list: Any) -> dict:
 			object_list.filter(current_price__gt=min_order)
 	# Сортировка товаров по нажатой кнопке.
 	if button == 'popularity':
-		sort = 'ordered_goods__quantity'
+		sort = 'ordered_products__quantity'
 		number_of_clicks = context['number_of_clicks_popular'] + (0 if is_non_sorted else 1)
 		context['number_of_clicks_popular'] = number_of_clicks
 	elif button == 'price':
@@ -124,7 +124,7 @@ def sort_of_good(self: Any, context: dict, object_list: Any) -> dict:
 		number_of_clicks = context['number_of_clicks_novelty'] + (0 if is_non_sorted else 1)
 		context['number_of_clicks_novelty'] = number_of_clicks
 	elif button == 'review':
-		sort = 'good_reviews__count'
+		sort = 'product_reviews__count'
 		number_of_clicks = context['number_of_clicks_review'] + (0 if is_non_sorted else 1)
 		context['number_of_clicks_review'] = number_of_clicks
 	if sort:
@@ -170,36 +170,36 @@ class IndexView(View):
 			if not Cart.objects.filter(session=session_id):
 				Cart.objects.create(session=session_id)
 		# Получение случайной выборки из 3 категорий из набора запросов категорий.
-		categories = Subcategory.objects.annotate(Count('category_goods')).filter(category_goods__count__gt=0)
+		categories = Subcategory.objects.annotate(Count('category_products')).filter(category_products__count__gt=0)
 		random_number = sample([item.id for item in categories], 3)
 		featured_categories = categories.filter(id__in=random_number)
 		# Фильтрация товаров по количеству больше 0, затем аннотируется сумма сколько раз заказали товар,
 		# а затем упорядочиваются объекты по сумме количества заказанных товаров в порядке убывания.
-		popular_good_list = (
-			Good.objects.filter(quantity__gt=0)
-			.annotate(Sum('ordered_goods__quantity'))
-			.order_by('-ordered_goods__quantity__sum')[:8]
+		popular_product_list = (
+			Product.objects.filter(quantity__gt=0)
+			.annotate(Sum('ordered_products__quantity'))
+			.order_by('-ordered_products__quantity__sum')[:8]
 		)
 		# Фильтрация товаров по количеству больше 0 и статусу лимитированности версии.
-		limited_good_list = Good.objects.filter(quantity__gt=0, is_limited=True)[:16]
+		limited_product_list = Product.objects.filter(quantity__gt=0, is_limited=True)[:16]
 		return render(
 			request,
 			'app_shop/index.html',
 			context={
 				'featured_categories': featured_categories,
-				'popular_good_list': popular_good_list,
-				'limited_good_list': limited_good_list
+				'popular_product_list': popular_product_list,
+				'limited_product_list': limited_product_list
 			}
 		)
 
 
-class SearchGoodListView(ListView):
+class SearchProductListView(ListView):
 	"""
 	Представление отображает список объектов результата поиска.
 	:return: Контекст.
 	"""
 	template_name = 'app_shop/catalog.html'
-	model = Good
+	model = Product
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
@@ -207,9 +207,9 @@ class SearchGoodListView(ListView):
 		object_list = context['object_list'].filter(
 			quantity__gt=0,
 			title__icontains=query,
-		) | Good.objects.filter(
+		) | Product.objects.filter(
 			quantity__gt=0,
-			good_tags__tag__title__icontains=query
+			product_tags__tag__title__icontains=query
 		)
 		tag_list = Tag.objects.filter(title__icontains=query)
 		for tag in tag_list:
@@ -218,7 +218,7 @@ class SearchGoodListView(ListView):
 			else:
 				tag.number_of_requests = 1
 			tag.save(update_fields=['number_of_requests'])
-		context = sort_of_good(self, context, object_list)
+		context = sort_of_product(self, context, object_list)
 		return context
 
 
@@ -232,14 +232,14 @@ class CategoryDetailView(DetailView):
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
-		good_in_category = (
+		product_in_category = (
 			context['object']
 			.subcategories
-			.values('category_goods')
-			.filter(~Q(category_goods=None))
+			.values('category_products')
+			.filter(~Q(category_products=None))
 		)
-		object_list = Good.objects.filter(id__in=good_in_category, quantity__gt=0)
-		context = sort_of_good(self, context, object_list)
+		object_list = Product.objects.filter(id__in=product_in_category, quantity__gt=0)
+		context = sort_of_product(self, context, object_list)
 		return context
 
 
@@ -253,13 +253,13 @@ class SubcategoryDetailView(DetailView):
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
-		good_in_subcategory = (
+		product_in_subcategory = (
 			context['object']
-			.category_goods
+			.category_products
 			.filter(~Q(quantity=0))
 		)
-		object_list = Good.objects.filter(id__in=good_in_subcategory)
-		context = sort_of_good(self, context, object_list)
+		object_list = Product.objects.filter(id__in=product_in_subcategory)
+		context = sort_of_product(self, context, object_list)
 		return context
 
 
@@ -269,12 +269,12 @@ class CatalogListView(ListView):
 	:return: Контекст.
 	"""
 	template_name = 'app_shop/catalog.html'
-	model = Good
+	model = Product
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		object_list = context['object_list']
-		context = sort_of_good(self, context, object_list)
+		context = sort_of_product(self, context, object_list)
 		return context
 
 
@@ -288,9 +288,9 @@ class TagDetailView(DetailView):
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
-		goods_by_tag = context['object'].goods_by_tags.filter(good__quantity__gt=0)
-		object_list = Good.objects.filter(good_tags__in=goods_by_tag, quantity__gt=0)
-		context = sort_of_good(self, context, object_list)
+		products_by_tag = context['object'].products_by_tags.filter(product__quantity__gt=0)
+		object_list = Product.objects.filter(product_tags__in=products_by_tag, quantity__gt=0)
+		context = sort_of_product(self, context, object_list)
 		return context
 
 
@@ -300,24 +300,24 @@ class ProductDetailView(DetailView):
 	:return: Контекст.
 	"""
 	template_name = 'app_shop/product.html'
-	model = Good
+	model = Product
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
-		good = context['object']
-		context['specification_list'] = good.good_specifications.all()
-		context['key_feature_list'] = good.key_good_features.all()
-		context['add_info_list'] = good.add_info_about_good.all()
+		product = context['object']
+		context['specification_list'] = product.product_specifications.all()
+		context['key_feature_list'] = product.key_product_features.all()
+		context['add_info_list'] = product.add_info_about_product.all()
 		try:
-			context['review_list'] = good.product_reviews.all()
+			context['review_list'] = product.product_reviews.all()
 		except AttributeError:
 			context['review_list'] = None
-		context['photo_gallery_list'] = good.photo_gallery.all()
-		context['tag_list'] = good.good_tags.all()
+		context['photo_gallery_list'] = product.photo_gallery.all()
+		context['tag_list'] = product.product_tags.all()
 		if self.request.user.id:
 			user_profile = self.request.user.user_profile
 			context['form'] = ReviewForm(initial={
-				'good': good,
+				'product': product,
 				'email': self.request.user.email,
 				'full_name': user_profile.full_name,
 				'user_photo': user_profile.user_photo.url if user_profile.user_photo else None
@@ -331,7 +331,7 @@ class PromotionListView(ListView):
 	:return: Контекст.
 	"""
 	template_name = 'app_shop/sale.html'
-	queryset = Good.objects.filter(~Q(promotion=None)).order_by('promotion__promo_end_date')
+	queryset = Product.objects.filter(~Q(promotion=None)).order_by('promotion__promo_end_date')
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)

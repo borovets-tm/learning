@@ -79,27 +79,27 @@
 					</div>
 				</div>
 				<div class="Cart Cart_order">
-					{% for item in good_list %}
+					{% for item in product_list %}
 						<div class="Cart-product">
 							<div class="Cart-block Cart-block_row">
 								<div class="Cart-block Cart-block_pict">
-									<a class="Cart-pict" href="{% url 'product' item.good.pk %}">
-										<img class="Cart-img" src="{{ item.good.main_photo.url }}"
-										     alt="{{ item.good.main_photo.name }}"/>
+									<a class="Cart-pict" href="{% url 'product' item.product.pk %}">
+										<img class="Cart-img" src="{{ item.product.main_photo.url }}"
+										     alt="{{ item.product.main_photo.name }}"/>
 									</a>
 								</div>
 								<div class="Cart-block Cart-block_info">
-									<a class="Cart-title" href="{% url 'product' item.good.pk %}">
-										{{ item.good.title }}
+									<a class="Cart-title" href="{% url 'product' item.product.pk %}">
+										{{ item.product.title }}
 									</a>
 									<div class="Cart-desc">
 										<!-- добавляем описание длиной до 100 символов -->
-										{{ item.good.description|slice:"100" }}
+										{{ item.product.description|slice:"100" }}
 									</div>
 								</div>
 								<div class="Cart-block Cart-block_price">
 									<div class="Cart-price">
-										{{ item.good.current_price }}{{ CURRENCY }}
+										{{ item.product.current_price }}{{ CURRENCY }}
 									</div>
 								</div>
 							</div>

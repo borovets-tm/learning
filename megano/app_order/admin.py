@@ -3,7 +3,7 @@ from typing import Any
 from django.contrib import admin
 from django.db.models import Q
 
-from app_order.models import DeliveryType, Order, GoodInOrder
+from app_order.models import DeliveryType, Order, ProductInOrder
 
 
 @admin.register(DeliveryType)
@@ -12,9 +12,9 @@ class DeliveryTypeAdmin(admin.ModelAdmin):
 	list_display = ['title', 'free_delivery']
 
 
-class GoodInOrderTabularInLine(admin.TabularInline):
-	model = GoodInOrder
-	readonly_fields = ['good', 'price', 'quantity', 'amount']
+class ProductInOrderTabularInLine(admin.TabularInline):
+	model = ProductInOrder
+	readonly_fields = ['product', 'price', 'quantity', 'amount']
 
 
 @admin.register(Order)
@@ -66,7 +66,7 @@ class OrderAdmin(admin.ModelAdmin):
 		)
 	)
 	# Добавление Товаров в заказе для администрирования в интерфейс OrderAdmin.
-	inlines = [GoodInOrderTabularInLine]
+	inlines = [ProductInOrderTabularInLine]
 	# Список добавляет боковую панель фильтра, которая позволяет фильтровать список изменений по полю статуса.
 	list_filter = ['status']
 	# Список действий, которые можно выполнить над выбранными заказами.
@@ -92,10 +92,10 @@ class OrderAdmin(admin.ModelAdmin):
 		:type queryset: Any
 		"""
 		for order in queryset.filter(~Q(status_id=1)):
-			for item in order.goods_in_order.all():
-				good = item.good
-				good.quantity += item.quantity
-				good.save(update_fields=['quantity'])
+			for item in order.products_in_order.all():
+				product = item.product
+				product.quantity += item.quantity
+				product.save(update_fields=['quantity'])
 		queryset.update(status_id=10)
 
 	def mark_as_handed_over_to_the_buyer(self, request: Any, queryset: Any) -> None:
@@ -200,8 +200,8 @@ class OrderAdmin(admin.ModelAdmin):
 		"""
 		order = Order.objects.get(id=obj.id)
 		if order.status.id != 1 and request.POST['status'] == '10':
-			for item in order.goods_in_order.all():
-				good = item.good
-				good.quantity += item.quantity
-				good.save(update_fields=['quantity'])
+			for item in order.products_in_order.all():
+				product = item.product
+				product.quantity += item.quantity
+				product.save(update_fields=['quantity'])
 		super().save_model(request, obj, form, change)

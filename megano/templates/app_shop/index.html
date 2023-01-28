@@ -15,14 +15,14 @@
 									<div class="BannersHomeBlock-content">
 										from&#32;
 										<span class="BannersHomeBlock-price">
-									{{ CURRENCY }}{{ category.category_goods.first.current_price }}
+									{{ CURRENCY }}{{ category.category_products.first.current_price }}
 								</span>
 									</div>
 								</div>
 								<div class="BannersHomeBlock-block">
 									<div class="BannersHomeBlock-img">
-										<img src="{{ category.category_goods.first.main_photo.url }}"
-										     alt="{ category.category_goods.first.main_photo.name }}"/>
+										<img src="{{ category.category_products.first.main_photo.url }}"
+										     alt="{ category.category_products.first.main_photo.name }}"/>
 									</div>
 								</div>
 							</div>
@@ -40,25 +40,25 @@
 						</h2>
 					</header>
 					<div class="Cards">
-						{% for good in popular_good_list %}
+						{% for product in popular_product_list %}
 							<div class="Card">
-								<a class="Card-picture" href="{% url 'product' good.pk %}">
-									<img src="{{ good.main_photo.url }}" alt="{{ good.main_photo.name }}"/>
+								<a class="Card-picture" href="{% url 'product' product.pk %}">
+									<img src="{{ product.main_photo.url }}" alt="{{ product.main_photo.name }}"/>
 								</a>
 								<div class="Card-content">
 									<strong class="Card-title">
-										<a href="{% url 'product' good.pk %}">
-											{{ good.title }}
+										<a href="{% url 'product' product.pk %}">
+											{{ product.title }}
 										</a>
 									</strong>
 									<div class="Card-description">
 										<div class="Card-cost">
 										<span class="Card-price">
-											{{ CURRENCY }}{{ good.current_price }}
+											{{ CURRENCY }}{{ product.current_price }}
 										</span>
 										</div>
 										<div class="Card-category">
-											{{ good.category.category.title }}/{{ good.category.title }}
+											{{ product.category.category.title }}/{{ product.category.title }}
 										</div>
 										{% include 'app_cart/cart_hover_include.html' %}
 									</div>
@@ -134,7 +134,7 @@
 						</div>
 					</div>
 				</div>
-				{% if limited_good_list %}
+				{% if limited_product_list %}
 					<div class="Section-content">
 						<div class="Slider Slider_carousel">
 							<header class="Section-header Section-header_close">
@@ -147,28 +147,28 @@
 								</div>
 							</header>
 							<div class="Slider-box Cards">
-								{% for good in limited_good_list %}
+								{% for product in limited_product_list %}
 									<div class="Slider-item">
 										<div class="Slider-content">
 											<div class="Card">
-												<a class="Card-picture" href="{% url 'product' good.pk %}">
-													<img src="{{ good.main_photo.url }}"
-													     alt="{{ good.main_photo.name }}"/>
+												<a class="Card-picture" href="{% url 'product' product.pk %}">
+													<img src="{{ product.main_photo.url }}"
+													     alt="{{ product.main_photo.name }}"/>
 												</a>
 												<div class="Card-content">
 													<strong class="Card-title">
-														<a href="{% url 'product' good.pk %}">
-															{{ good.title }}
+														<a href="{% url 'product' product.pk %}">
+															{{ product.title }}
 														</a>
 													</strong>
 													<div class="Card-description">
 														<div class="Card-cost">
 														<span class="Card-price">
-															{{ CURRENCY }}{{ good.current_price }}
+															{{ CURRENCY }}{{ product.current_price }}
 														</span>
 														</div>
 														<div class="Card-category">
-															{{ good.category.category.title }}/{{ good.category.title }}
+															{{ product.category.category.title }}/{{ product.category.title }}
 														</div>
 														{% include 'app_cart/cart_hover_include.html' %}
 													</div>

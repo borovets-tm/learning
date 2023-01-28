@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n3bhk=p94jx%8ik#t0+dy+tsg4x0swy=8kk1q$pak820xg!wu%'
 
 
-settings_file = os.path.join(BASE_DIR, 'start_settings.json')
+settings_file = os.path.join(BASE_DIR, 'site_settings.json')
 
 with open(settings_file, 'r') as file:
     data = json.load(file)

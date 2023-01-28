@@ -14,7 +14,7 @@ class SettingsAdmin(admin.ModelAdmin):
 	list_display = ['title']
 
 	def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
-		settings_file = os.path.join(settings.BASE_DIR, 'start_settings.json')
+		settings_file = os.path.join(settings.BASE_DIR, 'site_settings.json')
 		data = {
 			'ALLOWED_HOSTS': obj.ALLOWED_HOSTS,
 			'SERVER_EMAIL': obj.SERVER_EMAIL,

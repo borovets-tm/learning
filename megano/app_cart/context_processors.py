@@ -21,13 +21,13 @@ def get_info_about_users_basket(request: Any) -> dict:
     if request.user.id:
         user_cart = request.user.user_cart
         amount = user_cart.amount
-        number_of_goods = user_cart.number_of_goods
+        number_of_products = user_cart.number_of_products
     else:
         user_cart = Cart.objects.get(session=request.META.get('CSRF_COOKIE'))
         amount = user_cart.amount
-        number_of_goods = user_cart.number_of_goods
+        number_of_products = user_cart.number_of_products
     context = {
         'amount': amount,
-        'number_of_goods': number_of_goods
+        'number_of_products': number_of_products
     }
     return context

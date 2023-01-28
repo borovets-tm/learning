@@ -4,7 +4,7 @@ from app_shop.views import (
 	CategoryDetailView,
 	SubcategoryDetailView,
 	TagDetailView,
-	SearchGoodListView,
+	SearchProductListView,
 	add_review,
 	about,
 	CatalogListView,
@@ -17,7 +17,7 @@ urlpatterns = [
 	# Это путь к главной странице.
 	path('', IndexView.as_view(), name='index'),
 	# Это путь к странице с поиском товаров.
-	path('search/', SearchGoodListView.as_view(), name='search'),
+	path('search/', SearchProductListView.as_view(), name='search'),
 	# Это путь к странице с информацией о магазине.
 	path('about/', about, name='about'),
 	# Это путь к странице со списком всех товаров со скидками.

@@ -2,17 +2,17 @@
 <div class="Card-hover">
 	<script>
         function addCart(id) {
-            let good = document.getElementById(id);
-            const form = good.querySelector('#confirmation');
-            const popup = good.querySelector('.popup_add');
+            let product = document.getElementById(id);
+            const form = product.querySelector('#confirmation');
+            const popup = product.querySelector('.popup_add');
             form.classList.add('open');
             popup.classList.add('popup_add_open');
         }
 	</script>
-	<button class="Card-btn" onclick="addCart({{ good.pk }})">
+	<button class="Card-btn" onclick="addCart({{ product.pk }})">
 		<img src="{% static 'assets/img/icons/card/cart.svg' %}" alt="cart.svg"/>
 	</button>
-	<div id="{{ good.pk }}">
+	<div id="{{ product.pk }}">
 		<div class="popup_add">
 			<div class="popup_add__container">
 				<div class="popup_add__wrapper">
@@ -21,8 +21,8 @@
 							{% csrf_token %}
 							<input type="hidden" name="amount" value="1"/>
 							<input type="hidden" name="user_id" value="{{ request.user.id }}">
-							<input type="hidden" name="good_id" value="{{ good.pk }}">
-							{{ good.title }} успешно добавлен в корзину!<br>
+							<input type="hidden" name="product_id" value="{{ product.pk }}">
+							{{ product.title }} успешно добавлен в корзину!<br>
 							<button class="btn btn-success" type="submit" name="next" value="{{ request.path }}">
 								Продолжить покупки
 							</button>
