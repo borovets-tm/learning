@@ -1745,7 +1745,6 @@
     "fields": {
       "title": "Первая распродажа",
       "description": "Первая акция в интернет магазине Megano",
-      "is_active": true,
       "discount_size": 10.0,
       "promo_start_date": "2023-01-16",
       "promo_end_date": "2023-01-31"
@@ -1757,7 +1756,6 @@
     "fields": {
       "title": "Последний товар",
       "description": "Скидка на последний товар в ИМ",
-      "is_active": false,
       "discount_size": 6.0,
       "promo_start_date": "2023-01-16",
       "promo_end_date": "2023-01-22"

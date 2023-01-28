@@ -110,12 +110,12 @@ class Promotion(models.Model):
 	description = models.TextField(
 		verbose_name='описание акции'
 	)
-	is_active = models.BooleanField(
-		default=False,
-		blank=True,
-		null=True,
-		verbose_name='статус активности'
-	)
+	# is_active = models.BooleanField(
+	# 	default=False,
+	# 	blank=True,
+	# 	null=True,
+	# 	verbose_name='статус активности'
+	# )
 	discount_size = models.FloatField(
 		validators=[MinValueValidator(0), MaxValueValidator(100)],
 		verbose_name='размер скидки'
@@ -137,18 +137,17 @@ class Promotion(models.Model):
 		verbose_name = 'акция'
 		verbose_name_plural = 'акции'
 
-	def __init__(self, *args, **kwargs):
+	@property
+	def is_active(self):
 		"""
 		Если promo_end_date меньше сегодняшней даты или promo_start_date больше сегодняшней даты, то акция не активна. В
 		противном случае она активен
 		"""
-		super().__init__(*args, **kwargs)
 		if self.id:
 			if self.promo_end_date < datetime.today().date() or self.promo_start_date > datetime.today().date():
-				self.is_active = False
+				return False
 			else:
-				self.is_active = True
-			self.save(update_fields=['is_active'])
+				return True
 
 	# Возврат URL-адреса объекта.
 	def get_absolute_url(self: Any) -> str:

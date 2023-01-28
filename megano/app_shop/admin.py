@@ -143,4 +143,4 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Promotion)
 # PromotionAdmin определяет интерфейс администратора для модели Promotion.
 class PromotionAdmin(admin.ModelAdmin):
-	list_display = ['title', 'is_active']
+	list_display = ['title', 'promo_start_date', 'promo_end_date']
