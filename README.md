@@ -51,7 +51,8 @@ https://example.com/admin, где "example.com" - это адрес Вашего
     *  ```cd megano``` 
     * ```python manage.py makemigrations```
     * ```python manage.py migrate```
-    * ```python manage.py loaddata settings.json```
+    * Для установки рабочего проекта```python manage.py loaddata settings.json```  
+      Для установки демонстрационной базы ```python manage.py loaddata demo.json```
     * ```python manage.py runserver```  
 3. Перейдите по адресу [localhost:8000/admin/](http://localhost:8000/admin/)
 4. Введите логин и пароль:
