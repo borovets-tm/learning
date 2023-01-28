@@ -185,10 +185,10 @@
 							{% endif %}
 							{% for num in page_obj.paginator %}
 								{% if num.number == page_obj.number %}
-									<button class="Pagination-element Pagination-element_current" href="#"
+									<div class="Pagination-element Pagination-element_current"
 									        style="border: none">
 										<span class="Pagination-text">{{ num.number }}</span>
-									</button>
+									</div>
 								{% else %}
 									<button class="Pagination-element" name="page" value="{{ num.number }}"
 									        style="border: none"><span
