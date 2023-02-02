@@ -2,7 +2,7 @@ from random import sample
 from typing import Any
 
 from django.core.paginator import Paginator
-from django.db.models import Count, Sum, Q, Min, Max
+from django.db.models import Count, Sum, Q
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.generic import View, DetailView, ListView
@@ -104,19 +104,21 @@ def sort_of_product(self: Any, context: dict, object_list: Any) -> dict:
 		if title:
 			object_list = object_list.filter(title__icontains=title)
 		else:
-			object_list = object_list.filter(current_price__gte=min_price, current_price__lte=max_price)
+			object_list_id = list(item.id for item in object_list if min_price <= item.current_price <= max_price)
+			object_list = object_list.filter(id__in=object_list_id)
 		if is_availability == 'on':
 			object_list.filter(quantity__gt=0)
 		if is_free_delivery == 'on':
 			min_order = DeliveryType.objects.filter(free_delivery=True).first().purchase_amount_for_free_delivery
-			object_list.filter(current_price__gt=min_order)
+			object_list_id = list(item.id for item in object_list if min_order < item.current_price)
+			object_list = object_list.filter(id__in=object_list_id)
 	# Сортировка товаров по нажатой кнопке.
 	if button == 'popularity':
 		sort = 'ordered_products__quantity'
 		number_of_clicks = context['number_of_clicks_popular'] + (0 if is_non_sorted else 1)
 		context['number_of_clicks_popular'] = number_of_clicks
 	elif button == 'price':
-		sort = 'current_price'
+		sort = 'price'
 		number_of_clicks = context['number_of_clicks_price'] + (0 if is_non_sorted else 1)
 		context['number_of_clicks_price'] = number_of_clicks
 	elif button == 'novelty':
@@ -140,8 +142,8 @@ def sort_of_product(self: Any, context: dict, object_list: Any) -> dict:
 				object_list = object_list.order_by('-%s' % sort)
 	# Передача обновленных данных контексту.
 	context['object_list'] = object_list
-	context['min_price'] = str(object_list.aggregate(Min('current_price'))['current_price__min']).replace(' ', '')
-	context['max_price'] = str(object_list.aggregate(Max('current_price'))['current_price__max']).replace(' ', '')
+	context['min_price'] = str(min(item.current_price for item in object_list))
+	context['max_price'] = str(max(item.current_price for item in object_list))
 	paginator = Paginator(object_list, 8)
 	page_obj = paginator.get_page(page_number)
 	context['paginator'] = paginator

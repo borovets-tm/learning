@@ -48,7 +48,8 @@
 								<div class="ProductCard-info">
 									<div class="ProductCard-cost">
 										<div class="ProductCard-price">
-											{{ CURRENCY }}{{ object.price }}
+											{{ CURRENCY }} {% if object.promotion %}
+											<s style="color: #8e93a0; font-size: 80%; text-decoration-color: red;">{{ object.price }}</s> {% endif %}{{ object.current_price }}
 										</div>
 									</div>
 								</div>

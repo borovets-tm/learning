@@ -110,12 +110,6 @@ class Promotion(models.Model):
 	description = models.TextField(
 		verbose_name='описание акции'
 	)
-	# is_active = models.BooleanField(
-	# 	default=False,
-	# 	blank=True,
-	# 	null=True,
-	# 	verbose_name='статус активности'
-	# )
 	discount_size = models.FloatField(
 		validators=[MinValueValidator(0), MaxValueValidator(100)],
 		verbose_name='размер скидки'
@@ -138,7 +132,7 @@ class Promotion(models.Model):
 		verbose_name_plural = 'акции'
 
 	@property
-	def is_active(self):
+	def is_active(self) -> bool:
 		"""
 		Если promo_end_date меньше сегодняшней даты или promo_start_date больше сегодняшней даты, то акция не активна. В
 		противном случае она активен
@@ -148,6 +142,8 @@ class Promotion(models.Model):
 				return False
 			else:
 				return True
+
+	is_active.fget.short_description = 'статус активности'
 
 	# Возврат URL-адреса объекта.
 	def get_absolute_url(self: Any) -> str:
@@ -294,11 +290,6 @@ class Product(models.Model):
 	price = models.FloatField(
 		verbose_name='цена'
 	)
-	current_price = models.FloatField(
-		null=True,
-		blank=True,
-		verbose_name='текущая цена'
-	)
 	quantity = models.IntegerField(
 		null=False,
 		blank=False,
@@ -326,7 +317,7 @@ class Product(models.Model):
 
 	class Meta:
 		db_table = 'product'
-		ordering = ['current_price']
+		ordering = ['price']
 		verbose_name = 'товар'
 		verbose_name_plural = 'товары'
 
@@ -342,25 +333,28 @@ class Product(models.Model):
 
 	image_tag.short_description = 'Image'
 
-	def __init__(self: Any, *args, **kwargs) -> None:
+	@property
+	def current_price(self) -> float:
 		"""
 		Если у товара есть идентификатор и акция, и акция активна, то текущая цена равна цене минус цена, умноженная на
 		размер скидки по акции.
 
 		:param self: Любой — это экземпляр сохраняемой модели.
 		:type self: Any
+		:return: Текущая цена.
 		"""
-		super().__init__(*args, **kwargs)
 		if self.id:
 			if self.promotion:
 				if not self.promotion.is_active:
 					self.promotion = None
 					self.save(update_fields=['promotion'])
 			if self.promotion:
-				self.current_price = round(self.price - (self.price * self.promotion.discount_size / 100), 0)
+				return round(self.price - (self.price * self.promotion.discount_size / 100), 0)
 			else:
-				self.current_price = self.price
-			self.save(update_fields=['current_price'])
+				return self.price
+
+	# добавляем verbose_name для property
+	current_price.fget.short_description = 'текущая цена'
 
 	# Возврат URL-адреса объекта.
 	def get_absolute_url(self: Any) -> str:

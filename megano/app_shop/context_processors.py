@@ -1,7 +1,7 @@
 import re
 from typing import Any
 
-from django.db.models import Min, Max, Sum
+from django.db.models import Sum
 
 from app_shop.models import Category, Tag, Product
 
@@ -58,8 +58,9 @@ def get_min_and_max_price(request: Any) -> dict:
     """
     if re.search(regex, request.META['PATH_INFO']):
         return {}
-    min_price_in_catalog = str(Product.objects.aggregate(Min('current_price'))['current_price__min']).replace(' ', '')
-    max_price_in_catalog = str(Product.objects.aggregate(Max('current_price'))['current_price__max']).replace(' ', '')
+    current_price_of_products = [item.current_price for item in Product.objects.order_by('price')]
+    min_price_in_catalog = str(min(current_price_of_products))
+    max_price_in_catalog = str(max(current_price_of_products))
     context = {
         'min_price_in_catalog': min_price_in_catalog,
         'max_price_in_catalog': max_price_in_catalog

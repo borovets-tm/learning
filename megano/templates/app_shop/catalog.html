@@ -106,12 +106,14 @@
 							<input type="hidden" name="page" value="{{ page_obj.number }}">
 							<button class="Sort-sortBy
 
+
 									{% if button == 'popularity' %}{% if number_of_clicks_popular|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
 							        name="button" value="popularity" type="submit"
 							        style="background: none; color: inherit; border: none;">
 								Популярности
 							</button>
 							<button class="Sort-sortBy
+
 
 									{% if button == 'price' %}{% if number_of_clicks_price|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
 							        name="button" value="price" type="submit"
@@ -120,12 +122,14 @@
 							</button>
 							<button class="Sort-sortBy
 
+
 									{% if button == 'review' %}{% if number_of_clicks_review|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
 							        name="button" value="review" type="submit"
 							        style="background: none; color: inherit; border: none;">
 								Отзывам
 							</button>
 							<button class="Sort-sortBy
+
 
 									{% if button == 'novelty' %}{% if number_of_clicks_novelty|divisibleby:2 %}Sort-sortBy_inc{% else %}Sort-sortBy_dec{% endif %}{% endif %}"
 							        name="button" value="novelty" type="submit"
@@ -149,7 +153,8 @@
 										</strong>
 										<div class="Card-description">
 											<div class="Card-cost">
-												<span class="Card-price">{{ CURRENCY }}{{ product.price }}</span>
+												<span class="Card-price">{{ CURRENCY }} {% if product.promotion %}
+													<s style="color: #8e93a0; font-size: 80%; text-decoration-color: red;">{{ product.price }}</s>{% endif %} {{ product.current_price }}</span>
 											</div>
 											<div class="Card-category">
 												{{ product.category.category.title }}/{{ product.category.title }}
@@ -186,7 +191,7 @@
 							{% for num in page_obj.paginator %}
 								{% if num.number == page_obj.number %}
 									<div class="Pagination-element Pagination-element_current"
-									        style="border: none">
+									     style="border: none">
 										<span class="Pagination-text">{{ num.number }}</span>
 									</div>
 								{% else %}
