@@ -1,5 +1,5 @@
 {
-    "ALLOWED_HOSTS": "192.168.1.52",
+    "ALLOWED_HOSTS": "0.0.0.0",
     "SERVER_EMAIL": "t.m.borovets@lenta.ru",
     "EMAIL_USE_TLS": true,
     "EMAIL_HOST": "smtp.rambler.ru",

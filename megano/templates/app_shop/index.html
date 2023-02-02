@@ -54,7 +54,9 @@
 									<div class="Card-description">
 										<div class="Card-cost">
 										<span class="Card-price">
-											{{ CURRENCY }}{{ product.current_price }}
+											{{ CURRENCY }} {% if product.promotion %}
+											<s style="color: #8e93a0; font-size: 80%; text-decoration-color: red;">{{ product.price }}</s>{% endif %}
+											{{ product.current_price }}
 										</span>
 										</div>
 										<div class="Card-category">
@@ -164,7 +166,8 @@
 													<div class="Card-description">
 														<div class="Card-cost">
 														<span class="Card-price">
-															{{ CURRENCY }}{{ product.current_price }}
+															{{ CURRENCY }} {% if product.promotion %}
+															<s style="color: #8e93a0; font-size: 80%; text-decoration-color: red;">{{ product.price }}</s>{% endif %} {{ product.current_price }}
 														</span>
 														</div>
 														<div class="Card-category">

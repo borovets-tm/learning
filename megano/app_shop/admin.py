@@ -139,8 +139,14 @@ class ProductAdmin(admin.ModelAdmin):
 		ReviewTabularInline
 	]
 
-
 @admin.register(Promotion)
 # PromotionAdmin определяет интерфейс администратора для модели Promotion.
 class PromotionAdmin(admin.ModelAdmin):
-	list_display = ['title', 'promo_start_date', 'promo_end_date']
+	list_display = ['title', 'is_active', 'promo_start_date', 'promo_end_date']
+
+	def is_active(self, obj):
+		if obj.is_active:
+			return 'Активна'
+		return 'Не активна'
+
+	is_active.short_description = 'статус активности'
