@@ -194,14 +194,13 @@ class OrderView(View):
 				order=order,
 				product=item.product,
 				quantity=item.quantity,
-				price=item.product.current_price,
-				amount=item.amount
+				price=item.product.current_price
 			)
 			item.delete()
 		if order.payment_method.id == 1:
-			return HttpResponseRedirect('/payment/%s/' % order.pk)
+			return HttpResponseRedirect('/order/payment/%s/' % order.pk)
 		else:
-			return HttpResponseRedirect('/payment_someone/%s/' % order.pk)
+			return HttpResponseRedirect('/order/payment_someone/%s/' % order.pk)
 
 
 class OneOrderDetailView(DetailView):
